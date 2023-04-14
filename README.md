@@ -9,13 +9,13 @@ Na ekranie widoczny będzie statek kosmiczny, którym gracz będzie się porusza
 
 
 Podział na klasy:
-Game - jest to klasa główna, odpowiedzialna za zarządzanie grą. Znajdzie się w niej pętla umożliwiająca działanie programu oraz podstawowe metody umożliwiające przerwanie, zatrzymanie i wznowienie gry. Klasa ta będzie miała dostęp do wszystkich innych klas. Zajdzie tu więc dziedziczenie.
-Base - klasa bazowa, która będzie zawierać metody wspólne dla wszystkich obiektów, takie jak chociażby położenie na ekranie.
-Stats - klasa magazynująca statystyki gracza, takie jak punkty życia, punkty doświadczenia, zebrane monety czy części statku. Zajdzie w niej pełna enkapsulacja danych
-Player - klasa rysująca sprite gracza.
-Enemy - klasa odpowiedzialna za charakterystyki przeciwników. M.in. tutaj zajdzie enkapsulacja, aby chronić zmienne przed dostępem z zewnątrz.
-Sounds - W tej klasie zawierać się będą metody związane z odtwarzaniem plików dźwiękowych.
-Ship - Klasa ta będzie przechowywać statystyki konkretnych statków oraz ich ataki specjalne
+- Game - jest to klasa główna, odpowiedzialna za zarządzanie grą. Znajdzie się w niej pętla umożliwiająca działanie programu oraz podstawowe metody umożliwiające przerwanie, zatrzymanie i wznowienie gry. Klasa ta będzie miała dostęp do wszystkich innych klas. Zajdzie tu więc dziedziczenie.
+- Base - klasa bazowa, która będzie zawierać metody wspólne dla wszystkich obiektów, takie jak chociażby położenie na ekranie.
+- Stats - klasa magazynująca statystyki gracza, takie jak punkty życia, punkty doświadczenia, zebrane monety czy części statku. Zajdzie w niej pełna enkapsulacja danych
+- Player - klasa rysująca sprite gracza.
+- Enemy - klasa odpowiedzialna za charakterystyki przeciwników. M.in. tutaj zajdzie enkapsulacja, aby chronić zmienne przed dostępem z zewnątrz.
+- Sounds - W tej klasie zawierać się będą metody związane z odtwarzaniem plików dźwiękowych.
+- Ship - Klasa ta będzie przechowywać statystyki konkretnych statków oraz ich ataki specjalne
 
 
 Sposób komunikacji z użytkownikiem:
