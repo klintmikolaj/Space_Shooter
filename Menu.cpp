@@ -1,5 +1,9 @@
-//
-// Created by indianajones on 4/29/23.
-//
-
+#include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Menu.h"
+
+using namespace std;
+
+Menu::Menu(float x, float y) {
+
+}

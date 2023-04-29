@@ -1,14 +1,10 @@
-//
-// Created by indianajones on 4/29/23.
-//
-
-#ifndef SPACE_SHOOTER_MENU_H
-#define SPACE_SHOOTER_MENU_H
-
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Game.h"
+using namespace std;
 
 class Menu {
-
+public:
+    Menu(float x, float y);
 };
 
-
-#endif //SPACE_SHOOTER_MENU_H
