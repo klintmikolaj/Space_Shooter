@@ -4,9 +4,14 @@
 
 
 class Game {
+private:
+    sf::RenderWindow window;
+    sf::Event event;
 public:
     Game();
     void run();
+    void update();
+    void display();
 };
 
 

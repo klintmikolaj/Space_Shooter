@@ -7,7 +7,9 @@
 
 
 class Player {
-
+public:
+    void move();
+    void texture();
 };
 
 
