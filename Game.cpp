@@ -1,17 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
+#include "Menu.h"
 
 Game::Game() {
 
 }
 
 void Game::run() {
-    window.create(sf::VideoMode(800, 600), "My window");
+    window.create(sf::VideoMode(1000, 800), "My window");
+    Menu menu(window.getSize().x, window.getSize().y);
     while(window.isOpen())
     {
+
         update();
+        menu.draw(window);
         display();
+
     }
 }
 
