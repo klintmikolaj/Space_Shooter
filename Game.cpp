@@ -27,8 +27,11 @@ void Game::run()
     //audio.bgMusicPlay();
     while(window.isOpen())
     {
+
         update();
+//        menu.draw(window);
         display();
+
     }
 }
 
