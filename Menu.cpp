@@ -4,7 +4,7 @@
 using namespace std;
 
 Menu::Menu(float x, float y) {
-    if (!font.loadFromFile("/home/indianajones/CLionProjects/Space_Shooter/ethnocentric rg.ttf")){
+    if (!font.loadFromFile("../ethnocentric rg.ttf")){
         cout << "Error occured during loading a font";
     }
     //Title

@@ -31,7 +31,6 @@ void Game::run()
     {
 
         update();
-//        menu.draw(window);
         display();
 
     }
