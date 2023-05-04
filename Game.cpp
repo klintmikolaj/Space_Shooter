@@ -14,7 +14,7 @@ void Game::run() {
     {
 
         update();
-        menu.draw(window);
+//        menu.draw(window);
         display();
 
     }

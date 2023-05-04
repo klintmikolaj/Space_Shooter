@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Game.h"
-#define MAX_NUMBER_OF_ITEMS 4
+#define MENU_ITEMS 5
 using namespace std;
 using namespace sf;
 
@@ -14,7 +14,7 @@ public:
 private:
     int Selected_index;
     Font font;
-    Text menu[MAX_NUMBER_OF_ITEMS];
+    Text menu[MENU_ITEMS];
 
 };
 

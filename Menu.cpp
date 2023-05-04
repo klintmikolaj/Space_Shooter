@@ -7,30 +7,36 @@ Menu::Menu(float x, float y) {
     if (!font.loadFromFile("/home/indianajones/CLionProjects/Space_Shooter/ethnocentric rg.ttf")){
         cout << "Error occured during loading a font";
     }
-    //Play
+    //Title
     menu[0].setFont(font);
     menu[0].setFillColor(Color::Blue);
-    menu[0].setString("Play");
-    menu[0].setCharacterSize(40);
-    menu[0].setPosition(400, 200);
-    //Settings
+    menu[0].setString("Tutaj bedzie tytul");
+    menu[0].setCharacterSize(60);
+    menu[0].setPosition(Vector2f (500, 50));
+    //Play
     menu[1].setFont(font);
     menu[1].setFillColor(Color::Blue);
-    menu[1].setString("Settings");
-    menu[1].setCharacterSize(40);
-    menu[1].setPosition(400, 300);
-    //How to play
+    menu[1].setString("Play");
+    menu[1].setCharacterSize(50);
+    menu[1].setPosition(1000, 200);
+    //Settings
     menu[2].setFont(font);
     menu[2].setFillColor(Color::Blue);
-    menu[2].setString("How to play");
-    menu[2].setCharacterSize(40);
-    menu[2].setPosition(400, 400);
-    //Credits
+    menu[2].setString("Settings");
+    menu[2].setCharacterSize(50);
+    menu[2].setPosition(1000, 350);
+    //How to play
     menu[3].setFont(font);
     menu[3].setFillColor(Color::Blue);
-    menu[3].setString("Credits");
-    menu[3].setCharacterSize(40);
-    menu[3].setPosition(400, 500);
+    menu[3].setString("How to play");
+    menu[3].setCharacterSize(50);
+    menu[3].setPosition(1000, 500);
+    //Credits
+    menu[4].setFont(font);
+    menu[4].setFillColor(Color::Blue);
+    menu[4].setString("Credits");
+    menu[4].setCharacterSize(50);
+    menu[4].setPosition(1000, 650);
 
     Selected_index = 0;
 }
@@ -44,7 +50,7 @@ void Menu::draw(RenderWindow &window) {
 }
 
 void Menu::Move_Up() {
-   if (Selected_index - 1 >= 0)
+   if (Selected_index - 1 >= 1)
    {
        menu[Selected_index].setFillColor(Color::White);
        Selected_index--;
@@ -53,7 +59,7 @@ void Menu::Move_Up() {
 }
 
 void Menu::Move_Down(){
-    if (Selected_index + 1 < MAX_NUMBER_OF_ITEMS)
+    if (Selected_index + 1 < MENU_ITEMS)
     {
         menu[Selected_index].setFillColor(Color::White);
         Selected_index++;
