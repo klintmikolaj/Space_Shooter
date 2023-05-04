@@ -2,19 +2,21 @@
 #include <SFML/Window.hpp>
 #include "Game.h"
 #include <iostream>
+#include "Menu.h"
 
 using namespace std;
+using namespace sf;
 
-Game::Game(Player& playerarg, sf::RenderWindow & windowarg): player(playerarg), window(windowarg)
+Game::Game(Player& playerarg, RenderWindow & windowarg): player(playerarg), window(windowarg)
 {
     font.loadFromFile("../ethnocentricRg.otf");
 }
 
 void Game::run()
 {
-    window.clear(sf::Color::Black);
+    window.clear(Color::Black);
     playerStats.setFont(font);
-    playerStats.setFillColor(sf::Color::Blue);
+    playerStats.setFillColor(Color::Blue);
     playerStats.setCharacterSize(40);
     string playerStatsStr=player.getName();
     playerStatsStr+="    HP ";
@@ -37,24 +39,24 @@ void Game::run()
 
 void Game::update()
 {
-    window.clear(sf::Color::Black);
+    window.clear(Color::Black);
     while (window.pollEvent(event))
     {
         switch(event.type)
         {
-            case sf::Event::Closed:
+            case Event::Closed:
                 window.close();
                 break;
-            case sf::Event::KeyPressed:
+            case Event::KeyPressed:
                 switch(event.key.code)
                 {
-                    case sf::Keyboard::Escape:
+                    case Keyboard::Escape:
                         window.close();
                         break;
-                    case sf::Keyboard::Right:
+                    case Keyboard::Right:
                         player.move(true);
                         break;
-                    case sf::Keyboard::Left:
+                    case Keyboard::Left:
                         player.move(false);
                         break;
                     default:

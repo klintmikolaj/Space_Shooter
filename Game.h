@@ -4,16 +4,19 @@
 #include "Player.h"
 #include "Audio.h"
 
+using namespace std;
+using namespace sf;
+
 class Game {
 private:
-    sf::RenderWindow& window;
+    RenderWindow& window;
     Player& player;
-    sf::Event event;
-    sf::Font font;
-    sf::Text playerStats;
+    Event event;
+    Font font;
+    Text playerStats;
     Audio audio;
 public:
-    explicit Game(Player&, sf::RenderWindow&);
+    explicit Game(Player&, RenderWindow&);
     void run();
     void update();
     void display();

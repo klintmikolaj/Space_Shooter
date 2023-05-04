@@ -8,12 +8,13 @@
 #include <iostream>
 
 using namespace std;
+using namespace sf;
 
-Player::Player(string& namearg, sf::RenderWindow & windowarg): Player{namearg, windowarg, 3}
+Player::Player(string& namearg, RenderWindow & windowarg): Player{namearg, windowarg, 3}
 {
 }
 
-Player::Player(string& namearg, sf::RenderWindow & windowarg, int hparg):name(namearg), window{windowarg}, hp(hparg)
+Player::Player(string& namearg, RenderWindow & windowarg, int hparg):name(namearg), window{windowarg}, hp(hparg)
 {
 }
 
