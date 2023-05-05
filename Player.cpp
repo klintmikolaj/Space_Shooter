@@ -24,12 +24,12 @@ void Player::move(bool direction)
     bool visible;
     if(direction)
     {
-        px = 10;
+        px = 20;
         visible=window.getSize().x-playerSprite.getPosition().x-px-playerTexture.getSize().x>0;
     }
     else
     {
-        px = -10;
+        px = -20;
         visible=(playerSprite.getPosition().x+px)>=0;
     }
     if(visible)
@@ -39,9 +39,14 @@ void Player::move(bool direction)
 
 void Player::loadTexture()
 {
-    playerTexture.loadFromFile("../poppy.png");
+    Sprite sprite;
+    playerTexture.loadFromFile("../Spaceship1.png");
+    playerTexture.setSmooth(true);
     playerSprite.setTexture(playerTexture);
+//    playerSprite.setScale(Vector2(0.5, 0.5));
     playerSprite.setPosition(250,300);
+
+
 }
 
 void Player::showSprite()

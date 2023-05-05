@@ -81,14 +81,14 @@ void Menu::menu_update(RenderWindow &window) {
             }
             if (event.type == Event::KeyPressed)
             {
-                if (event.key.code == Keyboard::Up)
-                {
-                    menu.Move_Up();
-                }
-                if (event.key.code == Keyboard::Down)
-                {
-                    menu.Move_Down();
-                }
+//                if (event.key.code == Keyboard::Up)
+//                {
+//                    menu.Move_Up();
+//                }
+//                if (event.key.code == Keyboard::Down)
+//                {
+//                    menu.Move_Down();
+//                }
             }
         }
     }
