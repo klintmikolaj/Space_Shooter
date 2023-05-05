@@ -5,43 +5,48 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Player.h"
+#include <iostream>
 
 using namespace std;
+using namespace sf;
 
-Player::Player(string& nameArg, sf::RenderWindow & windowArg): Player{nameArg, windowArg, 3}
+Player::Player(string& namearg, RenderWindow & windowarg): Player{namearg, windowarg, 3}
 {
 }
 
-Player::Player(string& nameArg, sf::RenderWindow & windowArg, int hpArg):name(nameArg), window{windowArg}, hp(hpArg)
+Player::Player(string& namearg, RenderWindow & windowarg, int hparg):name(namearg), window{windowarg}, hp(hparg)
 {
 }
 
-void Player::move(bool direction, bool isSkip)
+void Player::move(bool direction)
 {
-    char px=10;
-    if(isSkip)
-        px*=5;
+    int px;
     bool visible;
     if(direction)
     {
-        visible=window.getSize().x-playerSprite.getPosition().x-px-playerTexture.getSize().x/2>0;
+        px = 20;
+        visible=window.getSize().x-playerSprite.getPosition().x-px-playerTexture.getSize().x>0;
     }
     else
     {
-        px=(char)-px;
-        visible=(playerSprite.getPosition().x+playerTexture.getSize().x/2+px)>=0;
+        px = -20;
+        visible=(playerSprite.getPosition().x+px)>=0;
     }
     if(visible)
-        playerSprite.move(px,0);
+        playerSprite.setPosition(playerSprite.getPosition().x+px,playerSprite.getPosition().y);
     showSprite();
 }
 
 void Player::loadTexture()
 {
-    playerTexture.loadFromFile("../Starship.png");
+    Sprite sprite;
+    playerTexture.loadFromFile("../Spaceship1.png");
     playerTexture.setSmooth(true);
     playerSprite.setTexture(playerTexture);
-    playerSprite.setPosition(((float)window.getSize().x-(float)playerTexture.getSize().x)/2,(float)window.getSize().y-(float)playerTexture.getSize().y);
+//    playerSprite.setScale(Vector2(0.5, 0.5));
+    playerSprite.setPosition(250,300);
+
+
 }
 
 void Player::showSprite()
@@ -57,19 +62,4 @@ int Player::getHP() const
 string Player::getName() const
 {
     return name;
-}
-
-float Player::getXLeft() const
-{
-    return playerSprite.getPosition().x;
-}
-
-float Player::getXCenter() const
-{
-    return playerSprite.getPosition().x+playerTexture.getSize().x/2;
-}
-
-float Player::getY() const
-{
-    return playerSprite.getPosition().y;
 }
