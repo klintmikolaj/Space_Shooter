@@ -11,8 +11,9 @@ int main()
 {
     string name="adam";
     RenderWindow window;
-    window.create(VideoMode(800, 600), "Space shooter (name subject to change)");
-    Menu menu(window.getSize().x, window.getSize().y);
+    window.create(VideoMode(1000, 800), "Space shooter (name subject to change)");
+    Menu menu(window.getSize().x, window.getSize().y, window);
+    menu.menu_update();
     Player player(name, window);
     Game game(player, window);
     game.run();

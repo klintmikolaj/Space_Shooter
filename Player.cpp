@@ -43,7 +43,7 @@ void Player::loadTexture()
     playerTexture.loadFromFile("../Spaceship1.png");
     playerTexture.setSmooth(true);
     playerSprite.setTexture(playerTexture);
-//    playerSprite.setScale(Vector2(0.5, 0.5));
+    playerSprite.scale(0.1f, 0.1f);
     playerSprite.setPosition(250,300);
 
 
