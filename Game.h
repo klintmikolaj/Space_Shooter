@@ -7,13 +7,13 @@
 class Game {
 private:
     sf::RenderWindow& window;
+    sf::Font& font;
     Player& player;
     sf::Event event;
-    sf::Font font;
     sf::Text playerStats;
     Audio audio;
 public:
-    explicit Game(Player&, sf::RenderWindow&);
+    explicit Game(Player&, sf::RenderWindow&, sf::Font&);
     void run();
     void update();
     void display();

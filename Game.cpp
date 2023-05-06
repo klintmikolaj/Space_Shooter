@@ -5,9 +5,8 @@
 
 using namespace std;
 
-Game::Game(Player& playerarg, sf::RenderWindow & windowarg): player(playerarg), window(windowarg)
+Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
-    font.loadFromFile("../ethnocentricRg.otf");
 }
 
 void Game::run()
@@ -40,6 +39,7 @@ void Game::update()
     window.clear(sf::Color::Black);
     while (window.pollEvent(event))
     {
+        bool isSkip=false;
         switch(event.type)
         {
             case sf::Event::Closed:
@@ -51,11 +51,15 @@ void Game::update()
                     case sf::Keyboard::Escape:
                         window.close();
                         break;
+                    case sf::Keyboard::LShift:
+                    case sf::Keyboard::RShift:
+                        isSkip=true;
+                        break;
                     case sf::Keyboard::Right:
-                        player.move(true);
+                        player.move(true,isSkip);
                         break;
                     case sf::Keyboard::Left:
-                        player.move(false);
+                        player.move(false,isSkip);
                         break;
                     default:
                         break;

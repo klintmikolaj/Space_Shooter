@@ -11,7 +11,7 @@ class Player
         explicit Player(std::string &, sf::RenderWindow &);
         Player(std::string &, sf::RenderWindow &, int);
 
-        void move(bool direction);
+        void move(bool direction, bool isSkip);
         void loadTexture();
         void showSprite();
 
