@@ -2,21 +2,18 @@
 #include <SFML/Window.hpp>
 #include "Game.h"
 #include <iostream>
-#include "Menu.h"
 
 using namespace std;
-using namespace sf;
 
-Game::Game(Player& playerarg, RenderWindow & windowarg): player(playerarg), window(windowarg)
+Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
-    font.loadFromFile("../ethnocentricRg.otf");
 }
 
 void Game::run()
 {
-    window.clear(Color::Black);
+    window.clear(sf::Color::Black);
     playerStats.setFont(font);
-    playerStats.setFillColor(Color::Blue);
+    playerStats.setFillColor(sf::Color::Blue);
     playerStats.setCharacterSize(40);
     string playerStatsStr=player.getName();
     playerStatsStr+="    HP ";
@@ -38,25 +35,30 @@ void Game::run()
 
 void Game::update()
 {
-    window.clear(Color::Black);
+    window.clear(sf::Color::Black);
     while (window.pollEvent(event))
     {
+        bool isSkip=false;
         switch(event.type)
         {
-            case Event::Closed:
+            case sf::Event::Closed:
                 window.close();
                 break;
-            case Event::KeyPressed:
+            case sf::Event::KeyPressed:
                 switch(event.key.code)
                 {
-                    case Keyboard::Escape:
+                    case sf::Keyboard::Escape:
                         window.close();
                         break;
-                    case Keyboard::Right:
-                        player.move(true);
+                    case sf::Keyboard::LShift:
+                    case sf::Keyboard::RShift:
+                        isSkip=true;
                         break;
-                    case Keyboard::Left:
-                        player.move(false);
+                    case sf::Keyboard::Right:
+                        player.move(true,isSkip);
+                        break;
+                    case sf::Keyboard::Left:
+                        player.move(false,isSkip);
                         break;
                     default:
                         break;

@@ -7,7 +7,7 @@ class Player
         explicit Player(string &, RenderWindow &);
         Player(string &, RenderWindow &, int);
 
-        void move(bool direction);
+        void move(bool direction, bool isSkip);
         void loadTexture();
         void showSprite();
 
