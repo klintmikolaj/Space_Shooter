@@ -40,7 +40,7 @@ void Player::move(bool direction)
 void Player::loadTexture()
 {
     Sprite sprite;
-    playerTexture.loadFromFile("../Spaceship1.png");
+    playerTexture.loadFromFile("../Starship_4.png");
     playerTexture.setSmooth(true);
     playerSprite.setTexture(playerTexture);
     playerSprite.scale(0.1f, 0.1f);
