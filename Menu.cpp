@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
-#include "Game.h"
+//#include "Game.h"
 #include <iostream>
 using namespace std;
 
@@ -118,7 +118,7 @@ int Menu::menu_update() {
                 }
                 if (event.key.code == Keyboard::Enter)
                 {
-                    return (Selected_index + 1);
+                    return (Selected_index);
                 }
             }
         }
