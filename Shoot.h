@@ -17,6 +17,9 @@ private:
 public:
     Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, Player& playerArg, bool up);
     void updateBullet();
+    float getX() const;
+    float getY() const;
+    bool destroyMe() const;
 };
 
 
