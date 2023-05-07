@@ -18,7 +18,7 @@ Player::Player(string& nameArg, sf::RenderWindow & windowArg, int hpArg):name(na
 
 void Player::move(bool direction, bool isSkip)
 {
-    int px=10;
+    char px=10;
     if(isSkip)
         px*=5;
     bool visible;
@@ -28,7 +28,7 @@ void Player::move(bool direction, bool isSkip)
     }
     else
     {
-        px=-px;
+        px=(char)-px;
         visible=(playerSprite.getPosition().x+px)>=0;
     }
     if(visible)
@@ -56,4 +56,19 @@ int Player::getHP() const
 string Player::getName() const
 {
     return name;
+}
+
+float Player::getXLeft() const
+{
+    return playerSprite.getPosition().x;
+}
+
+float Player::getXCenter() const
+{
+    return playerSprite.getPosition().x+playerTexture.getSize().x/2;
+}
+
+float Player::getY() const
+{
+    return playerSprite.getPosition().y;
 }

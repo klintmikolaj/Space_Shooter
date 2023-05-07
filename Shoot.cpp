@@ -3,16 +3,22 @@
 //
 
 #include "Shoot.h"
+#include <iostream>
 
-Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg):window(windowArg), bulletTexture(textureArg)
+Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Player& playerArg, bool up):window(windowArg), texture(textureArg), player(playerArg)
 {
+    if(up)
+        turn=-1;
+    else
+        turn=1;
+    bullet.setTexture(textureArg);
+    bullet.setPosition(player.getXCenter()-textureArg.getSize().x/2,player.getY());
 }
 
-void Shoot::makeShoot(Player& playerArg, bool turn)
+
+void Shoot::updateBullet()
 {
-
-}
-
-void Shoot::updateBullets() {
-
+    const float randomShit=0.2;
+    bullet.move(0,turn*randomShit);
+    window.draw(bullet);
 }

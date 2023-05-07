@@ -3,6 +3,8 @@
 
 #include "Player.h"
 #include "Audio.h"
+#include "Shoot.h"
+#include <vector>
 
 class Game {
 private:
@@ -12,11 +14,19 @@ private:
     sf::Event event;
     sf::Text playerStats;
     Audio audio;
+    std::vector<Shoot> bulletsBank;
+    sf::Texture bulletTexture;
+
 public:
     explicit Game(Player&, sf::RenderWindow&, sf::Font&);
     void run();
     void update();
     void display();
+    void steer();
+    void drawInterface();
+    void drawPlayerStuff();
+    void bulletMaker(Player& playerArg, bool turnArg);
+    void bulletMaster();
 };
 
 
