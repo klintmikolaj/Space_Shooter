@@ -17,6 +17,5 @@ int main()
     Player player(name, window);
     Game game(player, window, font);
     game.run();
-
     return 0;
 }

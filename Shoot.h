@@ -10,13 +10,13 @@ class Shoot
 {
 private:
     sf::RenderWindow& window;
-    sf::Texture& bulletTexture;
-
+    sf::Texture& texture;
+    Player& player;
+    sf::Sprite bullet;
+    char turn;
 public:
-    explicit Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg);
-    void makeShoot(Player& playerArg, bool turn);
-    void updateBullets();
-
+    Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, Player& playerArg, bool up);
+    void updateBullet();
 };
 
 

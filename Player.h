@@ -17,6 +17,9 @@ class Player
 
         int getHP() const;
         std::string getName() const;
+        float getXLeft() const;
+        float getXCenter() const;
+        float getY() const;
 
     private:
         sf::RenderWindow & window;

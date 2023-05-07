@@ -7,6 +7,7 @@ using namespace std;
 
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
+    bulletTexture.loadFromFile("../bullet.png");
 }
 
 void Game::run()
@@ -26,17 +27,29 @@ void Game::run()
     //audio.bgMusicPlay();
     while(window.isOpen())
     {
-
         update();
-//        menu.draw(window);
         display();
-
     }
 }
+
 
 void Game::update()
 {
     window.clear(sf::Color::Black);
+    drawPlayerStuff();
+    drawInterface();
+    bulletMaster();
+    steer();
+    window.display();
+}
+
+void Game::display()
+{
+}
+
+void Game::steer()
+{
+
     while (window.pollEvent(event))
     {
         bool isSkip=false;
@@ -61,6 +74,9 @@ void Game::update()
                     case sf::Keyboard::Left:
                         player.move(false,isSkip);
                         break;
+                    case sf::Keyboard::Space:
+                        bulletMaker(player,true);
+                        break;
                     default:
                         break;
                 }
@@ -68,11 +84,27 @@ void Game::update()
                 break;
         }
     }
-    window.draw(playerStats);
-    player.showSprite();
-    window.display();
 }
 
-void Game::display()
+void Game::drawInterface()
 {
+    window.draw(playerStats);
+}
+
+void Game::drawPlayerStuff()
+{
+    player.showSprite();
+}
+
+void Game::bulletMaker(Player& playerArg, bool up)
+{
+    bulletsBank.emplace_back(window,bulletTexture,playerArg,up);
+}
+
+void Game::bulletMaster()
+{
+    for(auto& i: bulletsBank)
+    {
+        i.updateBullet();
+    }
 }
