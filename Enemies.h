@@ -6,5 +6,7 @@ class Enemies {
 public:
 
 private:
+    int hp;
+    int hpMAX;
 };
 
