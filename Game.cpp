@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
+#include "Menu.h"
 #include <iostream>
 
 using namespace std;
+using namespace sf;
 
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
@@ -31,7 +33,6 @@ void Game::run()
         display();
     }
 }
-
 
 void Game::update()
 {
@@ -64,11 +65,6 @@ void Game::steer()
                     case sf::Keyboard::Escape:
                         window.close();
                         break;
-                    case sf::Keyboard::LShift:
-                    case sf::Keyboard::RShift:
-                        isSkip=true;
-                        cout<<"przycisk\t";
-                        break;
                     case sf::Keyboard::Right:
                         player.move(true,isSkip);
                         break;
@@ -82,17 +78,6 @@ void Game::steer()
                         break;
                 }
                 break;
-            case sf::Event::KeyReleased:
-                switch(event.key.code)
-                {
-                    case sf::Keyboard::LShift:
-                    case sf::Keyboard::RShift:
-                        isSkip=false;
-                        cout<<"puszczenie\t";
-                        break;
-                    default:
-                        break;
-                }
             default:
                 break;
         }

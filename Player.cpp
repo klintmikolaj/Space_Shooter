@@ -7,18 +7,19 @@
 #include "Player.h"
 
 using namespace std;
+using namespace sf;
 
-Player::Player(string& nameArg, sf::RenderWindow & windowArg): Player{nameArg, windowArg, 3}
+Player::Player(string& nameArg, RenderWindow & windowArg): Player{nameArg, windowArg, 3}
 {
 }
 
-Player::Player(string& nameArg, sf::RenderWindow & windowArg, int hpArg):name(nameArg), window{windowArg}, hp(hpArg)
+Player::Player(string& nameArg, RenderWindow & windowArg, int hpArg):name(nameArg), window{windowArg}, hp(hpArg)
 {
 }
 
 void Player::move(bool direction, bool isSkip)
 {
-    char px=10;
+    char px=20;
     if(isSkip)
         px*=5;
     bool visible;
