@@ -21,7 +21,7 @@ void Shoot::updateBullet()
     const float randomShit=0.18;
     bullet.move(0,turn*randomShit);
     window.draw(bullet);
-    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
+    //std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
 }
 
 float Shoot::getX() const
