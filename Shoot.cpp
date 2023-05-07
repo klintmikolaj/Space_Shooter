@@ -18,7 +18,25 @@ Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Player& playe
 
 void Shoot::updateBullet()
 {
-    const float randomShit=0.2;
+    const float randomShit=0.18;
     bullet.move(0,turn*randomShit);
     window.draw(bullet);
+    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
+}
+
+float Shoot::getX() const
+{
+    return bullet.getPosition().x;
+}
+
+float Shoot::getY() const
+{
+    return bullet.getPosition().y;
+}
+
+bool Shoot::destroyMe() const
+{
+    if(bullet.getPosition().y+texture.getSize().y<0)
+        return true;
+    return false;
 }

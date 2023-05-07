@@ -26,7 +26,7 @@ public:
     void drawInterface();
     void drawPlayerStuff();
     void bulletMaker(Player& playerArg, bool turnArg);
-    void bulletMaster();
+    void masterOfBullets();
 };
 
 

@@ -38,7 +38,7 @@ void Game::update()
     window.clear(sf::Color::Black);
     drawPlayerStuff();
     drawInterface();
-    bulletMaster();
+    masterOfBullets();
     steer();
     window.display();
 }
@@ -49,10 +49,10 @@ void Game::display()
 
 void Game::steer()
 {
+    bool isSkip=false;
 
     while (window.pollEvent(event))
     {
-        bool isSkip=false;
         switch(event.type)
         {
             case sf::Event::Closed:
@@ -67,6 +67,7 @@ void Game::steer()
                     case sf::Keyboard::LShift:
                     case sf::Keyboard::RShift:
                         isSkip=true;
+                        cout<<"przycisk\t";
                         break;
                     case sf::Keyboard::Right:
                         player.move(true,isSkip);
@@ -76,6 +77,18 @@ void Game::steer()
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player,true);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case sf::Event::KeyReleased:
+                switch(event.key.code)
+                {
+                    case sf::Keyboard::LShift:
+                    case sf::Keyboard::RShift:
+                        isSkip=false;
+                        cout<<"puszczenie\t";
                         break;
                     default:
                         break;
@@ -101,10 +114,16 @@ void Game::bulletMaker(Player& playerArg, bool up)
     bulletsBank.emplace_back(window,bulletTexture,playerArg,up);
 }
 
-void Game::bulletMaster()
+void Game::masterOfBullets()
 {
-    for(auto& i: bulletsBank)
+    for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
+    for(auto &a:bulletsBank)
     {
-        i.updateBullet();
+        a.updateBullet();
+        if (a.destroyMe())
+        {
+            //destroy bullet, i don't know how at this moment...
+//            bulletsBank.erase(a);
+        }
     }
 }

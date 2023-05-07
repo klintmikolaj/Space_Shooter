@@ -24,12 +24,12 @@ void Player::move(bool direction, bool isSkip)
     bool visible;
     if(direction)
     {
-        visible=window.getSize().x-playerSprite.getPosition().x-px-playerTexture.getSize().x>0;
+        visible=window.getSize().x-playerSprite.getPosition().x-px-playerTexture.getSize().x/2>0;
     }
     else
     {
         px=(char)-px;
-        visible=(playerSprite.getPosition().x+px)>=0;
+        visible=(playerSprite.getPosition().x+playerTexture.getSize().x/2+px)>=0;
     }
     if(visible)
         playerSprite.move(px,0);
@@ -38,7 +38,8 @@ void Player::move(bool direction, bool isSkip)
 
 void Player::loadTexture()
 {
-    playerTexture.loadFromFile("../poppy.png");
+    playerTexture.loadFromFile("../Starship.png");
+    playerTexture.setSmooth(true);
     playerSprite.setTexture(playerTexture);
     playerSprite.setPosition(((float)window.getSize().x-(float)playerTexture.getSize().x)/2,(float)window.getSize().y-(float)playerTexture.getSize().y);
 }
