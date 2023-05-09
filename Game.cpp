@@ -116,14 +116,15 @@ void Game::bulletMaker(Player& playerArg, bool up)
 
 void Game::masterOfBullets()
 {
-    for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
+    //for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
     for(auto &a:bulletsBank)
     {
         a.updateBullet();
         if (a.destroyMe())
         {
             //destroy bullet, i don't know how at this moment...
-//            bulletsBank.erase(a);
+            //bulletsBank.erase(a);
+            //delete a;
         }
     }
 }
