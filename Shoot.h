@@ -3,7 +3,7 @@
 #define SPACE_SHOOTER_SHOOT_H
 
 #include <SFML/Graphics.hpp>
-#include "Player.h"
+#include "Unit.h"
 #include <vector>
 
 class Shoot
@@ -11,11 +11,11 @@ class Shoot
 private:
     sf::RenderWindow& window;
     sf::Texture& texture;
-    Player& player;
+    Unit& unit;
     sf::Sprite bullet;
     char turn;
 public:
-    Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, Player& playerArg, bool up);
+    Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, Unit& unitArg, bool up);
     void updateBullet();
     float getX() const;
     float getY() const;
