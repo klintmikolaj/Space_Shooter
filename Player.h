@@ -5,28 +5,17 @@
 #ifndef SPACE_SHOOTER_PLAYER_H
 #define SPACE_SHOOTER_PLAYER_H
 
-class Player
+#include "Unit.h"
+
+class Player: public Unit
 {
     public:
-        explicit Player(std::string &, sf::RenderWindow &);
-        Player(std::string &, sf::RenderWindow &, int);
+        Player(std::string & playerName, sf::RenderWindow & windowArg, sf::Texture & textureArg);
 
-        void move(bool direction, bool isSkip);
-        void loadTexture();
-        void showSprite();
-
-        int getHP() const;
         std::string getName() const;
-        float getXLeft() const;
-        float getXCenter() const;
-        float getY() const;
 
     private:
-        sf::RenderWindow & window;
         const std::string name;
-        int hp;
-        sf::Texture playerTexture;
-        sf::Sprite playerSprite;
 };
 
 

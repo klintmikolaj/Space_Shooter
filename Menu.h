@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Game.h"
 #define MENU_ITEMS 5
 using namespace std;
 using namespace sf;
