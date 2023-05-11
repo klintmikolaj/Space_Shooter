@@ -6,7 +6,7 @@ using namespace sf;
 
 class Menu {
 public:
-    Menu(float x, float y, RenderWindow &);
+    Menu(float x, float y, RenderWindow &, Font &);
     void draw();
     int menu_update();
     void Move_Up();
@@ -16,7 +16,7 @@ public:
 private:
     RenderWindow &window;
     int Selected_index;
-    Font font;
+    Font & font;
     Text menu[MENU_ITEMS];
     Texture backgroundTexture;
     Sprite background;

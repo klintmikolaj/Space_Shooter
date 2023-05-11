@@ -18,7 +18,7 @@ private:
     sf::Texture bulletTexture;
 
 public:
-    explicit Game(Player&, sf::RenderWindow&, sf::Font&);
+    Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
     void run();
     void update();
     void display();
