@@ -1,4 +1,3 @@
-
 #ifndef SPACE_SHOOTER_SHOOT_H
 #define SPACE_SHOOTER_SHOOT_H
 

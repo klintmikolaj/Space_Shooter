@@ -19,7 +19,7 @@ int main()
     font.loadFromFile("../ethnocentricRg.otf");
     playerTexture.loadFromFile("../Starship.png");
     window.create(VideoMode(windowWidth, windowHeight), "Space shooter (name subject to change)");
-    Menu menu(windowWidth, windowHeight, window);
+    Menu menu(windowWidth, windowHeight, window, font);
     menu.menu_update();
     Player player(name, window, playerTexture);
     Game game(player, window, font);

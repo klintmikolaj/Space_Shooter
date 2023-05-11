@@ -3,11 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Menu::Menu(float x, float y, RenderWindow &window1) :window(window1) {
-    if (!font.loadFromFile("../ethnocentric rg.ttf")){
-        cout << "Error occured during loading a font";
-    }
-
+Menu::Menu(float x, float y, RenderWindow &window1, Font & fontArg) :window(window1),font(fontArg) {
     //Title
     menu[0].setFont(font);
     menu[0].setFillColor(Color::Cyan);
