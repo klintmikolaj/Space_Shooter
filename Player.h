@@ -1,23 +1,22 @@
-using namespace std;
-using namespace sf;
+//
+// Created by indianajones on 4/29/23.
+//
 
-class Player
+#ifndef SPACE_SHOOTER_PLAYER_H
+#define SPACE_SHOOTER_PLAYER_H
+
+#include "Unit.h"
+
+class Player: public Unit
 {
     public:
-        explicit Player(string &, RenderWindow &);
-        Player(string &, RenderWindow &, int);
+        Player(std::string & playerName, sf::RenderWindow & windowArg, sf::Texture & textureArg);
 
-        void move(bool direction);
-        void loadTexture();
-        void showSprite();
-
-        int getHP() const;
-        string getName() const;
+        std::string getName() const;
 
     private:
-        RenderWindow & window;
-        const string name;
-        int hp;
-        Texture playerTexture;
-        Sprite playerSprite;
+        const std::string name;
 };
+
+
+#endif //SPACE_SHOOTER_PLAYER_H

@@ -1,22 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
-#include <iostream>
 #include "Menu.h"
+#include <iostream>
 
 using namespace std;
 using namespace sf;
 
-Game::Game(Player& playerarg, RenderWindow & windowarg): player(playerarg), window(windowarg)
+Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
-    font.loadFromFile("../ethnocentricRg.otf");
+    bulletTexture.loadFromFile("../bullet.png");
 }
 
 void Game::run()
 {
-    window.clear(Color::Black);
+    window.clear(sf::Color::Black);
     playerStats.setFont(font);
-    playerStats.setFillColor(Color::Blue);
+    playerStats.setFillColor(sf::Color::Blue);
     playerStats.setCharacterSize(40);
     string playerStatsStr=player.getName();
     playerStatsStr+="    HP ";
@@ -29,47 +29,87 @@ void Game::run()
     //audio.bgMusicPlay();
     while(window.isOpen())
     {
-
         update();
         display();
-
     }
 }
 
 void Game::update()
 {
-    window.clear(Color::Black);
-    while (window.pollEvent(event))
-    {
-        switch(event.type)
-        {
-            case Event::Closed:
-                window.close();
-                break;
-            case Event::KeyPressed:
-                switch(event.key.code)
-                {
-                    case Keyboard::Escape:
-                        window.close();
-                        break;
-                    case Keyboard::Right:
-                        player.move(true);
-                        break;
-                    case Keyboard::Left:
-                        player.move(false);
-                        break;
-                    default:
-                        break;
-                }
-            default:
-                break;
-        }
-    }
-    window.draw(playerStats);
-    player.showSprite();
+    window.clear(sf::Color::Black);
+    drawPlayerStuff();
+    drawInterface();
+    masterOfBullets();
+    steer();
     window.display();
 }
 
 void Game::display()
 {
+}
+
+void Game::steer()
+{
+    bool isSkip=false;
+
+    while (window.pollEvent(event))
+    {
+        switch(event.type)
+        {
+            case sf::Event::Closed:
+                window.close();
+                break;
+            case sf::Event::KeyPressed:
+                switch(event.key.code)
+                {
+                    case sf::Keyboard::Escape:
+                        window.close();
+                        break;
+                    case sf::Keyboard::Right:
+                        player.move(true,isSkip);
+                        break;
+                    case sf::Keyboard::Left:
+                        player.move(false,isSkip);
+                        break;
+                    case sf::Keyboard::Space:
+                        bulletMaker(player,true);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void Game::drawInterface()
+{
+    window.draw(playerStats);
+}
+
+void Game::drawPlayerStuff()
+{
+    player.showSprite();
+}
+
+void Game::bulletMaker(Player& playerArg, bool up)
+{
+    bulletsBank.emplace_back(window,bulletTexture,playerArg,up);
+}
+
+void Game::masterOfBullets()
+{
+    //for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
+    for(auto &a:bulletsBank)
+    {
+        a.updateBullet();
+        if (a.destroyMe())
+        {
+            //destroy bullet, i don't know how at this moment...
+            //bulletsBank.erase(a);
+            //delete a;
+        }
+    }
 }

@@ -3,23 +3,30 @@
 
 #include "Player.h"
 #include "Audio.h"
-
-using namespace std;
-using namespace sf;
+#include "Shoot.h"
+#include <vector>
 
 class Game {
 private:
-    RenderWindow& window;
+    sf::RenderWindow& window;
+    sf::Font& font;
     Player& player;
-    Event event;
-    Font font;
-    Text playerStats;
+    sf::Event event;
+    sf::Text playerStats;
     Audio audio;
+    std::vector<Shoot> bulletsBank;
+    sf::Texture bulletTexture;
+
 public:
-    explicit Game(Player&, RenderWindow&);
+    Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
     void run();
     void update();
     void display();
+    void steer();
+    void drawInterface();
+    void drawPlayerStuff();
+    void bulletMaker(Player& playerArg, bool turnArg);
+    void masterOfBullets();
 };
 
 
