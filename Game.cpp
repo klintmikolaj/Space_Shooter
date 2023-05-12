@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
+Game::Game(Player& playerArg, Asteroid& asteroidArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), asteroid(asteroidArg), window(windowArg), font(fontArg)
 {
     bulletTexture.loadFromFile("../bullet.png");
 }
@@ -23,6 +23,8 @@ void Game::run()
     playerStats.setPosition(200,0);
     player.loadTexture();
     player.showSprite();
+    asteroid.loadTexture();
+    asteroid.showSprite();
     //audio.bgMusicLoad();
     //audio.bgMusicPlay();
     while(window.isOpen())

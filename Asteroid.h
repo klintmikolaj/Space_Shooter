@@ -1,24 +1,16 @@
 #include <SFML/Graphics.hpp>
+#include "Unit.h"
 using namespace std;
 using namespace sf;
 
-class Asteroid {
+class Asteroid: public Unit {
 public:
-    Asteroid(RenderWindow &);
+    Asteroid(RenderWindow & windowArg, sf::Texture & textureArg);
 
-    void loadTexture();
-    void showSprite();
-    void update();
-
-    int get_enemy_HP() const;
 private:
-    int hp;
-    int hpMAX;
-    int size;
-    int damage; /* jaki zadaje spritowi gracza */
-    float speed;
-    Texture asteroid1_Texture;
-    Texture asteroid2_Texture;
-    Sprite asteroid1_Sprite;
-    Sprite asteroid2_Sprite;
+//    int hp;
+//    int hpMAX;
+//    int size;
+//    int damage; /* jaki zadaje spritowi gracza */
+//    float speed;
 };

@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Audio.h"
 #include "Shoot.h"
+#include "Asteroid.h"
 #include <vector>
 
 class Game {
@@ -11,6 +12,7 @@ private:
     sf::RenderWindow& window;
     sf::Font& font;
     Player& player;
+    Asteroid& asteroid;
     sf::Event event;
     sf::Text playerStats;
     Audio audio;
@@ -18,7 +20,7 @@ private:
     sf::Texture bulletTexture;
 
 public:
-    Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
+    Game(Player& playerArg, Asteroid& asteroidArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
     void run();
     void update();
     void display();

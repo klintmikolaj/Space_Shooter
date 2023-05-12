@@ -4,6 +4,7 @@
 #include "Player.h"
 //#include "Audio.h"
 #include "Menu.h"
+#include "Asteroid.h"
 
 using namespace std;
 using namespace sf;
@@ -15,14 +16,16 @@ int main()
     string name="adam";
     RenderWindow window;
     Font font;
-    Texture playerTexture;
+    Texture playerTexture, asteroidTexture;
     font.loadFromFile("../ethnocentricRg.otf");
     playerTexture.loadFromFile("../Starship.png");
+    asteroidTexture.loadFromFile("../as2");
     window.create(VideoMode(windowWidth, windowHeight), "Space shooter (name subject to change)");
     Menu menu(windowWidth, windowHeight, window, font);
     menu.menu_update();
+    Asteroid asteroid(window, asteroidTexture);
     Player player(name, window, playerTexture);
-    Game game(player, window, font);
+    Game game(player, asteroid, window, font);
     game.run();
 
     return 0;

@@ -18,7 +18,6 @@ Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window
 
 }
 
-
 void Unit::move(bool direction, bool isSkip)
 {
     char px=20;
