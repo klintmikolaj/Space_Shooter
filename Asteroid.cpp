@@ -16,12 +16,12 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg):Unit(wind
 //    window.draw(bullet);
 //
 //}
-
-void Asteroid::showSprite() {
-
-}
-
-void Asteroid::update() {
-
-}
-
+//
+//void Asteroid::showSprite() {
+//
+//}
+//
+//void Asteroid::update() {
+//
+//}
+//
