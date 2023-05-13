@@ -18,11 +18,8 @@ Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window
 }
 
 
-void Unit::moveX(bool direction, bool isSkip)
+void Unit::moveX(char px, bool direction)
 {
-    char px=20;
-    if(isSkip)
-        px*=5;
     bool visible;
     if(direction)
     {
@@ -38,9 +35,18 @@ void Unit::moveX(bool direction, bool isSkip)
     showSprite();
 }
 
+void Unit::moveY(char px)
+{
+    sprite.move(0, px);
+}
+
 void Unit::loadTexture()
 {
     sprite.setTexture(texture);
+}
+
+void Unit::setPlayerPosition()
+{
     sprite.setPosition(((float)window.getSize().x - (float)texture.getSize().x) / 2, (float)window.getSize().y - (float)texture.getSize().y);
 }
 

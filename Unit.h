@@ -12,8 +12,10 @@ public:
     Unit(sf::RenderWindow &, sf::Texture &);
     Unit(sf::RenderWindow &, sf::Texture &, int);
 
-    void moveX(bool direction, bool isSkip);
+    void moveX(char px, bool direction);
+    void moveY(char px);
     void loadTexture();
+    void setPlayerPosition();
     void showSprite();
 
     int getHP() const;
