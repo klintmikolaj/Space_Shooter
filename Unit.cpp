@@ -35,10 +35,20 @@ void Unit::moveX(char px, bool direction)
     showSprite();
 }
 
-void Unit::moveY(char px)
+void Unit::moveY(float px)
 {
     sprite.move(0, px);
 }
+
+//void Unit::moveCircular(int rad, bool direction) {
+//
+//    sprite.move
+//}
+
+void Unit::rotate(int ang) {
+    sprite.rotate(ang);
+}
+
 
 void Unit::loadTexture()
 {
@@ -74,3 +84,5 @@ float Unit::getY() const
 {
     return sprite.getPosition().y;
 }
+
+

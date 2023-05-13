@@ -10,12 +10,12 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg): Unit{win
     hpMax = 2;
     damage = 1;
     speed = 10;
-//    showSprite();
     loadTexture();
 }
 
 
 void Asteroid::updateAsteroid() {
-    moveY(1);
+    moveY(0.1);
+//    rotate(1);
     showSprite();
 }

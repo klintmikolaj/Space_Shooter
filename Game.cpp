@@ -135,7 +135,7 @@ void Game::masterOfBullets()
 
 
 void Game::asteroidAhead() {
-    spawnNow += 0.1f;
+    spawnNow += 0.01f;
     if (spawnNow >= spawnCooldown) {
         asteroids.push_back(new Asteroid(window, asteroidTexture));
         spawnNow = 0.f;
