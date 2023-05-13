@@ -157,11 +157,6 @@ float Game::setNumberRange(int max, int min) {
     return (rand() % ((max - min + 1) + min)) - 0.1;
 }
 
-int Game::getSameValue(int value) {
-    return value;
-}
-
-
 //void Game::setBackground() {
 //    window.draw()
 //}
