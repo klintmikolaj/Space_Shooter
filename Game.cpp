@@ -70,10 +70,10 @@ void Game::steer()
                         cout<<"przycisk\t";
                         break;
                     case sf::Keyboard::Right:
-                        player.move(true,isSkip);
+                        player.moveX(true, isSkip);
                         break;
                     case sf::Keyboard::Left:
-                        player.move(false,isSkip);
+                        player.moveX(false, isSkip);
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player,true);
@@ -116,15 +116,16 @@ void Game::bulletMaker(Player& playerArg, bool up)
 
 void Game::masterOfBullets()
 {
-    //for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
-    for(auto &a:bulletsBank)
+    for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
+    //for(auto &a:bulletsBank)
     {
-        a.updateBullet();
-        if (a.destroyMe())
-        {
-            //destroy bullet, i don't know how at this moment...
-            //bulletsBank.erase(a);
-            //delete a;
-        }
+        a->updateBullet();
+        // a->destroyMe();
+//        if (a->destroyMeBool())
+//        {
+//            //destroy bullet, i don't know how at this moment...
+//            bulletsBank.erase(a);
+//            //delete a;
+//        }
     }
 }

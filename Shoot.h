@@ -18,7 +18,9 @@ public:
     void updateBullet();
     float getX() const;
     float getY() const;
-    bool destroyMe() const;
+    void destroyMe();
+    bool destroyMeBool() const;
+    virtual ~Shoot();
 };
 
 

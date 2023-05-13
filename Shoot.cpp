@@ -18,10 +18,11 @@ Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Unit& unitArg
 
 void Shoot::updateBullet()
 {
-    const float randomShit=0.18;
-    bullet.move(0,turn*randomShit);
+    const float randomShit=0.3;
+    if(!destroyMeBool())
+        bullet.move(0,turn*randomShit);
     window.draw(bullet);
-//    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
+    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
 }
 
 float Shoot::getX() const
@@ -34,9 +35,25 @@ float Shoot::getY() const
     return bullet.getPosition().y;
 }
 
-bool Shoot::destroyMe() const
+void Shoot::destroyMe()
 {
     if(bullet.getPosition().y+texture.getSize().y<0)
+    {
+        delete this;
+//        return true;
+    }
+//    return false;
+}
+
+bool Shoot::destroyMeBool() const
+{
+    if(bullet.getPosition().y+texture.getSize().y<0)
+    {
         return true;
+    }
     return false;
+}
+
+Shoot::~Shoot() {
+
 }

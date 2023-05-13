@@ -12,7 +12,7 @@ public:
     Unit(sf::RenderWindow &, sf::Texture &);
     Unit(sf::RenderWindow &, sf::Texture &, int);
 
-    void move(bool direction, bool isSkip);
+    void moveX(bool direction, bool isSkip);
     void loadTexture();
     void showSprite();
 

@@ -10,7 +10,6 @@ using namespace sf;
 
 Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg):Unit(windowArg,textureArg,3)
 {
-
 }
 
 Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window(windowArg),texture(textureArg),hp(hpArg)
@@ -19,7 +18,7 @@ Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window
 }
 
 
-void Unit::move(bool direction, bool isSkip)
+void Unit::moveX(bool direction, bool isSkip)
 {
     char px=20;
     if(isSkip)

@@ -1,24 +1,19 @@
+#ifndef SPACE_SHOOTER_ASTEROID_H
+#define SPACE_SHOOTER_ASTEROID_H
 #include <SFML/Graphics.hpp>
-using namespace std;
-using namespace sf;
+#include "Unit.h"
 
-class Asteroid {
+class Asteroid: public Unit {
 public:
-    Asteroid(RenderWindow &);
-
-    void loadTexture();
-    void showSprite();
-    void update();
-
-    int get_enemy_HP() const;
+    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg);
+    void updateAsteroid();
 private:
-    int hp;
-    int hpMAX;
-    int size;
+    sf::RenderWindow& window;
+    int hpMax;
     int damage; /* jaki zadaje spritowi gracza */
     float speed;
-    Texture asteroid1_Texture;
-    Texture asteroid2_Texture;
-    Sprite asteroid1_Sprite;
-    Sprite asteroid2_Sprite;
+    int spawnNow;
+    int spawnCooldown;
 };
+
+#endif
