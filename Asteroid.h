@@ -7,6 +7,7 @@ class Asteroid: public Unit {
 public:
     Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
     void updateAsteroid();
+//    Asteroid randomTexture(sf::Texture, sf::Texture);
 private:
     sf::RenderWindow& window;
     int hpMax;

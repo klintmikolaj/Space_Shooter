@@ -18,7 +18,8 @@ private:
     std::vector<Shoot> bulletsBank;
     std::vector<Asteroid*> asteroids;
     sf::Texture bulletTexture;
-    sf::Texture asteroidTexture;
+    sf::Texture asteroidTexture1;
+    sf::Texture asteroidTexture2;
     float spawnNow;
     float spawnCooldown;
 

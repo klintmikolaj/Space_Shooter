@@ -8,7 +8,8 @@ using namespace std;
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
     bulletTexture.loadFromFile("../bullet.png");
-    asteroidTexture.loadFromFile("../as21.png");
+    asteroidTexture1.loadFromFile("../as21.png");
+    asteroidTexture2.loadFromFile("../asteroid2.png");
 }
 
 void Game::run()
@@ -135,9 +136,14 @@ void Game::masterOfBullets()
 
 
 void Game::asteroidAhead() {
-    spawnNow += 0.08;
+    spawnNow += 0.05;
+//    if (spawnNow >= spawnCooldown) {
+//        asteroids.push_back(new Asteroid(window, asteroidTexture1, rand() % window.getSize().x - 45, -100,
+//                                         1));
+//        spawnNow = 0;
+//    }
     if (spawnNow >= spawnCooldown) {
-        asteroids.push_back(new Asteroid(window, asteroidTexture, rand() % window.getSize().x - 45, -100,
+        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,
                                          1));
         spawnNow = 0;
     }
