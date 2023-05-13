@@ -18,6 +18,7 @@ public:
     void rotate(int ang);
     void loadTexture();
     void setPlayerPosition();
+    void setEnemyPosistion(float x, float y);
     void showSprite();
 
     int getHP() const;

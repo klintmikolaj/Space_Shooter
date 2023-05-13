@@ -5,7 +5,7 @@
 
 class Asteroid: public Unit {
 public:
-    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg);
+    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y);
     void updateAsteroid();
 private:
     sf::RenderWindow& window;

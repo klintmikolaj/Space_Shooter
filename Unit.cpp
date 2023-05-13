@@ -60,6 +60,13 @@ void Unit::setPlayerPosition()
     sprite.setPosition(((float)window.getSize().x - (float)texture.getSize().x) / 2, (float)window.getSize().y - (float)texture.getSize().y);
 }
 
+void Unit::setEnemyPosistion(float x, float y)
+{
+    sprite.setPosition(x, y);
+}
+
+
+
 void Unit::showSprite()
 {
     window.draw(sprite);
