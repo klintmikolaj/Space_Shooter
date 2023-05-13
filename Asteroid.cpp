@@ -9,7 +9,7 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg): Unit{win
 {
     hpMax = 2;
     damage = 1;
-    speed = 0.1;
+    speed = 10;
 }
 
 void Asteroid::updateAsteroid() {

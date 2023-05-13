@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Audio.h"
 #include "Shoot.h"
+#include "Asteroid.h"
 #include <vector>
 
 class Game {
@@ -15,7 +16,11 @@ private:
     sf::Text playerStats;
     Audio audio;
     std::vector<Shoot> bulletsBank;
+    std::vector<Asteroid*> asteroids;
     sf::Texture bulletTexture;
+    sf::Texture asteroidTexture;
+    float spawnNow;
+    float spawnCooldown;
 
 public:
     Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
@@ -27,6 +32,9 @@ public:
     void drawPlayerStuff();
     void bulletMaker(Player& playerArg, bool turnArg);
     void masterOfBullets();
+    void asteroidAhead();
+    void setSpawners();
+    void setBackground();
 };
 
 

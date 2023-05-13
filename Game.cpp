@@ -8,11 +8,13 @@ using namespace std;
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
     bulletTexture.loadFromFile("../bullet.png");
+    asteroidTexture.loadFromFile("../as2.png");
 }
 
 void Game::run()
 {
     window.clear(sf::Color::Black);
+    setSpawners();
     playerStats.setFont(font);
     playerStats.setFillColor(sf::Color::Blue);
     playerStats.setCharacterSize(40);
@@ -23,8 +25,8 @@ void Game::run()
     playerStats.setPosition(200,0);
     player.loadTexture();
     player.showSprite();
-    //audio.bgMusicLoad();
-    //audio.bgMusicPlay();
+//    audio.bgMusicLoad();
+//    audio.bgMusicPlay();
     while(window.isOpen())
     {
         update();
@@ -39,6 +41,7 @@ void Game::update()
     drawPlayerStuff();
     drawInterface();
     masterOfBullets();
+    asteroidAhead();
     steer();
     window.display();
 }
@@ -129,3 +132,26 @@ void Game::masterOfBullets()
 //        }
     }
 }
+
+
+void Game::asteroidAhead() {
+    spawnNow += 0.1f;
+    if (spawnNow >= spawnCooldown) {
+        asteroids.push_back(new Asteroid(window, asteroidTexture));
+        spawnNow = 0.f;
+    }
+//    for(vector<Asteroid>::iterator a=asteroids.begin();a!=asteroids.end();++a)
+    for (auto Asteroid: asteroids) {
+        Asteroid->updateAsteroid();
+    }
+}
+
+void Game::setSpawners()
+{
+    this->spawnCooldown = 50.f;
+    this->spawnNow = this->spawnCooldown;
+}
+
+//void Game::setBackground() {
+//    window.draw()
+//}
