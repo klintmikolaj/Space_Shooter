@@ -11,6 +11,7 @@ using namespace sf;
 
 Player::Player(string& playerName, RenderWindow & windowArg, Texture & textureArg): Unit{windowArg, textureArg}, name(playerName)
 {
+    setPlayerPosition();
 }
 
 string Player::getName() const

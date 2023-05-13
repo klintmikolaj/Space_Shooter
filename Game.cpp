@@ -70,10 +70,10 @@ void Game::steer()
                         cout<<"przycisk\t";
                         break;
                     case sf::Keyboard::Right:
-                        player.moveX(true, isSkip);
+                        player.moveX(10,true);
                         break;
                     case sf::Keyboard::Left:
-                        player.moveX(false, isSkip);
+                        player.moveX(10,false);
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player,true);
