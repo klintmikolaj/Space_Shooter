@@ -65,7 +65,9 @@ void Unit::setEnemyPosistion(float x, float y)
     sprite.setPosition(x, y);
 }
 
-
+void Unit::setSize(float size) {
+    sprite.setScale(size, size);
+}
 
 void Unit::showSprite()
 {

@@ -19,6 +19,7 @@ public:
     void loadTexture();
     void setPlayerPosition();
     void setEnemyPosistion(float x, float y);
+    void setSize(float size);
     void showSprite();
 
     int getHP() const;

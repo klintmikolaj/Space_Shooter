@@ -34,6 +34,8 @@ public:
     void masterOfBullets();
     void asteroidAhead();
     void setSpawners();
+    float setNumberRange(int max, int min);
+    int getSameValue(int value);
     void setBackground();
 };
 
