@@ -8,7 +8,7 @@ using namespace std;
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
     bulletTexture.loadFromFile("../bullet.png");
-    asteroidTexture.loadFromFile("../as2.png");
+    asteroidTexture.loadFromFile("../as2_no_margin_120px.png");
 }
 
 void Game::run()
@@ -140,9 +140,9 @@ void Game::asteroidAhead() {
         asteroids.push_back(new Asteroid(window, asteroidTexture));
         spawnNow = 0.f;
     }
-//    for(vector<Asteroid>::iterator a=asteroids.begin();a!=asteroids.end();++a)
     for (auto Asteroid: asteroids) {
         Asteroid->updateAsteroid();
+        std::cout<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\t";
     }
 }
 
