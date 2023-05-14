@@ -10,12 +10,14 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
     bulletTexture.loadFromFile("../bullet.png");
     asteroidTexture1.loadFromFile("../as21.png");
     asteroidTexture2.loadFromFile("../asteroid2.png");
+    alienTexture1.loadFromFile("../Starship_3.png");
 }
 
 void Game::run()
 {
     window.clear(sf::Color::Black);
-    setSpawners();
+    asteroidsSetSpawners();
+    aliensSetSpawners();
     playerStats.setFont(font);
     playerStats.setFillColor(sf::Color::Blue);
     playerStats.setCharacterSize(40);
@@ -43,6 +45,7 @@ void Game::update()
     drawInterface();
     masterOfBullets();
     asteroidAhead();
+    alienAttack();
     steer();
     window.display();
 }
@@ -136,32 +139,54 @@ void Game::masterOfBullets()
 
 
 void Game::asteroidAhead() {
-    spawnNow += 0.05;
+    asteroidSpawnNow += 0.05;
 //    if (spawnNow >= spawnCooldown) {
 //        asteroids.push_back(new Asteroid(window, asteroidTexture1, rand() % window.getSize().x - 45, -100,
 //                                         1));
 //        spawnNow = 0;
 //    }
-    if (spawnNow >= spawnCooldown) {
+    if (asteroidSpawnNow >= asteroidSpawnCooldown) {
         asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,
                                          1));
-        spawnNow = 0;
+        asteroidSpawnNow = 0;
     }
     for (auto Asteroid: asteroids) {
         Asteroid->updateAsteroid();
-        std::cout<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\t";
+//        std::cout<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\t";
     }
 }
 
-void Game::setSpawners()
-{
-    this->spawnCooldown = 50.f;
-    this->spawnNow = this->spawnCooldown;
+void Game::alienAttack() {
+    alienSpawnNow += 0.05;
+    if (alienSpawnNow >= alienSpawnCooldown) {
+        aliens.push_back(new Alien(window, alienTexture1, rand() % window.getSize().x - 20, -120,
+                                         1));
+        alienSpawnNow = 0;
+    }
+    for (auto Alien: aliens) {
+        Alien->updateAlien();
+        std::cout<<Alien->getXCenter()<<";"<<Alien->getY()<<"\t";
+    }
 }
+
+void Game::asteroidsSetSpawners()
+{
+    this->asteroidSpawnCooldown = 100;
+    this->asteroidSpawnNow = this->asteroidSpawnCooldown;
+}
+
+void Game::aliensSetSpawners()
+{
+    this->alienSpawnCooldown = 200;
+    this->alienSpawnNow = this->alienSpawnCooldown;
+}
+
+
 
 float Game::setNumberRange(int max, int min) {
     return (rand() % ((max - min + 1) + min)) - 0.1;
 }
+
 
 //void Game::setBackground() {
 //    window.draw()

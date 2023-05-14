@@ -9,7 +9,6 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, 
 {
     hpMax = 2;
     damage = 1;
-    speed = 10;
     loadTexture();
     setEnemyPosistion(x, y);
     setSize(size);
@@ -18,7 +17,7 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, 
 
 void Asteroid::updateAsteroid() {
     moveY(0.1);
-//    rotate(0.1);
+//    rotate(1);
     showSprite();
 }
 
