@@ -111,21 +111,32 @@ void Game::drawPlayerStuff()
 
 void Game::bulletMaker(Player& playerArg, bool up)
 {
-    bulletsBank.emplace_back(window,bulletTexture,playerArg,up);
+    bulletsBank.push_back(new Shoot(window,bulletTexture,playerArg,up));
 }
 
 void Game::masterOfBullets()
 {
-    for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
-    //for(auto &a:bulletsBank)
+    unsigned int ii=0;
+//    for(vector<Shoot>::iterator a=bulletsBank.begin();a!=bulletsBank.end();++a)
+    for(auto *a:bulletsBank)
     {
         a->updateBullet();
         // a->destroyMe();
-//        if (a->destroyMeBool())
-//        {
+        if (a->destroyMeBool())
+        {
+            bulletsBank.erase(bulletsBank.begin()+ii);
 //            //destroy bullet, i don't know how at this moment...
 //            bulletsBank.erase(a);
 //            //delete a;
-//        }
+        }
+        ++ii;
     }
 }
+
+//Game::~Game()
+//{
+//    for(auto &i:bulletsBank)
+//    {
+//        delete i.second;
+//    }
+//}

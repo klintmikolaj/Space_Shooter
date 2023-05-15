@@ -14,7 +14,7 @@ private:
     sf::Event event;
     sf::Text playerStats;
     Audio audio;
-    std::vector<Shoot> bulletsBank;
+    std::vector<Shoot*> bulletsBank;
     sf::Texture bulletTexture;
 
 public:
@@ -27,6 +27,7 @@ public:
     void drawPlayerStuff();
     void bulletMaker(Player& playerArg, bool turnArg);
     void masterOfBullets();
+//    virtual ~Game();
 };
 
 
