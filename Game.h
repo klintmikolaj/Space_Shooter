@@ -52,6 +52,7 @@ public:
     void aliensSetSpawners();
     float setNumberRange(int max, int min);
     void statsUpdate();
+    void setBackground();
 };
 
 

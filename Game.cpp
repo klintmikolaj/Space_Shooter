@@ -52,7 +52,7 @@ void Game::display()
 void Game::steer()
 {
     while (window.pollEvent(event))
-    {
+//    {
         switch(event.type)
         {
             case sf::Event::Closed:
@@ -100,7 +100,7 @@ void Game::steer()
             default:
                 break;
         }
-    }
+//    }
 }
 
 
@@ -162,6 +162,8 @@ void Game::playerManager()
         if(player.collision(al->center()))
             player.decreaseHP();
     }
+    if(player.isDead())
+        window.close() ;
 }
 
 void Game::bulletMaker(Player& playerArg, bool up)
@@ -246,14 +248,19 @@ void Game::alienAttack() {
 
 void Game::asteroidsSetSpawners()
 {
-    this->asteroidSpawnCooldown = 100;
-    this->asteroidSpawnNow = this->asteroidSpawnCooldown;
+    asteroidSpawnCooldown = 100;
+    asteroidSpawnNow = asteroidSpawnCooldown;
 }
 
 void Game::aliensSetSpawners()
 {
-    this->alienSpawnCooldown = 200;
-    this->alienSpawnNow = this->alienSpawnCooldown;
+    alienSpawnCooldown = 300;
+    alienSpawnNow = alienSpawnCooldown;
+}
+
+void Game::setBackground()
+{
+
 }
 
 

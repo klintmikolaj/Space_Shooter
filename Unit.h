@@ -11,7 +11,7 @@ public:
     Unit(sf::RenderWindow &, sf::Texture &);
     Unit(sf::RenderWindow &, sf::Texture &, int);
 
-    void moveX(char px, bool direction);
+    void moveX(float px, bool direction);
     void moveY(float px);
     void moveCircular(int rad, bool direction);
     void rotate(int ang);
@@ -29,6 +29,7 @@ public:
     sf::Vector2f center() const;
     bool collision(sf::Vector2f a) const;
     bool killMe() const;
+    bool isDead() const;
 
 private:
     sf::RenderWindow & window;

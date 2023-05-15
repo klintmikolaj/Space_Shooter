@@ -18,7 +18,7 @@ Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window
 }
 
 
-void Unit::moveX(char px, bool direction)
+void Unit::moveX(float px, bool direction)
 {
     bool visible;
     if(direction)
@@ -31,13 +31,12 @@ void Unit::moveX(char px, bool direction)
         visible= (sprite.getPosition().x + texture.getSize().x / 2 + px) >= 0;
     }
     if(visible)
-        sprite.move(px, 0);
-    showSprite();
+        sprite.move(px, 0.f);
 }
 
 void Unit::moveY(float px)
 {
-    sprite.move(0, px*0.6);
+    sprite.move(0, px*0.5);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {
@@ -79,7 +78,6 @@ void Unit::decreaseHP()
     if(hp>0)
         hp--;
 }
-
 
 
 int Unit::getHP() const
@@ -128,4 +126,11 @@ bool Unit::killMe() const
     if(sprite.getPosition().y-window.getSize().y>0)
         return true;
     return false;
+}
+
+bool Unit::isDead() const
+{
+    if(hp>0)
+        return false;
+    return true;
 }

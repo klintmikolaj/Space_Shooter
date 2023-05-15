@@ -1,9 +1,11 @@
 #ifndef SPACE_SHOOTER_ASTEROID_H
 #define SPACE_SHOOTER_ASTEROID_H
 #include <SFML/Graphics.hpp>
+
 #include "Unit.h"
 
-class Asteroid: public Unit {
+class Asteroid: public Unit
+{
 public:
     Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
     void updateAsteroid();

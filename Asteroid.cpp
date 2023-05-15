@@ -5,7 +5,7 @@
 #include "Asteroid.h"
 using namespace sf;
 
-Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Unit{windowArg, textureArg}, window(windowArg)
+Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Unit{windowArg, textureArg,2}, window(windowArg)
 {
     hpMax = 2;
     damage = 1;
