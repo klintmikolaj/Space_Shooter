@@ -13,7 +13,7 @@ Alien::Alien(sf::RenderWindow &windowArg, sf::Texture &textureArg, float x, floa
 }
 
 void Alien::updateAlien() {
-    moveY(0.1);
+    moveY(0.3);
 //    rotate(1);
     showSprite();
 }

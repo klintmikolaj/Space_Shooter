@@ -19,6 +19,8 @@ private:
     std::vector<Shoot*> bulletsBank;
     std::vector<Asteroid*> asteroids;
     std::vector<Alien*> aliens;
+    sf::Sprite background;
+    sf::Texture backgroundTexture;
     sf::Texture bulletTexture;
     sf::Texture asteroidTexture1;
     sf::Texture asteroidTexture2;
@@ -39,6 +41,8 @@ public:
     void steer();
     void drawInterface();
     void drawPlayerStuff();
+    void loadTextures();
+    void loadPlayerStats();
     void playerManager();
     void bulletMaker(Player& playerArg, bool turnArg);
     void masterOfBullets();
@@ -46,10 +50,7 @@ public:
     void alienAttack();
     void asteroidsSetSpawners();
     void aliensSetSpawners();
-//    void enemyAhead(float spawn, float cooldown, sf::RenderWindow window, sf::Texture texture, float size);
-//    void setSpawners(float spawn, float cooldown, float value);
     float setNumberRange(int max, int min);
-    void setBackground();
     void statsUpdate();
 };
 

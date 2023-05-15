@@ -4,35 +4,22 @@
 #include <iostream>
 
 using namespace std;
+using namespace sf;
 
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg), isSkip(false)
 {
-    bulletTexture.loadFromFile("../bullet_smol.png");
-    asteroidTexture1.loadFromFile("../as21.png");
-    asteroidTexture2.loadFromFile("../asteroid2.png");
-    alienTexture1.loadFromFile("../Starship_3.png");
-    backColour.a=128;
-    backColour.r=100;
-    backColour.g=100;
-    backColour.b=100;
-    statsBackground.setSize(sf::Vector2f(400, 60));
-    statsBackground.setPosition(280,0);
-    statsBackground.setFillColor(backColour);
+
 }
 
 void Game::run()
 {
     window.clear(sf::Color::Black);
+    loadTextures();
+//    background.setTexture(backgroundTexture);
+//    window.draw(background);
+    loadPlayerStats();
     asteroidsSetSpawners();
     aliensSetSpawners();
-    playerStats.setFont(font);
-    playerStats.setFillColor(sf::Color::Blue);
-    playerStats.setCharacterSize(40);
-    string playerStatsStr=player.getName();
-    playerStatsStr+="    HP ";
-    playerStatsStr+= to_string(player.getHP());
-    playerStats.setString(playerStatsStr);
-    playerStats.setPosition(300,0);
     player.loadTexture();
     player.showSprite();
     //audio.bgMusicLoad();
@@ -47,6 +34,7 @@ void Game::run()
 void Game::update()
 {
     window.clear(sf::Color::Black);
+    window.draw(background);
     masterOfBullets();
     playerManager();
     asteroidAhead();
@@ -83,13 +71,13 @@ void Game::steer()
                         break;
                     case sf::Keyboard::Right:
                         if(isSkip)
-                            player.moveX(60,true);
-                        player.moveX(10,true);
+                            player.moveX(100,true);
+                        player.moveX(20,true);
                         break;
                     case sf::Keyboard::Left:
                         if(isSkip)
-                            player.moveX(60,false);
-                        player.moveX(10,false);
+                            player.moveX(100,false);
+                        player.moveX(20,false);
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player,true);
@@ -126,6 +114,13 @@ void Game::statsUpdate()
 
 void Game::drawInterface()
 {
+    backColour.a=128;
+    backColour.r=100;
+    backColour.g=100;
+    backColour.b=100;
+    statsBackground.setSize(sf::Vector2f(1000, 60));
+    statsBackground.setPosition(0,0);
+    statsBackground.setFillColor(backColour);
     window.draw(statsBackground);
     statsUpdate();
     window.draw(playerStats);
@@ -134,6 +129,25 @@ void Game::drawInterface()
 void Game::drawPlayerStuff()
 {
     player.showSprite();
+}
+
+void Game::loadTextures() {
+    backgroundTexture.loadFromFile("../background.jpg");
+    bulletTexture.loadFromFile("../bullet_smol.png");
+    asteroidTexture1.loadFromFile("../as21.png");
+    asteroidTexture2.loadFromFile("../asteroid2.png");
+    alienTexture1.loadFromFile("../Starship_3.png");
+}
+
+void Game::loadPlayerStats() {
+    playerStats.setFont(font);
+    playerStats.setFillColor(sf::Color::Blue);
+    playerStats.setCharacterSize(40);
+    string playerStatsStr=player.getName();
+    playerStatsStr+="    HP ";
+    playerStatsStr+= to_string(player.getHP());
+    playerStats.setString(playerStatsStr);
+    playerStats.setPosition(300,0);
 }
 
 void Game::playerManager()
@@ -248,7 +262,3 @@ float Game::setNumberRange(int max, int min) {
     return (rand() % ((max - min + 1) + min)) - 0.1;
 }
 
-
-//void Game::setBackground() {
-//    window.draw()
-//}
