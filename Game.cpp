@@ -187,10 +187,16 @@ void Game::asteroidAhead() {
         Asteroid->updateAsteroid();
         if(Asteroid->killMe())
             asteroids.erase(asteroids.begin()+ii);
+
+        unsigned int bii=0;
         for(auto a:bulletsBank)
         {
             if(Asteroid->collision(a->getCenter()))
+            {
                 asteroids.erase(asteroids.begin()+ii);
+                bulletsBank.erase(bulletsBank.begin()+bii);
+            }
+            ++bii;
         }
         ++ii;
 //        std::cout<<"As"<<ii<<":"<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\n";
@@ -208,6 +214,7 @@ void Game::alienAttack() {
         Alien->updateAlien();
         if(Alien->killMe())
             aliens.erase(aliens.begin()+ii);
+
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
