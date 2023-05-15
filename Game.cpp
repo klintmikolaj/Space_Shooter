@@ -7,7 +7,7 @@ using namespace std;
 
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg)
 {
-    bulletTexture.loadFromFile("../bullet.png");
+    bulletTexture.loadFromFile("../bullet_smol.png");
     asteroidTexture1.loadFromFile("../as21.png");
     asteroidTexture2.loadFromFile("../asteroid2.png");
     alienTexture1.loadFromFile("../Starship_3.png");
@@ -128,13 +128,9 @@ void Game::masterOfBullets()
     for(auto *a:bulletsBank)
     {
         a->updateBullet();
-        // a->destroyMe();
-        if (a->destroyMeBool())
+        if (a->destroyMe())
         {
             bulletsBank.erase(bulletsBank.begin()+ii);
-//            //destroy bullet, i don't know how at this moment...
-//            bulletsBank.erase(a);
-//            //delete a;
         }
         ++ii;
     }
@@ -149,13 +145,16 @@ void Game::asteroidAhead() {
 //        spawnNow = 0;
 //    }
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
-        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,
-                                         1));
+        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,1));
         asteroidSpawnNow = 0;
     }
+    unsigned int ii=0;
     for (auto Asteroid: asteroids) {
         Asteroid->updateAsteroid();
-//        std::cout<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\t";
+        if(Asteroid->killMe())
+            asteroids.erase(asteroids.begin()+ii);
+        ++ii;
+//        std::cout<<"As"<<ii<<":"<<Asteroid->getXCenter()<<";"<<Asteroid->getY()<<"\n";
     }
 }
 
@@ -166,9 +165,13 @@ void Game::alienAttack() {
                                          1));
         alienSpawnNow = 0;
     }
+    unsigned int ii=0;
     for (auto Alien: aliens) {
         Alien->updateAlien();
-        std::cout<<Alien->getXCenter()<<";"<<Alien->getY()<<"\t";
+        if(Alien->killMe())
+            aliens.erase(aliens.begin()+ii);
+        ++ii;
+//        std::cout<<"Al"<<ii<<":"<<Alien->getXCenter()<<";"<<Alien->getY()<<"\n";
     }
 }
 

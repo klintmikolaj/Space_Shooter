@@ -94,4 +94,9 @@ float Unit::getY() const
     return sprite.getPosition().y;
 }
 
-
+bool Unit::killMe() const
+{
+    if(sprite.getPosition().y-window.getSize().y>0)
+        return true;
+    return false;
+}

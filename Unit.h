@@ -26,6 +26,7 @@ public:
     float getXLeft() const;
     float getXCenter() const;
     float getY() const;
+    bool killMe() const;
 
 private:
     sf::RenderWindow & window;
