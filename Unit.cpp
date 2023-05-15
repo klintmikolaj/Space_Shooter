@@ -35,10 +35,20 @@ void Unit::moveX(char px, bool direction)
     showSprite();
 }
 
-void Unit::moveY(char px)
+void Unit::moveY(float px)
 {
     sprite.move(0, px);
 }
+
+//void Unit::moveCircular(int rad, bool direction) {
+//
+//    sprite.move
+//}
+
+void Unit::rotate(int ang) {
+    sprite.rotate(ang);
+}
+
 
 void Unit::loadTexture()
 {
@@ -48,6 +58,15 @@ void Unit::loadTexture()
 void Unit::setPlayerPosition()
 {
     sprite.setPosition(((float)window.getSize().x - (float)texture.getSize().x) / 2, (float)window.getSize().y - (float)texture.getSize().y);
+}
+
+void Unit::setEnemyPosistion(float x, float y)
+{
+    sprite.setPosition(x, y);
+}
+
+void Unit::setSize(float size) {
+    sprite.setScale(size, size);
 }
 
 void Unit::showSprite()
@@ -74,3 +93,5 @@ float Unit::getY() const
 {
     return sprite.getPosition().y;
 }
+
+

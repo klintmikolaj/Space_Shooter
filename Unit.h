@@ -13,9 +13,13 @@ public:
     Unit(sf::RenderWindow &, sf::Texture &, int);
 
     void moveX(char px, bool direction);
-    void moveY(char px);
+    void moveY(float px);
+    void moveCircular(int rad, bool direction);
+    void rotate(int ang);
     void loadTexture();
     void setPlayerPosition();
+    void setEnemyPosistion(float x, float y);
+    void setSize(float size);
     void showSprite();
 
     int getHP() const;
