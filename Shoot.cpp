@@ -24,21 +24,20 @@ void Shoot::updateBullet()
 //    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
 }
 
-float Shoot::getX() const
+float Shoot::getDiameter() const
 {
-    return bullet.getPosition().x;
+    return texture.getSize().x;
 }
 
-float Shoot::getY() const
+sf::Vector2f Shoot::getCenter() const
 {
-    return bullet.getPosition().y;
+    sf::Vector2f s(11,11);
+    return bullet.getPosition()+s;
 }
 
 bool Shoot::destroyMe() const
 {
     if(bullet.getPosition().y+texture.getSize().y<0)
-    {
         return true;
-    }
     return false;
 }

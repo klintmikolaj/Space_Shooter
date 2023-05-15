@@ -37,7 +37,7 @@ void Unit::moveX(char px, bool direction)
 
 void Unit::moveY(float px)
 {
-    sprite.move(0, px);
+    sprite.move(0, px*0.6);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {
@@ -74,6 +74,14 @@ void Unit::showSprite()
     window.draw(sprite);
 }
 
+void Unit::decreaseHP()
+{
+    if(hp>0)
+        hp--;
+}
+
+
+
 int Unit::getHP() const
 {
     return hp;
@@ -92,6 +100,27 @@ float Unit::getXCenter() const
 float Unit::getY() const
 {
     return sprite.getPosition().y;
+}
+
+
+Vector2f Unit::center() const
+{
+    Vector2f a(texture.getSize().x/2,texture.getSize().y/2);
+    return sprite.getPosition()+a;
+}
+
+float modulo(float a)
+{
+    if(a<0)
+        return -a;
+    return a;
+}
+
+bool Unit::collision(sf::Vector2f a) const
+{
+    if(modulo(center().x-a.x)<texture.getSize().x/2&&modulo(center().y-a.y)<texture.getSize().y/2)
+        return true;
+    return false;
 }
 
 bool Unit::killMe() const

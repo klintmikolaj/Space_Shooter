@@ -5,7 +5,6 @@
 #ifndef SPACE_SHOOTER_UNIT_H
 #define SPACE_SHOOTER_UNIT_H
 
-
 class Unit {
 
 public:
@@ -21,11 +20,14 @@ public:
     void setEnemyPosistion(float x, float y);
     void setSize(float size);
     void showSprite();
+    void decreaseHP();
 
     int getHP() const;
     float getXLeft() const;
     float getXCenter() const;
     float getY() const;
+    sf::Vector2f center() const;
+    bool collision(sf::Vector2f a) const;
     bool killMe() const;
 
 private:

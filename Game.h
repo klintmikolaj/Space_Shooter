@@ -23,10 +23,13 @@ private:
     sf::Texture asteroidTexture1;
     sf::Texture asteroidTexture2;
     sf::Texture alienTexture1;
+    sf::Color backColour;
+    sf::RectangleShape statsBackground;
     float asteroidSpawnNow;
     float asteroidSpawnCooldown;
     float alienSpawnNow;
     float alienSpawnCooldown;
+    bool isSkip;
 
 public:
     Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
@@ -36,6 +39,7 @@ public:
     void steer();
     void drawInterface();
     void drawPlayerStuff();
+    void playerManager();
     void bulletMaker(Player& playerArg, bool turnArg);
     void masterOfBullets();
     void asteroidAhead();
@@ -46,6 +50,7 @@ public:
 //    void setSpawners(float spawn, float cooldown, float value);
     float setNumberRange(int max, int min);
     void setBackground();
+    void statsUpdate();
 };
 
 
