@@ -27,16 +27,20 @@ void Unit::moveX(float px, bool direction)
     }
     else
     {
-        px=(char)-px;
+        px=-px;
         visible= (sprite.getPosition().x + texture.getSize().x / 2 + px) >= 0;
     }
     if(visible)
-        sprite.move(px, 0.f);
+        sprite.move(px, 0);
+//    window.draw(sprite);
+//    window.display();
 }
 
-void Unit::moveY(float px)
+void Unit::moveY(float px, bool direction)
 {
-    sprite.move(0, px*0.5);
+    char turn;
+    direction?turn=1:turn=-1;
+    sprite.move(0, px*0.5*turn);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {

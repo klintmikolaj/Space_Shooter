@@ -1,5 +1,5 @@
-#ifndef SPACE_SHOOTER_ASTEROID_H
-#define SPACE_SHOOTER_ASTEROID_H
+#ifndef SPACE_SHOOTER_ENEMIES_H
+#define SPACE_SHOOTER_ENEMIES_H
 
 #include <SFML/Graphics.hpp>
 #include "Unit.h"

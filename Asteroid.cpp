@@ -5,7 +5,7 @@
 #include "Asteroid.h"
 using namespace sf;
 
-Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Unit{windowArg, textureArg,2}, window(windowArg)
+Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Enemies{windowArg, textureArg,2}, window(windowArg)
 {
     hpMax = 2;
     damage = 1;
@@ -16,7 +16,7 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, 
 
 
 void Asteroid::updateAsteroid() {
-    moveY(0.1);
+    moveY(0.1,true);
 //    rotate(1);
     showSprite();
 }

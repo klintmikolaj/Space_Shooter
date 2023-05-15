@@ -32,6 +32,10 @@ private:
     float alienSpawnNow;
     float alienSpawnCooldown;
     bool isSkip;
+    bool isLeft;
+    bool isX;
+    bool isUp;
+    bool isY;
 
 public:
     Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);

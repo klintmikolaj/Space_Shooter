@@ -12,7 +12,7 @@ public:
     Unit(sf::RenderWindow &, sf::Texture &, int);
 
     void moveX(float px, bool direction);
-    void moveY(float px);
+    void moveY(float px, bool direction);
     void moveCircular(int rad, bool direction);
     void rotate(int ang);
     void loadTexture();

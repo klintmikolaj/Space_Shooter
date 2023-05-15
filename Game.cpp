@@ -6,9 +6,8 @@
 using namespace std;
 using namespace sf;
 
-Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg), isSkip(false)
+Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg), isSkip(false), isLeft(false), isX(false), isUp(false), isY(false)
 {
-
 }
 
 void Game::run()
@@ -69,15 +68,15 @@ void Game::steer()
                         isSkip=true;
                         //cout<<"przycisk\t";
                         break;
-                    case sf::Keyboard::Right:
-                        if(isSkip)
-                            player.moveX(100,true);
-                        player.moveX(20,true);
-                        break;
                     case sf::Keyboard::Left:
-                        if(isSkip)
-                            player.moveX(100,false);
-                        player.moveX(20,false);
+                        isLeft=true;
+                    case sf::Keyboard::Right:
+                        isX=true;
+                        break;
+                    case sf::Keyboard::Up:
+                        isUp=true;
+                    case sf::Keyboard::Down:
+                        isY=true;
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player,true);
@@ -93,6 +92,16 @@ void Game::steer()
                     case sf::Keyboard::RShift:
                         isSkip=false;
                         //cout<<"puszczenie\t";
+                        break;
+                    case sf::Keyboard::Left:
+                        isLeft=false;
+                    case sf::Keyboard::Right:
+                        isX=false;
+                        break;
+                    case sf::Keyboard::Up:
+                        isUp=false;
+                    case sf::Keyboard::Down:
+                        isY=false;
                         break;
                     default:
                         break;
@@ -128,6 +137,18 @@ void Game::drawInterface()
 
 void Game::drawPlayerStuff()
 {
+    if(isX)
+    {
+        if (isSkip)
+            player.moveX(0.4, !isLeft);
+        player.moveX(0.1, !isLeft);
+    }
+    if(isY)
+    {
+        if (isSkip)
+            player.moveY(0.4, !isUp);
+        player.moveY(0.1, !isUp);
+    }
     player.showSprite();
 }
 
