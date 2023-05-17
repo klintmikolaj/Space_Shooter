@@ -12,6 +12,7 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
 
 void Game::run()
 {
+    frameCount = 0;
     window.clear(sf::Color::Black);
     loadTextures();
     background.setTexture(backgroundTexture);
@@ -23,8 +24,7 @@ void Game::run()
     player.showSprite();
     //audio.bgMusicLoad();
     //audio.bgMusicPlay();
-    while(window.isOpen())
-    {
+    while(window.isOpen()) {
         update();
         display();
     }
@@ -42,6 +42,7 @@ void Game::update()
     drawInterface();
     steer();
     window.display();
+    frameCount += 1;
 }
 
 void Game::display()
@@ -214,6 +215,7 @@ void Game::asteroidAhead() {
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
         asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,1));
         asteroidSpawnNow = 0;
+
     }
     unsigned int ii=0;
     for (auto Asteroid: asteroids) {
@@ -271,7 +273,7 @@ void Game::asteroidsSetSpawners()
 
 void Game::aliensSetSpawners()
 {
-    alienSpawnCooldown = 300;
+    alienSpawnCooldown = 100;
     alienSpawnNow = alienSpawnCooldown;
 }
 

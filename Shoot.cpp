@@ -18,7 +18,7 @@ Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Unit& unitArg
 
 void Shoot::updateBullet()
 {
-    const float randomShit=0.5;
+    const float randomShit=1.5;
     bullet.move(0,turn*randomShit);
     window.draw(bullet);
 //    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";

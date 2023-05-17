@@ -5,7 +5,9 @@
 #ifndef SPACE_SHOOTER_ALIEN_H
 #define SPACE_SHOOTER_ALIEN_H
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Unit.h"
+#include <cmath>
 
 class Alien: public Unit {
 public:
@@ -15,6 +17,7 @@ private:
     sf::RenderWindow& window;
     int hpMax;
     int damage;
+    int tick;
 };
 
 
