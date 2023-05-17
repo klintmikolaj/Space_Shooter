@@ -269,7 +269,7 @@ void Game::alienAttack() {
 
 void Game::asteroidsSetSpawners()
 {
-    asteroidSpawnCooldown = 100;
+    asteroidSpawnCooldown = 100 ;
     asteroidSpawnNow = asteroidSpawnCooldown;
 }
 
