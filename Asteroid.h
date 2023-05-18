@@ -11,8 +11,6 @@ public:
 
 private:
     sf::RenderWindow& window;
-    int hpMax;
-     int damage; /* jaki zadaje spritowi gracza */
 };
 
 #endif

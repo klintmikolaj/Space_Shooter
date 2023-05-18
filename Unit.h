@@ -26,8 +26,11 @@ public:
     float getXLeft() const;
     float getXCenter() const;
     float getY() const;
-    sf::Vector2f center() const;
-    bool collision(sf::Vector2f a) const;
+    sf::Vector2f getCenter() const;
+    sf::Vector2f getBounds() const;
+
+    bool collision(sf::Vector2f centerV, sf::Vector2f boundsV) const;
+    bool collision(sf::Vector2f centerV, float diameter) const;
     bool killMe() const;
     bool isDead() const;
 

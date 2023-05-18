@@ -19,6 +19,7 @@ private:
     std::vector<Shoot*> bulletsBank;
     std::vector<Asteroid*> asteroids;
     std::vector<Alien*> aliens;
+    Unit* lastEnemy;
     sf::Sprite background;
     sf::Texture backgroundTexture;
     sf::Texture bulletTexture;

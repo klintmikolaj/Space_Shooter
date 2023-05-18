@@ -105,10 +105,16 @@ float Unit::getY() const
 }
 
 
-Vector2f Unit::center() const
+Vector2f Unit::getCenter() const
 {
     Vector2f a(texture.getSize().x/2,texture.getSize().y/2);
     return sprite.getPosition()+a;
+}
+
+Vector2f Unit::getBounds() const
+{
+    Vector2f a(texture.getSize().x,texture.getSize().y);
+    return a;
 }
 
 float modulo(float a)
@@ -118,9 +124,16 @@ float modulo(float a)
     return a;
 }
 
-bool Unit::collision(sf::Vector2f a) const
+bool Unit::collision(sf::Vector2f centerV, sf::Vector2f boundsV) const
 {
-    if(modulo(center().x-a.x)<texture.getSize().x/2&&modulo(center().y-a.y)<texture.getSize().y/2)
+    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2 - boundsV.x/2) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2 - boundsV.y/2))
+        return true;
+    return false;
+}
+
+bool Unit::collision(sf::Vector2f centerV, float diameter) const
+{
+    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2 - diameter/2) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2 - diameter/2))
         return true;
     return false;
 }

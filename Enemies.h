@@ -9,12 +9,11 @@ public:
     Enemies(sf::RenderWindow&, sf::Texture&, int);
     int getDamage() const;
 
-private:
-    int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */
-    int hpMAX;
+protected:
+    //int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */
+    int hpMax;
     float speed;
-    sf::Texture asteroid_Texture;
-    sf::Sprite asteroid_Sprite;
+    int damage; /* jaki zadaje spritowi gracza */
 };
 
 #endif

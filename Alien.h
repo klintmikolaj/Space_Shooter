@@ -7,14 +7,12 @@
 #include <SFML/Graphics.hpp>
 #include "Unit.h"
 
-class Alien: public Unit {
+class Alien: public Enemies {
 public:
     Alien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
     void updateAlien();
 private:
     sf::RenderWindow& window;
-    int hpMax;
-    int damage;
 };
 
 

@@ -8,6 +8,7 @@ using namespace sf;
 
 Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg), isSkip(false), isLeft(false), isX(false), isUp(false), isY(false)
 {
+    lastEnemy=NULL;
 }
 
 void Game::run()
@@ -175,13 +176,21 @@ void Game::playerManager()
 {
     for(auto as:asteroids)
     {
-        if(player.collision(as->center()))
-            player.decreaseHP();
+        if(as != lastEnemy)
+            if(player.collision(as->getCenter(),as->getBounds()))
+            {
+                lastEnemy=as;
+                player.decreaseHP();
+            }
     }
     for(auto al:aliens)
     {
-        if(player.collision(al->center()))
-            player.decreaseHP();
+        if(al != lastEnemy)
+            if(player.collision(al->getCenter(),al->getBounds()))
+            {
+                lastEnemy=al;
+                player.decreaseHP();
+            }
     }
     if(player.isDead())
         window.close() ;
@@ -228,7 +237,7 @@ void Game::asteroidAhead() {
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
-            if(Asteroid->collision(a->getCenter()))
+            if(Asteroid->collision(a->getCenter(), a->getDiameter()))
             {
                 asteroids.erase(asteroids.begin()+ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
@@ -255,7 +264,7 @@ void Game::alienAttack() {
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
-            if(Alien->collision(a->getCenter()))
+            if(Alien->collision(a->getCenter(), a->getDiameter()))
             {
                 aliens.erase(aliens.begin() + ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
