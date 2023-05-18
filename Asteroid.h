@@ -1,24 +1,16 @@
+#ifndef SPACE_SHOOTER_ASTEROID_H
+#define SPACE_SHOOTER_ASTEROID_H
 #include <SFML/Graphics.hpp>
-using namespace std;
-using namespace sf;
+#include "Enemies.h"
 
-class Asteroid {
+class Asteroid: public Enemies
+{
 public:
-    Asteroid(RenderWindow &);
+    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
+    void updateAsteroid();
 
-    void loadTexture();
-    void showSprite();
-    void update();
-
-    int get_enemy_HP() const;
 private:
-    int hp;
-    int hpMAX;
-    int size;
-    int damage; /* jaki zadaje spritowi gracza */
-    float speed;
-    Texture asteroid1_Texture;
-    Texture asteroid2_Texture;
-    Sprite asteroid1_Sprite;
-    Sprite asteroid2_Sprite;
+    sf::RenderWindow& window;
 };
+
+#endif

@@ -1,22 +1,18 @@
+#ifndef SPACE_SHOOTER_ENEMIES_H
+#define SPACE_SHOOTER_ENEMIES_H
+
 #include <SFML/Graphics.hpp>
-using namespace std;
-using namespace sf;
+#include "Unit.h"
 
-class Enemies {
+class Enemies: public Unit {
 public:
-    Enemies(RenderWindow &);
+    Enemies(sf::RenderWindow&, sf::Texture&, int);
 
-    void loadTexture();
-    void showSprite();
-    void update();
-
-    int get_enemy_HP() const;
-private:
-    int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */
-    int hp;
-    int hpMAX;
+protected:
+    //int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */
+    int hpMax;
     float speed;
-    Texture asteroid_Texture;
-    Sprite asteroid_Sprite;
+    int damage; /* jaki zadaje spritowi gracza */
 };
 
+#endif

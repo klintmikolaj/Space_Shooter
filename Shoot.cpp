@@ -18,20 +18,21 @@ Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Unit& unitArg
 
 void Shoot::updateBullet()
 {
-    const float randomShit=0.18;
+    const float randomShit=1.5;
     bullet.move(0,turn*randomShit);
     window.draw(bullet);
 //    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
 }
 
-float Shoot::getX() const
+float Shoot::getDiameter() const
 {
-    return bullet.getPosition().x;
+    return texture.getSize().x;
 }
 
-float Shoot::getY() const
+sf::Vector2f Shoot::getCenter() const
 {
-    return bullet.getPosition().y;
+    sf::Vector2f s(11,11);
+    return bullet.getPosition()+s;
 }
 
 bool Shoot::destroyMe() const

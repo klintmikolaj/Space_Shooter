@@ -323,7 +323,7 @@
 								<x:Array Type="sys:Object">
 									<sys:String><![CDATA[Unit(sf::RenderWindow &, sf::Texture &);]]></sys:String>
 									<sys:String><![CDATA[Unit(sf::RenderWindow &, sf::Texture &, int);]]></sys:String>
-									<sys:String><![CDATA[void move(bool direction, bool isSkip);]]></sys:String>
+									<sys:String><![CDATA[void moveX(bool direction, bool isSkip);]]></sys:String>
 									<sys:String><![CDATA[void loadTexture();]]></sys:String>
 									<sys:String><![CDATA[void showSprite();]]></sys:String>
 								</x:Array>

@@ -3,27 +3,21 @@
 //
 
 #include "Asteroid.h"
+using namespace sf;
 
-Asteroid::Asteroid(RenderWindow &) {
-
+Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Enemies{windowArg, textureArg,2}, window(windowArg)
+{
+    hpMax = 2;
+    damage = 1;
+    loadTexture();
+    setEnemyPosistion(x, y);
+    setSize(size);
 }
 
-void Asteroid::loadTexture() {
-    asteroid1_Texture.loadFromFile("../Spaceship1.png");
-    asteroid2_Texture.loadFromFile("../Starship_4.png");
-    asteroid1_Texture.setSmooth(true);
-    asteroid2_Texture.setSmooth(true);
-    asteroid1_Sprite.setTexture(asteroid1_Texture);
-    asteroid2_Sprite.setTexture(asteroid2_Texture);
-    asteroid1_Sprite.scale(0.1f, 0.1f);
-    asteroid2_Sprite.scale(0.1f, 0.1f);
-}
 
-void Asteroid::showSprite() {
-
-}
-
-void Asteroid::update() {
-
+void Asteroid::updateAsteroid() {
+    moveY(0.2,true);
+//    rotate(1);
+    showSprite();
 }
 

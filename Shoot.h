@@ -16,8 +16,8 @@ private:
 public:
     Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, Unit& unitArg, bool up);
     void updateBullet();
-    float getX() const;
-    float getY() const;
+    float getDiameter() const;
+    sf::Vector2f getCenter() const;
     bool destroyMe() const;
 };
 

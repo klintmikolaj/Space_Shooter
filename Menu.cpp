@@ -119,6 +119,7 @@ int Menu::menu_update() {
         }
         draw();
     }
+    return 0;
 }
 
 
