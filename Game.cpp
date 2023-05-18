@@ -13,7 +13,7 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
 
 void Game::run()
 {
-    frameCount = 0;
+    //frameCount = 0;
     window.clear(sf::Color::Black);
     loadTextures();
     background.setTexture(backgroundTexture);
@@ -43,7 +43,7 @@ void Game::update()
     drawInterface();
     steer();
     window.display();
-    frameCount += 1;
+   // frameCount += 1;
 }
 
 void Game::display()
@@ -129,7 +129,7 @@ void Game::drawInterface()
     backColour.r=100;
     backColour.g=100;
     backColour.b=100;
-    statsBackground.setSize(sf::Vector2f(1000, 60));
+    statsBackground.setSize(sf::Vector2f(window.getSize().x, 60));
     statsBackground.setPosition(0,0);
     statsBackground.setFillColor(backColour);
     window.draw(statsBackground);
@@ -139,18 +139,6 @@ void Game::drawInterface()
 
 void Game::drawPlayerStuff()
 {
-    if(isX)
-    {
-        if (isSkip)
-            player.moveX(0.4, !isLeft);
-        player.moveX(0.1, !isLeft);
-    }
-    if(isY)
-    {
-        if (isSkip)
-            player.moveY(0.4, !isUp);
-        player.moveY(0.1, !isUp);
-    }
     player.showSprite();
 }
 
@@ -193,6 +181,18 @@ void Game::playerManager()
                 lastEnemy=al;
                 player.decreaseHP();
             }
+    }
+    if(isX)
+    {
+        if (isSkip)
+            player.moveX(0.4, !isLeft);
+        player.moveX(0.1, !isLeft);
+    }
+    if(isY)
+    {
+        if (isSkip)
+            player.moveY(0.4, !isUp);
+        player.moveY(0.1, !isUp);
     }
 //    if(player.isDead())
 //        window.close() ;

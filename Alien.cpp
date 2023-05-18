@@ -2,8 +2,10 @@
 // Created by indianajones on 5/14/23.
 //
 
-#include "Enemies.h"
 #include "Alien.h"
+#include <iostream>
+#include <cmath>
+
 using namespace std;
 
 Alien::Alien(sf::RenderWindow &windowArg, sf::Texture &textureArg, float x, float y, float size): Enemies{windowArg, textureArg,5}, window{windowArg} {
@@ -22,7 +24,7 @@ void Alien::updateAlien() {
     int speed = cos(x/100) * 1.2;
     moveX(speed * multiplier, true);
     moveY(0.3, true);
-    cout << 1 * multiplier << x << speed << endl;
+//    cout << 1 * multiplier << x << speed << endl;
     showSprite();
     tick += 1;
 }

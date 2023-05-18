@@ -7,7 +7,6 @@
 class Enemies: public Unit {
 public:
     Enemies(sf::RenderWindow&, sf::Texture&, int);
-    int getDamage() const;
 
 protected:
     //int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */

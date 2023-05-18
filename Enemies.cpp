@@ -5,8 +5,3 @@ using namespace sf;
 Enemies::Enemies(RenderWindow & windowArg, Texture & textureArg, int hpArg): Unit{windowArg,textureArg,hpArg}
 {
 }
-
-int Enemies::getDamage() const
-{
-    return 1;
-}
