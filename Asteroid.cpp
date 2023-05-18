@@ -16,7 +16,7 @@ Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, 
 
 
 void Asteroid::updateAsteroid() {
-    moveY(0.1,true);
+    moveY(0.2,true);
 //    rotate(1);
     showSprite();
 }

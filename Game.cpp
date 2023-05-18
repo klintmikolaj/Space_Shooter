@@ -13,10 +13,11 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
 
 void Game::run()
 {
+    frameCount = 0;
     window.clear(sf::Color::Black);
     loadTextures();
-//    background.setTexture(backgroundTexture);
-//    window.draw(background);
+    background.setTexture(backgroundTexture);
+    window.draw(background);
     loadPlayerStats();
     asteroidsSetSpawners();
     aliensSetSpawners();
@@ -24,8 +25,7 @@ void Game::run()
     player.showSprite();
     //audio.bgMusicLoad();
     //audio.bgMusicPlay();
-    while(window.isOpen())
-    {
+    while(window.isOpen()) {
         update();
         display();
     }
@@ -43,6 +43,7 @@ void Game::update()
     drawInterface();
     steer();
     window.display();
+    frameCount += 1;
 }
 
 void Game::display()
@@ -154,8 +155,9 @@ void Game::drawPlayerStuff()
 }
 
 void Game::loadTextures() {
-    backgroundTexture.loadFromFile("../background.jpg");
-    bulletTexture.loadFromFile("../bullet_smol.png");
+    backgroundTexture.loadFromFile("../background2.jpg");
+//    bulletTexture.loadFromFile("../bullet_smol.png");
+    bulletTexture.loadFromFile("../New_Bullet.png");
     asteroidTexture1.loadFromFile("../as21.png");
     asteroidTexture2.loadFromFile("../asteroid2.png");
     alienTexture1.loadFromFile("../Starship_3.png");
@@ -192,8 +194,8 @@ void Game::playerManager()
                 player.decreaseHP();
             }
     }
-    if(player.isDead())
-        window.close() ;
+//    if(player.isDead())
+//        window.close() ;
 }
 
 void Game::bulletMaker(Player& playerArg, bool up)
@@ -218,15 +220,11 @@ void Game::masterOfBullets()
 
 
 void Game::asteroidAhead() {
-    asteroidSpawnNow += 0.05;
-//    if (spawnNow >= spawnCooldown) {
-//        asteroids.push_back(new Asteroid(window, asteroidTexture1, rand() % window.getSize().x - 45, -100,
-//                                         1));
-//        spawnNow = 0;
-//    }
+    asteroidSpawnNow += 0.1;
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
         asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,1));
         asteroidSpawnNow = 0;
+
     }
     unsigned int ii=0;
     for (auto Asteroid: asteroids) {
@@ -284,7 +282,7 @@ void Game::asteroidsSetSpawners()
 
 void Game::aliensSetSpawners()
 {
-    alienSpawnCooldown = 300;
+    alienSpawnCooldown = 100;
     alienSpawnNow = alienSpawnCooldown;
 }
 

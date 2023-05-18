@@ -5,7 +5,7 @@
 #ifndef SPACE_SHOOTER_ALIEN_H
 #define SPACE_SHOOTER_ALIEN_H
 #include <SFML/Graphics.hpp>
-#include "Unit.h"
+#include "Enemies.h"
 
 class Alien: public Enemies {
 public:
@@ -13,6 +13,7 @@ public:
     void updateAlien();
 private:
     sf::RenderWindow& window;
+    int tick;
 };
 
 

@@ -37,6 +37,7 @@ private:
     bool isX;
     bool isUp;
     bool isY;
+    int frameCount;
 
 public:
     Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
