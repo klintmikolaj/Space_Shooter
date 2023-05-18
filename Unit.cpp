@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Unit.h"
+//#include <iostream>
 
 using namespace std;
 using namespace sf;
@@ -126,15 +127,23 @@ float modulo(float a)
 
 bool Unit::collision(sf::Vector2f centerV, sf::Vector2f boundsV) const
 {
-    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2 - boundsV.x/2) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2 - boundsV.y/2))
+//    std::cout<<"wsp. środka chuja: ("<<(float)centerV.x<<";"<<(float)centerV.y<<") szer. i dł. chuja: x="<<(float)boundsV.x<<"; y="<<(float)boundsV.y<<"\n";
+//    std::cout<<"wsp. środka moje: ("<<(float)getCenter().x<<";"<<(float)getCenter().y<<") szer. i dł. moja: x="<<(float)texture.getSize().x<<"; y="<<(float)texture.getSize().y<<"\n";
+    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2/* - boundsV.x/2*/) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2/* - boundsV.y/2*/))
+    {
+//        cout<<"kolizja vectorowa kurwiu\t";
         return true;
+    }
     return false;
 }
 
 bool Unit::collision(sf::Vector2f centerV, float diameter) const
 {
     if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2 - diameter/2) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2 - diameter/2))
+    {
+//        cout<<"kolizja floatowa kurwiu\t";
         return true;
+    }
     return false;
 }
 

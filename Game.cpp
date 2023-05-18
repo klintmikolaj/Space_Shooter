@@ -194,8 +194,8 @@ void Game::playerManager()
             player.moveY(0.4, !isUp);
         player.moveY(0.1, !isUp);
     }
-//    if(player.isDead())
-//        window.close() ;
+    if(player.isDead())
+        window.close() ;
 }
 
 void Game::bulletMaker(Player& playerArg, bool up)
