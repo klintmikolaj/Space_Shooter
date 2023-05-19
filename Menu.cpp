@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
+#include "Audio.h"
 #include "Menu.h"
-#include <iostream>
+//#include <iostream>
 using namespace std;
 
-Menu::Menu(float x, float y, RenderWindow &window1, Font & fontArg) :window(window1),font(fontArg) {
+Menu::Menu(float x, float y, RenderWindow &window1, Font & fontArg): window(window1), font(fontArg)
+{
     //Title
     menu[0].setFont(font);
     menu[0].setFillColor(Color::Cyan);
@@ -47,7 +49,6 @@ void Menu::draw()//RenderWindow &window)
     for (int i = 0; i < MENU_ITEMS; i++)
     {
         window.draw(menu[i]);
-
     }
     window.display();
 }
@@ -78,18 +79,26 @@ void Menu::Move_Down(){
     }
 }
 
-void Menu::Load_background() {
+void Menu::Load_background()
+{
     Texture texture;
-    backgroundTexture.loadFromFile("../hangar.png");
+    backgroundTexture.loadFromFile("../textures/hangar.png");
 }
 
-void Menu::Draw_background() {
+void Menu::Draw_background()
+{
     background.setTexture(backgroundTexture);
 }
 
+void Menu::musicLoad()
+{
+    audio.bgMusicLoad(true);
+    audio.bgMusicPlay();
+}
 
-
-int Menu::menu_update() {
+int Menu::menu_update()
+{
+    musicLoad();
     Event event;
     while (window.isOpen())
     {
@@ -113,14 +122,13 @@ int Menu::menu_update() {
                 }
                 if (event.key.code == Keyboard::Enter)
                 {
+                    audio.bgMusicStop();
                     return (Selected_index);
                 }
             }
         }
         draw();
     }
+
     return 0;
 }
-
-
-

@@ -10,10 +10,15 @@
 class Audio {
 public:
     Audio();
-    void bgMusicLoad();
+    void bgMusicLoad(bool menu);
     void bgMusicPlay();
+    void bgMusicStop();
+
+    void piu();
 private:
     sf::Music music;
+    sf::Sound sound;
+    sf::SoundBuffer buffer;
 };
 
 

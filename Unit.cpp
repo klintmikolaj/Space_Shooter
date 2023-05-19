@@ -4,18 +4,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "Unit.h"
-//#include <iostream>
+#include <iostream>
 
 using namespace std;
 using namespace sf;
 
-Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg):Unit(windowArg,textureArg,3)
-{
-}
 
-Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg, int hpArg):window(windowArg),texture(textureArg),hp(hpArg)
+Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg):window(windowArg),texture(textureArg)
 {
-
 }
 
 
@@ -41,7 +37,7 @@ void Unit::moveY(float px, bool direction)
 {
     char turn;
     direction?turn=1:turn=-1;
-    sprite.move(0, px*0.5*turn);
+    sprite.move(0, px*0.7*turn);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {
@@ -78,17 +74,6 @@ void Unit::showSprite()
     window.draw(sprite);
 }
 
-void Unit::decreaseHP()
-{
-    if(hp>0)
-        hp--;
-}
-
-
-int Unit::getHP() const
-{
-    return hp;
-}
 
 float Unit::getXLeft() const
 {
@@ -103,6 +88,11 @@ float Unit::getXCenter() const
 float Unit::getY() const
 {
     return sprite.getPosition().y;
+}
+
+float Unit::getDown() const
+{
+    return sprite.getPosition().y+texture.getSize().y;
 }
 
 
@@ -127,11 +117,8 @@ float modulo(float a)
 
 bool Unit::collision(sf::Vector2f centerV, sf::Vector2f boundsV) const
 {
-//    std::cout<<"wsp. środka chuja: ("<<(float)centerV.x<<";"<<(float)centerV.y<<") szer. i dł. chuja: x="<<(float)boundsV.x<<"; y="<<(float)boundsV.y<<"\n";
-//    std::cout<<"wsp. środka moje: ("<<(float)getCenter().x<<";"<<(float)getCenter().y<<") szer. i dł. moja: x="<<(float)texture.getSize().x<<"; y="<<(float)texture.getSize().y<<"\n";
-    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2/* - boundsV.x/2*/) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2/* - boundsV.y/2*/))
+    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x + boundsV.x)/2.5 && modulo(getCenter().y - centerV.y) < (texture.getSize().y + boundsV.y)/2.5)
     {
-//        cout<<"kolizja vectorowa kurwiu\t";
         return true;
     }
     return false;
@@ -139,9 +126,8 @@ bool Unit::collision(sf::Vector2f centerV, sf::Vector2f boundsV) const
 
 bool Unit::collision(sf::Vector2f centerV, float diameter) const
 {
-    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x/2 - diameter/2) && modulo(getCenter().y - centerV.y) < (texture.getSize().y/2 - diameter/2))
+    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x + diameter)/2 && modulo(getCenter().y - centerV.y) < (texture.getSize().y + diameter)/2)
     {
-//        cout<<"kolizja floatowa kurwiu\t";
         return true;
     }
     return false;
@@ -152,11 +138,4 @@ bool Unit::killMe() const
     if(sprite.getPosition().y-window.getSize().y>0)
         return true;
     return false;
-}
-
-bool Unit::isDead() const
-{
-    if(hp>0)
-        return false;
-    return true;
 }

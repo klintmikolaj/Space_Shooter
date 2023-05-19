@@ -9,7 +9,7 @@
 
 class Alien: public Enemies {
 public:
-    Alien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
+    Alien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg);
     void updateAlien();
 private:
     sf::RenderWindow& window;

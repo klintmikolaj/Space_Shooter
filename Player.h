@@ -12,10 +12,18 @@ class Player: public Unit
     public:
         Player(std::string & playerName, sf::RenderWindow & windowArg, sf::Texture & textureArg);
 
+        void increasePoints(int amount);
+        void decreaseHP();
+
+        int getHP() const;
         std::string getName() const;
+        int getPoints() const;
+        bool isDead() const;
 
     private:
         const std::string name;
+        int hp;
+        long points;
 };
 
 

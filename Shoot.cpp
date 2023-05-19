@@ -5,14 +5,14 @@
 #include "Shoot.h"
 #include <iostream>
 
-Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, Unit& unitArg, bool up): window(windowArg), texture(textureArg), unit(unitArg)
+Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, float unitCenter, float unitY, bool up): window(windowArg), texture(textureArg)
 {
     if(up)
         turn=-1;
     else
         turn=1;
     bullet.setTexture(textureArg);
-    bullet.setPosition(unit.getXCenter() - textureArg.getSize().x / 2, unit.getY());
+    bullet.setPosition(unitCenter - textureArg.getSize().x / 2, unitY);
 }
 
 

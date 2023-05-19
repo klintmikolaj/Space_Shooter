@@ -20,23 +20,20 @@ public:
     void setEnemyPosistion(float x, float y);
     void setSize(float size);
     void showSprite();
-    void decreaseHP();
 
-    int getHP() const;
     float getXLeft() const;
     float getXCenter() const;
     float getY() const;
+    float getDown() const;
     sf::Vector2f getCenter() const;
     sf::Vector2f getBounds() const;
 
     bool collision(sf::Vector2f centerV, sf::Vector2f boundsV) const;
     bool collision(sf::Vector2f centerV, float diameter) const;
     bool killMe() const;
-    bool isDead() const;
 
 private:
     sf::RenderWindow & window;
-    int hp;
     sf::Texture & texture;
     sf::Sprite sprite;
 };

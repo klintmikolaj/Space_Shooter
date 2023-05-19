@@ -16,8 +16,8 @@ int main()
     RenderWindow window;
     Font font;
     Texture playerTexture;
-    font.loadFromFile("../ethnocentricRg.otf");
-    playerTexture.loadFromFile("../Starship_smol.png");
+    font.loadFromFile("../fonts/ethnocentricRg.otf");
+    playerTexture.loadFromFile("../textures/Starship_smol.png");
     window.create(VideoMode(windowWidth, windowHeight), "Space shooter (name subject to change)");
     Menu menu(windowWidth, windowHeight, window, font);
     menu.menu_update();

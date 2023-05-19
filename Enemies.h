@@ -6,13 +6,17 @@
 
 class Enemies: public Unit {
 public:
-    Enemies(sf::RenderWindow&, sf::Texture&, int);
+    Enemies(sf::RenderWindow& windowArg, sf::Texture& textureArg, float speedArg, int pointsForPlayerArg);
+
+    void update();
+
+    int getPoints() const;
 
 protected:
-    //int type; /* Zalozmy ze 1 - zwykla asteroida, 2 - statek niestrzelajacy, 3 - statek strzelajacy */
-    int hpMax;
     float speed;
-    int damage; /* jaki zadaje spritowi gracza */
+
+private:
+    int pointsForPlayer;
 };
 
 #endif

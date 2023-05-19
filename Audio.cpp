@@ -4,18 +4,34 @@
 
 #include "Audio.h"
 
-void Audio::bgMusicLoad()
+Audio::Audio()
 {
-    music.openFromFile("../podruga.flac");
+    buffer.loadFromFile("../audio/piu.wav");
+    sound.setBuffer(buffer);
+}
+
+void Audio::bgMusicLoad(bool menu)
+{
+    if(menu)
+        music.openFromFile("../audio/SpaceShooterMenu.wav");
+    else
+        music.openFromFile("../audio/SpaceShooterTheme.wav");
+    music.setLoop(true);
+    music.setVolume(50.f);
 }
 
 void Audio::bgMusicPlay()
 {
-    music.setVolume(10);
     music.play();
 }
 
-Audio::Audio()
-{
 
+void Audio::piu()
+{
+    sound.play();
+}
+
+void Audio::bgMusicStop()
+{
+    music.stop();
 }
