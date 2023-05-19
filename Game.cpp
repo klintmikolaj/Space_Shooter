@@ -85,7 +85,7 @@ void Game::steer()
                         break;
                     case sf::Keyboard::Space:
                         bulletMaker(player );
-                        audio.piu();
+                        audio.piu(true);
                         break;
                     default:
                         break;
@@ -336,8 +336,9 @@ void Game::alienAttack() {
 //        std::cout<<"Al"<<ii<<":"<<Alien->getXCenter()<<";"<<Alien->getY()<<"\n";
     }
 }
-void Game::shootingAlienAttack() {
-    shootingAlienSpawnNow += 0.02;
+ void Game::shootingAlienAttack()
+{
+    shootingAlienSpawnNow += 0.08 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
         shootingAliens.push_back(new ShootingAlien(window, shootingAlienTexture, rand() % window.getSize().x - 20, -120,1,10,1.7));
@@ -352,6 +353,7 @@ void Game::shootingAlienAttack() {
         if (shootingNow >= alienSpawnCooldown)
         {
             alienBulletMaker(sAl);
+            audio.piu(false);
             shootingNow = 0;
         }
         if(sAl->killMe())

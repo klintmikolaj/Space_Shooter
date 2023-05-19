@@ -14,11 +14,12 @@ public:
     void bgMusicPlay();
     void bgMusicStop();
 
-    void piu();
+    void piu(bool piu);
 private:
     sf::Music music;
     sf::Sound sound;
-    sf::SoundBuffer buffer;
+    sf::SoundBuffer piuBuffer;
+    sf::SoundBuffer dziuBuffer;
 };
 
 

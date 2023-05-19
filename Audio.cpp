@@ -6,8 +6,9 @@
 
 Audio::Audio()
 {
-    buffer.loadFromFile("../audio/piu.wav");
-    sound.setBuffer(buffer);
+    piuBuffer.loadFromFile("../audio/piu.wav");
+    dziuBuffer.loadFromFile("../audio/dziu.wav");
+
 }
 
 void Audio::bgMusicLoad(bool menu)
@@ -25,9 +26,12 @@ void Audio::bgMusicPlay()
     music.play();
 }
 
-
-void Audio::piu()
+void Audio::piu(bool piu)
 {
+    if(piu)
+        sound.setBuffer(piuBuffer);
+    else
+        sound.setBuffer(dziuBuffer);
     sound.play();
 }
 
