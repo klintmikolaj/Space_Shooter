@@ -348,7 +348,7 @@ void Game::alienAttack() {
     for (auto sAl: shootingAliens)
     {
         sAl->update();
-        sAl->updateAlien();
+        sAl->updateShootingAlien();
         shootingNow += 0.2;
         if (shootingNow >= alienSpawnCooldown)
         {

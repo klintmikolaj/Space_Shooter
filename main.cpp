@@ -20,10 +20,10 @@ int main()
     font.loadFromFile("../fonts/ethnocentricRg.otf");
     playerTexture.loadFromFile("../textures/Starship_smol.png");
     window.create(VideoMode(windowWidth, windowHeight), "Space shooter (name subject to change)");
-//    Menu menu(windowWidth, windowHeight, window, font);
-//    menu.menu_update();
-    Settings settings(windowWidth, windowHeight, window, font);
-    settings.settingsUpdate();
+    Menu menu(windowWidth, windowHeight, window, font);
+    menu.menu_update();
+//    Settings settings(windowWidth, windowHeight, window, font);
+//    settings.settingsUpdate();
     Player player(name, window, playerTexture);
     Game game(player, window, font);
     game.run();
