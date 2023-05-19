@@ -27,8 +27,8 @@ void Unit::moveX(float px, bool direction)
         px=-px;
         visible= (sprite.getPosition().x + texture.getSize().x / 2 + px) >= 0;
     }
-//    if(visible)
-//        sprite.move(px, 0);
+    if(visible)
+        sprite.move(px, 0);
 //    window.draw(sprite);
 //    window.display();
 }

@@ -345,7 +345,7 @@ void Game::alienAttack() {
 }
  void Game::shootingAlienAttack()
 {
-    shootingAlienSpawnNow += 0.08 ;
+    shootingAlienSpawnNow += 0.03 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
         shootingAliens.push_back(new ShootingAlien(window, shootingAlienTexture, rand() % (window.getSize().x - shootingAlienTexture.getSize().x), -120,1,10,1.7));

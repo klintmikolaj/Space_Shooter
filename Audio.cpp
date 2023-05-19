@@ -8,7 +8,7 @@ Audio::Audio()
 {
     piuBuffer.loadFromFile("../audio/piu.wav");
     dziuBuffer.loadFromFile("../audio/dziu.wav");
-    oughBuffer.loadFromFile("../audio/u.wav");
+    oughBuffer.loadFromFile("../audio/u_compressed.wav");
 
 }
 
