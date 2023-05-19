@@ -15,11 +15,13 @@ public:
     void bgMusicStop();
 
     void piu(bool piu);
+    void ough();
 private:
     sf::Music music;
     sf::Sound sound;
     sf::SoundBuffer piuBuffer;
     sf::SoundBuffer dziuBuffer;
+    sf::SoundBuffer oughBuffer;
 };
 
 

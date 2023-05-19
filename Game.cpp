@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
-#include <iostream>
+//#include <iostream>
 
 
 using namespace std;
 using namespace sf;
 
-Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player(playerArg), window(windowArg), font(fontArg), multiplier(1), isLeft(false), isX(false), isUp(false), isY(false)
+Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player{nameArg,windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), isLeft(false), isX(false), isUp(false), isY(false)
 {
     lastEnemy=NULL;
     lastBullet=NULL;
@@ -16,19 +16,21 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
 void Game::run()
 {
     //frameCount = 0;
-    window.clear(sf::Color::Black);
     loadTextures();
+    window.clear(sf::Color::Black);
     background.setTexture(backgroundTexture);
     window.draw(background);
     loadPlayerStats();
     asteroidsSetSpawners();
     aliensSetSpawners();
     player.loadTexture();
+    player.setPlayerPosition();
     player.showSprite();
     audio.bgMusicLoad(false);
     audio.bgMusicPlay();
     while(window.isOpen())
     {
+//        cout<<player.getXLeft()<<endl;
         update();
         display();
     }
@@ -150,6 +152,7 @@ void Game::drawPlayerStuff()
 
 void Game::loadTextures()
 {
+    playerTexture.loadFromFile("../textures/Starship_smol.png");
     backgroundTexture.loadFromFile("../textures/background2.jpg");
 //    bulletTexture.loadFromFile("../textures/bullet_smol.png");
     bulletTexture.loadFromFile("../textures/New_Bullet.png");
@@ -176,6 +179,7 @@ void Game::playerCollision(std::vector<Asteroid*>& unitBank)
         if(as != lastEnemy)
             if(player.collision(as->getCenter(),as->getBounds()))
             {
+                audio.ough();
                 lastEnemy=as;
                 player.decreaseHP();
             }
@@ -190,6 +194,7 @@ void Game::playerCollision(std::vector<Alien*>& unitBank)
             if(player.collision(al->getCenter(), al->getBounds()))
             {
                 lastEnemy=al;
+                audio.ough();
                 player.decreaseHP();
             }
     }
@@ -203,6 +208,7 @@ void Game::playerCollision(std::vector<ShootingAlien*>& unitBank)
             if(player.collision(al->getCenter(), al->getBounds()))
             {
                 lastEnemy=al;
+                audio.ough();
                 player.decreaseHP();
             }
     }
@@ -216,6 +222,7 @@ void Game::playerCollision(std::vector<Shoot*>& bulletBank)
             if(player.collision(b->getCenter(), b->getDiameter()))
             {
                 lastBullet=b;
+                audio.ough();
                 player.decreaseHP();
             }
     }
@@ -280,7 +287,7 @@ void Game::masterOfBullets()
 void Game::asteroidAhead() {
     asteroidSpawnNow += 0.1;
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
-        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % window.getSize().x - 45, -100,1));
+        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % (window.getSize().x - asteroidTexture2.getSize().x), -100,1));
         asteroidSpawnNow = 0;
 
     }
@@ -310,7 +317,7 @@ void Game::alienAttack() {
     alienSpawnNow += 0.05;
     if (alienSpawnNow >= alienSpawnCooldown)
     {
-        aliens.push_back(new Alien(window, alienTexture1, rand() % window.getSize().x - 20, -120,1,5,2));
+        aliens.push_back(new Alien(window, alienTexture1, rand() % (window.getSize().x - alienTexture1.getSize().x), -120,1,5,2));
         alienSpawnNow = 0;
     }
     unsigned int ii=0;
@@ -341,7 +348,7 @@ void Game::alienAttack() {
     shootingAlienSpawnNow += 0.08 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
-        shootingAliens.push_back(new ShootingAlien(window, shootingAlienTexture, rand() % window.getSize().x - 20, -120,1,10,1.7));
+        shootingAliens.push_back(new ShootingAlien(window, shootingAlienTexture, rand() % (window.getSize().x - shootingAlienTexture.getSize().x), -120,1,10,1.7));
         shootingAlienSpawnNow = 0;
     }
     unsigned int ii=0;

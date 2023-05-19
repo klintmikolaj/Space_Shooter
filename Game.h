@@ -15,7 +15,7 @@ class Game {
 private:
     sf::RenderWindow& window;
     sf::Font& font;
-    Player& player;
+    Player player;
     sf::Event event;
     sf::Text playerStats;
     Audio audio;
@@ -27,6 +27,7 @@ private:
     Unit* lastEnemy;
     Shoot* lastBullet;
     sf::Sprite background;
+    sf::Texture playerTexture;
     sf::Texture backgroundTexture;
     sf::Texture bulletTexture;
     sf::Texture alienBulletTexture;
@@ -50,7 +51,7 @@ private:
     int frameCount;
 
 public:
-    Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
+    Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
     void run();
     void update();
     void display();

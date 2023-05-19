@@ -8,6 +8,7 @@ Audio::Audio()
 {
     piuBuffer.loadFromFile("../audio/piu.wav");
     dziuBuffer.loadFromFile("../audio/dziu.wav");
+    oughBuffer.loadFromFile("../audio/u.wav");
 
 }
 
@@ -32,6 +33,12 @@ void Audio::piu(bool piu)
         sound.setBuffer(piuBuffer);
     else
         sound.setBuffer(dziuBuffer);
+    sound.play();
+}
+
+void Audio::ough()
+{
+    sound.setBuffer(oughBuffer);
     sound.play();
 }
 

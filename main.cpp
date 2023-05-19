@@ -1,8 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
-#include "Player.h"
-//#include "Audio.h"
 #include "Menu.h"
 
 using namespace std;
@@ -15,14 +13,11 @@ int main()
     string name="adam";
     RenderWindow window;
     Font font;
-    Texture playerTexture;
     font.loadFromFile("../fonts/ethnocentricRg.otf");
-    playerTexture.loadFromFile("../textures/Starship_smol.png");
     window.create(VideoMode(windowWidth, windowHeight), "Space shooter (name subject to change)");
     Menu menu(windowWidth, windowHeight, window, font);
     menu.menu_update();
-    Player player(name, window, playerTexture);
-    Game game(player, window, font);
+    Game game(name, window, font);
     game.run();
 
     return 0;

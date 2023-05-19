@@ -27,8 +27,8 @@ void Unit::moveX(float px, bool direction)
         px=-px;
         visible= (sprite.getPosition().x + texture.getSize().x / 2 + px) >= 0;
     }
-    if(visible)
-        sprite.move(px, 0);
+//    if(visible)
+//        sprite.move(px, 0);
 //    window.draw(sprite);
 //    window.display();
 }
@@ -52,6 +52,8 @@ void Unit::rotate(int ang) {
 
 void Unit::loadTexture()
 {
+    cout<<texture.getSize().x<<endl;
+    cout<<texture.getSize().y<<endl;
     sprite.setTexture(texture);
 }
 
