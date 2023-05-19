@@ -1,8 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "Audio.h"
 #include "Menu.h"
-//#include <iostream>
+#include <iostream>
 using namespace std;
+using namespace sf;
 
 Menu::Menu(float x, float y, RenderWindow &window1, Font & fontArg): window(window1), font(fontArg)
 {
@@ -21,7 +22,7 @@ Menu::Menu(float x, float y, RenderWindow &window1, Font & fontArg): window(wind
     //Settings
     menu[2].setFont(font);
     menu[2].setFillColor(Color::Cyan);
-    menu[2].setString("Settings");
+    menu[2].setString("Difficulty");
     menu[2].setCharacterSize(45);
     menu[2].setPosition(x/2 + 50, 375);
     //How to play

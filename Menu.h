@@ -1,12 +1,13 @@
+#ifndef SPACE_SHOOTER_MENU_H
+#define SPACE_SHOOTER_MENU_H
+
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #define MENU_ITEMS 5
-using namespace std;
-using namespace sf;
+
 
 class Menu {
 public:
-    Menu(float x, float y, RenderWindow &, Font &);
+    Menu(float x, float y, sf::RenderWindow &, sf::Font &);
     void draw();
     int menu_update();
     void Move_Up();
@@ -15,12 +16,13 @@ public:
     void Draw_background();
     void musicLoad();
 private:
-    RenderWindow &window;
+    sf::RenderWindow &window;
     int Selected_index;
     Audio audio;
-    Font & font;
-    Text menu[MENU_ITEMS];
-    Texture backgroundTexture;
-    Sprite background;
+    sf::Font & font;
+    sf::Text menu[MENU_ITEMS];
+    sf::Texture backgroundTexture;
+    sf::Sprite background;
 };
 
+#endif
