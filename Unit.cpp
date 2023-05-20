@@ -37,7 +37,7 @@ void Unit::moveY(float px, bool direction)
 {
     char turn;
     direction?turn=1:turn=-1;
-    sprite.move(0, px*turn*0.5);
+    sprite.move(0, px*turn);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {

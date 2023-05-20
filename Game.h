@@ -45,7 +45,7 @@ private:
     float alienSpawnCooldown;
     int multiplier;
     int frameCount;
-    short difficulty;
+    short & difficulty;
     bool isLeft;
     bool isX;
     bool isUp;

@@ -6,10 +6,7 @@
 class Asteroid: public Enemies
 {
 public:
-    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size);
-
-private:
-    sf::RenderWindow& window;
+    Asteroid(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, float speed);
 };
 
 #endif

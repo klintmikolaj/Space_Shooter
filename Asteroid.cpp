@@ -5,7 +5,7 @@
 #include "Asteroid.h"
 using namespace sf;
 
-Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size): Enemies{windowArg, textureArg,1,2}, window(windowArg)
+Asteroid::Asteroid(RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, float speed): Enemies{windowArg, textureArg,speed,2}
 {
     loadTexture();
     setEnemyPosistion(x, y);

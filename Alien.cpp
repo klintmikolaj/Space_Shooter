@@ -21,7 +21,7 @@ void Alien::updateAlien() {
     int z = sin((x/10) + (M_PI/2));
     int multiplier = z > 0 ? 0: sin(x/10) > 0?1:-1;
     int speed = cos(x/100) * 1.2;
-    moveX(speed * multiplier, true);
+    moveX(static_cast<float>(speed * multiplier), true);
 //    cout << 1 * multiplier << x << speed << endl;
-    tick += 1;
+    ++tick;
 }

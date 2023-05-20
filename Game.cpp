@@ -15,32 +15,20 @@ Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg, sho
 
 void Game::run()
 {
-    cout<<difficulty<<endl;
+    cout<<(float)difficulty<<endl;
     //frameCount = 0;
     loadTextures();
-    cout<<"loadTextures"<<endl;
     window.clear(sf::Color::Black);
-    cout<<"window.clear"<<endl;
     background.setTexture(backgroundTexture);
-    cout<<"background.setTexture"<<endl;
     window.draw(background);
-    cout<<"window.draw"<<endl;
     loadPlayerStats();
-    cout<<"loadPlayerStats"<<endl;
     asteroidsSetSpawners();
-    cout<<"asteroidsSetSpawners"<<endl;
     aliensSetSpawners();
-    cout<<"aliensSetSpawners"<<endl;
     player.loadTexture();
-    cout<<"player.loadTexture"<<endl;
     player.setPlayerPosition();
-    cout<<"player.setPlayerPosition"<<endl;
     player.showSprite();
-    cout<<"player.showSprite"<<endl;
     audio.bgMusicLoad(false);
-    cout<<"audio.bgMusicLoad"<<endl;
     audio.bgMusicPlay();
-    cout<<"audio.bgMusicPlay"<<endl;
     while(window.isOpen())
     {
 //        cout<<player.getXLeft()<<endl;
@@ -253,7 +241,7 @@ void Game::playerManager()
     }
     if(isY)
     {
-        player.moveY(0.1*multiplier*difficulty, !isUp);
+        player.moveY(0.1*multiplier, !isUp);
     }
     if(player.isDead())
         window.close() ;
@@ -300,7 +288,7 @@ void Game::masterOfBullets()
 void Game::asteroidAhead() {
     asteroidSpawnNow += 0.1;
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
-        asteroids.push_back(new Asteroid{window, asteroidTexture2, static_cast<float>(rand()% (window.getSize().x - asteroidTexture2.getSize().x)), static_cast<float>(-100*difficulty),1});
+        asteroids.push_back(new Asteroid{window, asteroidTexture2, static_cast<float>(rand()% (window.getSize().x - asteroidTexture2.getSize().x)), static_cast<float>(-100),1,static_cast<float>(difficulty)});
         asteroidSpawnNow = 0;
 
     }
@@ -317,7 +305,7 @@ void Game::asteroidAhead() {
             {
                 asteroids.erase(asteroids.begin()+ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(Asteroid->getPoints());
+                player.increasePoints(difficulty*Asteroid->getPoints());
             }
             ++bii;
         }
@@ -330,7 +318,7 @@ void Game::alienAttack() {
     alienSpawnNow += 0.05;
     if (alienSpawnNow >= alienSpawnCooldown)
     {
-        aliens.push_back(new Alien{window, alienTexture1, static_cast<float>(rand() % (window.getSize().x - alienTexture1.getSize().x)), static_cast<float>(-120*difficulty),1,5,2});
+        aliens.push_back(new Alien{window, alienTexture1, static_cast<float>(rand() % (window.getSize().x - alienTexture1.getSize().x)), static_cast<float>(-120),1,5,2*static_cast<float>(difficulty)});
         alienSpawnNow = 0;
     }
     unsigned int ii=0;
@@ -348,7 +336,7 @@ void Game::alienAttack() {
             {
                 aliens.erase(aliens.begin() + ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(Alien->getPoints());
+                player.increasePoints(difficulty*Alien->getPoints());
             }
             ++bii;
         }
@@ -361,7 +349,7 @@ void Game::alienAttack() {
     shootingAlienSpawnNow += 0.03 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
-        shootingAliens.push_back(new ShootingAlien{window, shootingAlienTexture, static_cast<float>(rand() % (window.getSize().x - shootingAlienTexture.getSize().x)), static_cast<float>(-120*difficulty),1,10,1.7});
+        shootingAliens.push_back(new ShootingAlien{window, shootingAlienTexture, static_cast<float>(rand() % (window.getSize().x - shootingAlienTexture.getSize().x)), static_cast<float>(-120),1,10,static_cast<float>(difficulty*1.7)});
         shootingAlienSpawnNow = 0;
     }
     unsigned int ii=0;
@@ -386,7 +374,7 @@ void Game::alienAttack() {
             {
                 shootingAliens.erase(shootingAliens.begin() + ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(sAl->getPoints());
+                player.increasePoints(difficulty* sAl->getPoints());
             }
             ++bii;
         }
