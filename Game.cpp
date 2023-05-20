@@ -11,6 +11,7 @@ Game::Game(Player& playerArg, sf::RenderWindow & windowArg, sf::Font& fontArg): 
 {
     lastEnemy=NULL;
     lastBullet=NULL;
+    difficulty = 1;
 }
 
 void Game::run()
@@ -389,14 +390,4 @@ void Game::aliensSetSpawners()
     shootingNow = alienSpawnCooldown;
 }
 
-void Game::setBackground()
-{
-
-}
-
-
-
-float Game::setNumberRange(int max, int min) {
-    return (rand() % ((max - min + 1) + min)) - 0.1;
-}
 

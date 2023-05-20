@@ -47,7 +47,9 @@ private:
     bool isX;
     bool isUp;
     bool isY;
-    int frameCount;
+    int frameCount;//    menu.menu_update();
+    int difficulty;
+    int page;
 
 public:
     Game(Player& playerArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
@@ -73,9 +75,8 @@ public:
     void shootingAlienAttack();
     void asteroidsSetSpawners();
     void aliensSetSpawners();
-    float setNumberRange(int max, int min);
     void statsUpdate();
-    void setBackground();
+    void menuController();
 };
 
 
