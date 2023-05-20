@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
-//#include <iostream>
+#include <iostream>
 
 
 using namespace std;
 using namespace sf;
 
-Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg): player{nameArg,windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), isLeft(false), isX(false), isUp(false), isY(false)
+Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg, short& difficultyArg): player{nameArg,windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), difficulty(difficultyArg), isLeft(false), isX(false), isUp(false), isY(false)
 {
     lastEnemy=NULL;
     lastBullet=NULL;
@@ -15,19 +15,32 @@ Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg): pl
 
 void Game::run()
 {
+    cout<<difficulty<<endl;
     //frameCount = 0;
     loadTextures();
+    cout<<"loadTextures"<<endl;
     window.clear(sf::Color::Black);
+    cout<<"window.clear"<<endl;
     background.setTexture(backgroundTexture);
+    cout<<"background.setTexture"<<endl;
     window.draw(background);
+    cout<<"window.draw"<<endl;
     loadPlayerStats();
+    cout<<"loadPlayerStats"<<endl;
     asteroidsSetSpawners();
+    cout<<"asteroidsSetSpawners"<<endl;
     aliensSetSpawners();
+    cout<<"aliensSetSpawners"<<endl;
     player.loadTexture();
+    cout<<"player.loadTexture"<<endl;
     player.setPlayerPosition();
+    cout<<"player.setPlayerPosition"<<endl;
     player.showSprite();
+    cout<<"player.showSprite"<<endl;
     audio.bgMusicLoad(false);
+    cout<<"audio.bgMusicLoad"<<endl;
     audio.bgMusicPlay();
+    cout<<"audio.bgMusicPlay"<<endl;
     while(window.isOpen())
     {
 //        cout<<player.getXLeft()<<endl;
@@ -157,7 +170,7 @@ void Game::loadTextures()
 //    bulletTexture.loadFromFile("../textures/bullet_smol.png");
     bulletTexture.loadFromFile("../textures/New_Bullet.png");
     alienBulletTexture.loadFromFile("../textures/New_Bullet_Red.png");
-    asteroidTexture1.loadFromFile("../textures/as21.png");
+//    asteroidTexture1.loadFromFile("../textures/as21.png");
     asteroidTexture2.loadFromFile("../textures/asteroid2.png");
     alienTexture1.loadFromFile("../textures/Starship_3.png");
     shootingAlienTexture.loadFromFile("../textures/Starship_4_smol.png");
@@ -240,7 +253,7 @@ void Game::playerManager()
     }
     if(isY)
     {
-        player.moveY(0.1*multiplier, !isUp);
+        player.moveY(0.1*multiplier*difficulty, !isUp);
     }
     if(player.isDead())
         window.close() ;
@@ -248,12 +261,12 @@ void Game::playerManager()
 
 void Game::bulletMaker(Player& playerArg)
 {
-    bulletsBank.push_back(new Shoot(window,bulletTexture,playerArg.getXCenter(),playerArg.getY(),true));
+    bulletsBank.push_back(new Shoot{window,bulletTexture,playerArg.getXCenter(),playerArg.getY(),true});
 }
 
 void Game::alienBulletMaker(ShootingAlien*& enemyArg)
 {
-    alienBulletsBank.push_back(new Shoot(window,alienBulletTexture,enemyArg->getXCenter(),enemyArg->getDown(),false));
+    alienBulletsBank.push_back(new Shoot{window,alienBulletTexture,enemyArg->getXCenter(),enemyArg->getDown(),false});
 }
 
 void Game::bulletDestroyer(Shoot*& a, unsigned int& ii)
@@ -287,7 +300,7 @@ void Game::masterOfBullets()
 void Game::asteroidAhead() {
     asteroidSpawnNow += 0.1;
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
-        asteroids.push_back(new Asteroid(window, asteroidTexture2, rand() % (window.getSize().x - asteroidTexture2.getSize().x), -100,1));
+        asteroids.push_back(new Asteroid{window, asteroidTexture2, static_cast<float>(rand()% (window.getSize().x - asteroidTexture2.getSize().x)), static_cast<float>(-100*difficulty),1});
         asteroidSpawnNow = 0;
 
     }
@@ -317,7 +330,7 @@ void Game::alienAttack() {
     alienSpawnNow += 0.05;
     if (alienSpawnNow >= alienSpawnCooldown)
     {
-        aliens.push_back(new Alien(window, alienTexture1, rand() % (window.getSize().x - alienTexture1.getSize().x), -120,1,5,2));
+        aliens.push_back(new Alien{window, alienTexture1, static_cast<float>(rand() % (window.getSize().x - alienTexture1.getSize().x)), static_cast<float>(-120*difficulty),1,5,2});
         alienSpawnNow = 0;
     }
     unsigned int ii=0;
@@ -348,7 +361,7 @@ void Game::alienAttack() {
     shootingAlienSpawnNow += 0.03 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
-        shootingAliens.push_back(new ShootingAlien(window, shootingAlienTexture, rand() % (window.getSize().x - shootingAlienTexture.getSize().x), -120,1,10,1.7));
+        shootingAliens.push_back(new ShootingAlien{window, shootingAlienTexture, static_cast<float>(rand() % (window.getSize().x - shootingAlienTexture.getSize().x)), static_cast<float>(-120*difficulty),1,10,1.7});
         shootingAlienSpawnNow = 0;
     }
     unsigned int ii=0;
@@ -402,8 +415,6 @@ void Game::setBackground()
 }
 
 
-
 float Game::setNumberRange(int max, int min) {
     return (rand() % ((max - min + 1) + min)) - 0.1;
 }
-

@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Unit.h"
-#include <iostream>
+//#include <iostream>
 
 using namespace std;
 using namespace sf;
@@ -37,7 +37,7 @@ void Unit::moveY(float px, bool direction)
 {
     char turn;
     direction?turn=1:turn=-1;
-    sprite.move(0, px*0.7*turn);
+    sprite.move(0, px*turn*0.5);
 }
 
 //void Unit::moveCircular(int rad, bool direction) {
@@ -52,8 +52,8 @@ void Unit::rotate(int ang) {
 
 void Unit::loadTexture()
 {
-    cout<<texture.getSize().x<<endl;
-    cout<<texture.getSize().y<<endl;
+//    cout<<texture.getSize().x<<endl;
+//    cout<<texture.getSize().y<<endl;
     sprite.setTexture(texture);
 }
 

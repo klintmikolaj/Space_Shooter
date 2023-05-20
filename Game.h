@@ -44,14 +44,15 @@ private:
     float shootingNow;
     float alienSpawnCooldown;
     int multiplier;
+    int frameCount;
+    short difficulty;
     bool isLeft;
     bool isX;
     bool isUp;
     bool isY;
-    int frameCount;
 
 public:
-    Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg);
+    Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
     void run();
     void update();
     void display();

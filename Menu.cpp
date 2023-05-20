@@ -97,7 +97,7 @@ void Menu::musicLoad()
     audio.bgMusicPlay();
 }
 
-int Menu::menu_update()
+short Menu::menu_update()
 {
     musicLoad();
     Event event;
@@ -105,7 +105,6 @@ int Menu::menu_update()
     {
         while (window.pollEvent(event))
         {
-
             if (event.type == Event::Closed)
             {
                 window.close();
@@ -126,10 +125,11 @@ int Menu::menu_update()
                     audio.bgMusicStop();
                     return (Selected_index);
                 }
+                if(event.key.code == Keyboard::Escape)
+                    window.close();
             }
         }
         draw();
     }
-
     return 0;
 }
