@@ -396,13 +396,3 @@ void Game::aliensSetSpawners()
     shootingAlienSpawnNow = alienSpawnCooldown;
     shootingNow = alienSpawnCooldown;
 }
-
-void Game::setBackground()
-{
-
-}
-
-
-float Game::setNumberRange(int max, int min) {
-    return (rand() % ((max - min + 1) + min)) - 0.1;
-}

@@ -118,7 +118,7 @@ void Settings::moveDown() {
 
 void Settings::loadBackground() {
     Texture texture;
-    backgroundTexture.loadFromFile("../textures/hangar.png");
+    backgroundTexture.loadFromFile("../textures/hangar_esc.png");
 }
 
 void Settings::drawBackground() {
@@ -130,8 +130,3 @@ void Settings::musicLoad()
     audio.bgMusicLoad(true);
     audio.bgMusicPlay();
 }
-
-int Settings::getSelectedIndex() {
-    return Selected_index;
-}
-

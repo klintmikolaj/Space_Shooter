@@ -75,9 +75,9 @@ public:
     void shootingAlienAttack();
     void asteroidsSetSpawners();
     void aliensSetSpawners();
-    float setNumberRange(int max, int min);
     void statsUpdate();
-    void setBackground();
+    void setCredits();
+    void setHowToPlay();
 };
 
 
