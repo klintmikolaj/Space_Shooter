@@ -11,7 +11,7 @@ class Settings {
 public:
     Settings(float x, float y, sf::RenderWindow &, sf::Font &);
     void draw();
-    int settingsUpdate();
+    short settingsUpdate();
     void moveUp();
     void moveDown();
     void loadBackground();

@@ -51,7 +51,7 @@ void Settings::draw() {
     window.display();
 }
 
-int Settings::settingsUpdate() {
+short Settings::settingsUpdate() {
     musicLoad();
     Event event;
     while (window.isOpen())
@@ -78,6 +78,10 @@ int Settings::settingsUpdate() {
                 {
                     audio.bgMusicStop();
                     return (Selected_index);
+                }
+                if (event.key.code == Keyboard::Escape)
+                {
+                    return 0;
                 }
             }
         }

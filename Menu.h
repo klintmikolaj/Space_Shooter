@@ -7,7 +7,7 @@
 
 class Menu {
 public:
-    Menu(float x, float y, sf::RenderWindow &, sf::Font &);
+    Menu(sf::RenderWindow &, sf::Font &);
     void draw();
     short menu_update();
     void Move_Up();
