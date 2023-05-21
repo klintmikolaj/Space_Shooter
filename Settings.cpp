@@ -109,7 +109,7 @@ void Settings::moveDown() {
         Selected_index++;
         if (Selected_index == 5)
         {
-            Selected_index = 1;
+             Selected_index = 1;
         }
         if (Selected_index == 4) settings[Selected_index].setFillColor(Color::Red);
         else settings[Selected_index].setFillColor(Color::White);
@@ -129,5 +129,9 @@ void Settings::musicLoad()
 {
     audio.bgMusicLoad(true);
     audio.bgMusicPlay();
+}
+
+int Settings::getSelectedIndex() {
+    return Selected_index;
 }
 
