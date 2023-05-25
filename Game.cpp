@@ -167,7 +167,7 @@ void Game::loadTextures()
 void Game::loadPlayerStats()
 {
     playerStats.setFont(font);
-    playerStats.setFillColor(sf::Color::Blue);
+    playerStats.setFillColor(sf::Color::Cyan);
     playerStats.setCharacterSize(40);
 }
 
