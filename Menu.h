@@ -2,7 +2,7 @@
 #define SPACE_SHOOTER_MENU_H
 
 #include <SFML/Graphics.hpp>
-#define MENU_ITEMS 5
+#define MENU_ITEMS 6
 
 
 class Menu {

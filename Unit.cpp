@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "Unit.h"
-//#include <iostream>
 
 using namespace std;
 using namespace sf;

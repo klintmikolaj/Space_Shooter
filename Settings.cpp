@@ -1,6 +1,5 @@
 #include "Settings.h"
 #include "Audio.h"
-#include <iostream>
 using namespace std;
 using namespace sf;
 

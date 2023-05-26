@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Audio.h"
 #include "Menu.h"
-#include <iostream>
 using namespace std;
 using namespace sf;
 
@@ -18,25 +17,31 @@ Menu::Menu(RenderWindow &window1, Font & fontArg): window(window1), font(fontArg
     menu[1].setFillColor(Color::White);
     menu[1].setString("Play");
     menu[1].setCharacterSize(45);
-    menu[1].setPosition(window.getSize().x/2 + 50, 250);
+    menu[1].setPosition(window.getSize().x/2 + 50, 240);
     //Settings
     menu[2].setFont(font);
     menu[2].setFillColor(Color::Cyan);
     menu[2].setString("Difficulty");
     menu[2].setCharacterSize(45);
-    menu[2].setPosition(window.getSize().x/2 + 50, 375);
+    menu[2].setPosition(window.getSize().x/2 + 50, 340);
     //How to play
     menu[3].setFont(font);
     menu[3].setFillColor(Color::Cyan);
     menu[3].setString("How to play");
     menu[3].setCharacterSize(45);
-    menu[3].setPosition(window.getSize().x/2 + 50, 500);
+    menu[3].setPosition(window.getSize().x/2 + 50, 440);
     //Credits
     menu[4].setFont(font);
     menu[4].setFillColor(Color::Cyan);
     menu[4].setString("Credits");
     menu[4].setCharacterSize(45);
-    menu[4].setPosition(window.getSize().x/2 + 50, 625);
+    menu[4].setPosition(window.getSize().x/2 + 50, 540);
+    //Exit
+    menu[5].setFont(font);
+    menu[5].setFillColor(Color::Cyan);
+    menu[5].setString("Exit");
+    menu[5].setCharacterSize(45);
+    menu[5].setPosition(window.getSize().x/2 + 50, 640);
 
     Selected_index = 1;
 }
@@ -61,7 +66,7 @@ void Menu::Move_Up() {
        Selected_index--;
        if (Selected_index == 0)
        {
-           Selected_index = 4;
+           Selected_index = 5;
        }
        menu[Selected_index].setFillColor(Color::White);
    }
@@ -72,7 +77,7 @@ void Menu::Move_Down(){
     {
         menu[Selected_index].setFillColor(Color::Cyan);
         Selected_index++;
-        if (Selected_index == 5)
+        if (Selected_index == 6)
         {
             Selected_index = 1;
         }
@@ -125,8 +130,11 @@ short Menu::menu_update()
                     audio.bgMusicStop();
                     return (Selected_index);
                 }
-                if(event.key.code == Keyboard::Escape)
-                    window.close();
+                if (event.key.code == Keyboard::Escape)
+                {
+                    audio.bgMusicStop();
+                    return 5;
+                }
             }
         }
         draw();

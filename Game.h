@@ -54,9 +54,9 @@ private:
 public:
     Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
     void run();
-    void update();
+    bool update();
     void display();
-    void steer();
+    bool steer();
     void drawInterface();
     void drawPlayerStuff();
     void loadTextures();
@@ -65,7 +65,7 @@ public:
     void playerCollision(std::vector<Alien*> & unitBank);
     void playerCollision(std::vector<ShootingAlien*> & unitBank);
     void playerCollision(std::vector<Shoot*> & bulletBank);
-    void playerManager();
+    bool playerManager();
     void bulletMaker(Player& playerArg);
     void alienBulletMaker(ShootingAlien*& enemyArg);
     void bulletDestroyer(Shoot*& a, unsigned int& ii);
@@ -78,6 +78,7 @@ public:
     void statsUpdate();
     void setCredits();
     void setHowToPlay();
+    void gameOver();
 };
 
 

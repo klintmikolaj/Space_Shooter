@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
-#include <iostream>
 
 
 using namespace std;
@@ -9,13 +8,13 @@ using namespace sf;
 
 Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg, short& difficultyArg): player{nameArg,windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), difficulty(difficultyArg), isLeft(false), isX(false), isUp(false), isY(false)
 {
-    lastEnemy=NULL;
-    lastBullet=NULL;
+    lastEnemy=nullptr;
+    lastBullet=nullptr;
 }
 
 void Game::run()
 {
-    cout<<(float)difficulty<<endl;
+    //cout<<(float)difficulty<<endl;
     //frameCount = 0;
     loadTextures();
     window.clear(sf::Color::Black);
@@ -29,48 +28,53 @@ void Game::run()
     player.showSprite();
     audio.bgMusicLoad(false);
     audio.bgMusicPlay();
-    while(window.isOpen())
+    while(window.isOpen()&&update())
     {
 //        cout<<player.getXLeft()<<endl;
-        update();
-        display();
+    }
+    if(!update())
+    {
+        gameOver();
     }
 }
 
-void Game::update()
+bool Game::update()
 {
     window.clear(sf::Color::Black);
     window.draw(background);
     masterOfBullets();
-    playerManager();
+    if(!playerManager())
+        return false;
     asteroidAhead();
     alienAttack();
     shootingAlienAttack();
     drawPlayerStuff();
     drawInterface();
-    steer();
+    if(!steer())
+        return false;
     window.display();
    // frameCount += 1;
+   return true;
 }
 
 void Game::display()
 {
 }
 
-void Game::steer()
+bool Game::steer()
 {
     while (window.pollEvent(event))
 //    {
         switch(event.type)
         {
             case sf::Event::Closed:
-                window.close();
+                return false;
                 break;
             case sf::Event::KeyPressed:
                 switch(event.key.code)
                 {
                     case sf::Keyboard::Escape:
-                        window.close();
+                        return false;
                         break;
                     case sf::Keyboard::LShift:
                     case sf::Keyboard::RShift:
@@ -118,6 +122,7 @@ void Game::steer()
                 break;
         }
 //    }
+    return true;
 }
 
 
@@ -229,7 +234,7 @@ void Game::playerCollision(std::vector<Shoot*>& bulletBank)
     }
 }
 
-void Game::playerManager()
+bool Game::playerManager()
 {
     playerCollision(aliens);
     playerCollision(shootingAliens);
@@ -244,7 +249,8 @@ void Game::playerManager()
         player.moveY(0.1*multiplier, !isUp);
     }
     if(player.isDead())
-        window.close() ;
+        return false;
+    return true;
 }
 
 void Game::bulletMaker(Player& playerArg)
@@ -395,4 +401,26 @@ void Game::aliensSetSpawners()
     alienSpawnNow = alienSpawnCooldown;
     shootingAlienSpawnNow = alienSpawnCooldown;
     shootingNow = alienSpawnCooldown;
+}
+
+
+
+void Game::gameOver()
+{
+    sf::Text gameOverTxt;
+    gameOverTxt.setFillColor(sf::Color::Red);
+    gameOverTxt.setFont(font);
+    gameOverTxt.setCharacterSize(100);
+    sf::Text scoreTxt=gameOverTxt;
+    gameOverTxt.setString("Game over!");
+    string scoreStr="Score: ";
+    scoreStr+=to_string(player.getPoints());
+    scoreTxt.setString(scoreStr);
+    gameOverTxt.setPosition(window.getSize().x/2-gameOverTxt.getLocalBounds().width/2,window.getSize().y/2-gameOverTxt.getLocalBounds().height/2-scoreTxt.getLocalBounds().height);
+    scoreTxt.setPosition(window.getSize().x/2-scoreTxt.getLocalBounds().width/2,window.getSize().y/2-scoreTxt.getLocalBounds().height/2+gameOverTxt.getLocalBounds().height);
+    window.draw(gameOverTxt);
+    window.draw(scoreTxt);
+    window.display();
+    for(int i=INT_MIN/2; i<0; ++i)
+    {}
 }

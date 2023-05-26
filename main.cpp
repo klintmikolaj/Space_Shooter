@@ -1,4 +1,3 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "Menu.h"
@@ -20,35 +19,43 @@ int main()
     Menu menu{window, font};
     short difficulty=1;
     short temp;
-    do
+    bool exit=false;
+    sf::Event event;
+    while(!exit)
     {
-        temp=menu.menu_update();
-        if(temp==2)
-        {
-            Settings settings(windowWidth, windowHeight, window, font);
-            short temp2;
-            temp2 = settings.settingsUpdate();
-            if(temp2>0)
-                difficulty=temp2;
+        do {
+            temp = menu.menu_update();
+            if (temp == 2)
+            {
+                Settings settings(windowWidth, windowHeight, window, font);
+                short temp2;
+                temp2 = settings.settingsUpdate();
+                if (temp2 > 0)
+                    difficulty = temp2;
+            }
+            if (temp == 3)
+            {
+                Menu_backgrounds menuBackground{window};
+                menuBackground.draw(false);
+            }
+            if (temp == 4)
+            {
+                Menu_backgrounds menuBackground{window};
+                menuBackground.draw(true);
+            }
         }
-        if(temp==3)
+        while (temp > 1 && temp<5);
+
+        if(temp==5)
         {
-            Menu_backgrounds menuBackground{window};
-            menuBackground.draw(false);
+            return 0;
         }
-        if (temp==4)
+
+        if (temp == 1)
         {
-            Menu_backgrounds menuBackground{window};
-            menuBackground.draw(true);
+            Game game(name, window, font, difficulty);
+            game.run();
         }
     }
-    while(temp>1);
-    if(temp==1)
-    {
-        Game game(name, window, font, difficulty);
-        game.run();
-    }
-
-
     return 0;
 }
