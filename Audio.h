@@ -19,6 +19,7 @@ public:
 private:
     sf::Music music;
     sf::Sound sound;
+    sf::Sound oughSound;
     sf::SoundBuffer piuBuffer;
     sf::SoundBuffer dziuBuffer;
     sf::SoundBuffer oughBuffer;

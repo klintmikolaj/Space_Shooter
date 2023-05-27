@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/System.hpp>
 #include "Game.h"
-
 
 using namespace std;
 using namespace sf;
@@ -419,6 +419,11 @@ void Game::gameOver()
     window.draw(gameOverTxt);
     window.draw(scoreTxt);
     window.display();
-    for(int i=INT_MIN/2; i<0; ++i)
-    {}
+    sf::Clock clock;
+    sf::Time elapsedTime;
+    do
+    {
+        elapsedTime = clock.getElapsedTime();
+    }
+    while(elapsedTime!=sf::seconds(3));
 }

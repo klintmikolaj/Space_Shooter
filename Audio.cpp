@@ -38,8 +38,8 @@ void Audio::piu(bool piu)
 
 void Audio::ough()
 {
-    sound.setBuffer(oughBuffer);
-    sound.play();
+    oughSound.setBuffer(oughBuffer);
+    oughSound.play();
 }
 
 void Audio::bgMusicStop()

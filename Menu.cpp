@@ -112,8 +112,7 @@ short Menu::menu_update()
         {
             if (event.type == Event::Closed)
             {
-                window.close();
-                break;
+                return 5;
             }
             if (event.type == Event::KeyPressed)
             {

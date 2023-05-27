@@ -34,7 +34,7 @@ void Menu_backgrounds::draw(bool credits)
         while (window.pollEvent(event))
         {
             if(event.type==Event::Closed)
-                window.close();
+                return;
             if(event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
             {
                  return;

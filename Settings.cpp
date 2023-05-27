@@ -60,8 +60,7 @@ short Settings::settingsUpdate() {
 
             if (event.type == Event::Closed)
             {
-                window.close();
-                break;
+                return 0;
             }
             if (event.type == Event::KeyPressed)
             {
