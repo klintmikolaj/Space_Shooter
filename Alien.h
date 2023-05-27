@@ -10,7 +10,7 @@
 class Alien: public Enemies {
 public:
     Alien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg);
-    void updateAlien();
+    void update();
 protected:
     sf::RenderWindow& window;
     int tick;

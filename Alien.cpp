@@ -15,8 +15,9 @@ Alien::Alien(sf::RenderWindow &windowArg, sf::Texture &textureArg, float x, floa
     tick = 0;
 }
 
-void Alien::updateAlien()
+void Alien::update()
 {
+    Enemies::update();
     float x = tick/5;
     int z = sin((x/10) + (M_PI/2));
     int multiplier = z > 0 ? 0: sin(x/10) > 0?1:-1;

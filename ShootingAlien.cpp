@@ -11,8 +11,9 @@ ShootingAlien::ShootingAlien(sf::RenderWindow & windowArg, sf::Texture & texture
     tick = 0;
 }
 
-void ShootingAlien::updateShootingAlien()
+void ShootingAlien::update()
 {
+    Enemies::update();
     float T = tick/100.f; //okres
     int x = 2;
     float z = cos((T/(5*x)));

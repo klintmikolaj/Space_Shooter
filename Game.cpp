@@ -331,7 +331,6 @@ void Game::alienAttack() {
     for (auto Alien: aliens)
     {
         Alien->update();
-        Alien->updateAlien();
         if(Alien->killMe())
             aliens.erase(aliens.begin()+ii);
 
@@ -362,7 +361,6 @@ void Game::alienAttack() {
     for (auto sAl: shootingAliens)
     {
         sAl->update();
-        sAl->updateShootingAlien();
         shootingNow += 0.2;
         if (shootingNow >= alienSpawnCooldown)
         {

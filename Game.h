@@ -76,8 +76,6 @@ public:
     void asteroidsSetSpawners();
     void aliensSetSpawners();
     void statsUpdate();
-    void setCredits();
-    void setHowToPlay();
     void gameOver();
 };
 
