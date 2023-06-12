@@ -14,13 +14,11 @@ ShootingAlien::ShootingAlien(sf::RenderWindow & windowArg, sf::Texture & texture
 void ShootingAlien::update()
 {
     Enemies::update();
-    float T = tick/100.f; //okres
-    int x = 2;
-    float z = cos((T/(5*x)));
-    int multiplier = z > 0 ? 0: sin(T/(2*x)) > 0?1:-1;
-    float speed = pow(cos(T/10000), 2) * 0.1;
-//    cout << T << " " << z << " " << multiplier << " " << speed << endl;
+    float period = tick/100.f;
+    int test = 2;
+    float z = cos((period/(5*test)));
+    int multiplier = z > 0 ? 0: sin(period/(2*test)) > 0?1:-1;
+    float speed = pow(cos(period/10000), 2) * 0.1;
     moveX(speed * multiplier, true);
-    //    cout << 1 * multiplier << x << speed << endl;
     tick += 1;
 }
