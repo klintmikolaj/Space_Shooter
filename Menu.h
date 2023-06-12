@@ -2,8 +2,8 @@
 #define SPACE_SHOOTER_MENU_H
 
 #include <SFML/Graphics.hpp>
+#include "Audio.h"
 #define MENU_ITEMS 6
-
 
 class Menu {
 public:

@@ -9,7 +9,7 @@ class Unit
 {
     public:
         Unit(sf::RenderWindow &, sf::Texture &);
-        Unit(sf::RenderWindow &, sf::Texture &, int);
+//        Unit(sf::RenderWindow &, sf::Texture &, int);
 
         void moveX(float px, bool direction);
         void moveY(float px, bool direction);
