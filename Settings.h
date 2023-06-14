@@ -22,6 +22,7 @@ public:
     /*
      * loading music
      * checks if any key is pressed and calls specific functions
+     * lets the player exit the settings window
     */
     short settingsUpdate();
 

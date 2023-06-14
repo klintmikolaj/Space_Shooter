@@ -44,9 +44,9 @@ void Unit::moveY(float px, bool direction)
 //    sprite.move
 //}
 
-void Unit::rotate(int ang) {
-    sprite.rotate(ang);
-}
+//void Unit::rotate(int ang) {
+//    sprite.rotate(ang);
+//}
 
 
 void Unit::loadTexture()
