@@ -10,6 +10,8 @@
 class Audio {
 public:
     Audio();
+
+
     void bgMusicLoad(bool menu);
     void bgMusicPlay();
     void bgMusicStop();
