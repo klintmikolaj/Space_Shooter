@@ -12,7 +12,15 @@ class GameLoader
 {
     public:
         GameLoader();
+
+        /*
+         * creates Menu object
+         * creates windows for specific Menu_backgrounds options
+         * lets player exit the window
+         * creates game object and runs the game
+        */
         void load();
+
     private:
         const int windowWidth;
         const int windowHeight;
