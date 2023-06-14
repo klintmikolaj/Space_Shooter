@@ -10,5 +10,6 @@ The project was creating in C++ using the newly learned type of programming know
 You can start playing using your programming IDE supporting C++ language (such as Clion or VScode) with downloaded SFML module. Simply clone the program from github and try to open it as a new project. 
 Link to SFML download: https://www.sfml-dev.org/download.php
 
-#Authors
+# Authors
+https://github.com/klintmikolaj
 
