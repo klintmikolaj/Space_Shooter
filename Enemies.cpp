@@ -7,7 +7,7 @@ Enemies::Enemies(RenderWindow & windowArg, Texture & textureArg, float speedArg,
 }
 
 void Enemies::update() {
-    moveY(0.1*speed,true);
+    move(0,0.1*speed,true,true, true);
     showSprite();
 }
 

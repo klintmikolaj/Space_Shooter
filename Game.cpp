@@ -240,14 +240,9 @@ bool Game::playerManager()
     playerCollision(shootingAliens);
     playerCollision(asteroids);
     playerCollision(alienBulletsBank);
-    if(isX)
-    {
-        player.moveX(0.1*multiplier, !isLeft);
-    }
-    if(isY)
-    {
-        player.moveY(0.1*multiplier, !isUp);
-    }
+
+    player.move(0.1*multiplier*isX,0.1*multiplier*isY,!isLeft,!isUp,false);
+
     if(player.isDead())
         return false;
     return true;

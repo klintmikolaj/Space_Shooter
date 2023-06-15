@@ -9,11 +9,9 @@ class Unit
 {
     public:
         Unit(sf::RenderWindow &, sf::Texture &);
-//        Unit(sf::RenderWindow &, sf::Texture &, int);
 
-        void moveX(float px, bool direction);
-        void moveY(float px, bool direction);
-        void moveCircular(int rad, bool direction);
+        bool visible(sf::Vector2f position, sf::Vector2f movement);
+        void move(float x, float y, bool dirX, bool dirY, bool isAlien);
         void rotate(int ang);
         void loadTexture();
         void setPlayerPosition();
@@ -26,9 +24,9 @@ class Unit
         float getY() const;
         float getDown() const;
         sf::Vector2f getCenter() const;
-        sf::Vector2f getBounds() const;
+        sf::Vector2<unsigned int> getBounds() const;
 
-        bool collision(sf::Vector2f centerV, sf::Vector2f boundsV) const;
+        bool collision(sf::Vector2f centerV, sf::Vector2<unsigned int>boundsV) const;
         bool collision(sf::Vector2f centerV, float diameter) const;
         bool killMe() const;
 

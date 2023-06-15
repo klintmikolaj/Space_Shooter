@@ -13,46 +13,33 @@ Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg):window(windowArg)
 {
 }
 
-
-void Unit::moveX(float px, bool direction)
+bool Unit::visible(sf::Vector2f position, sf::Vector2f movement)
 {
-    bool visible;
-    if(direction)
-    {
-        visible= window.getSize().x - sprite.getPosition().x - px - texture.getSize().x / 2 > 0;
-    }
-    else
-    {
-        px=-px;
-        visible= (sprite.getPosition().x + texture.getSize().x / 2 + px) >= 0;
-    }
-    if(visible)
-        sprite.move(px, 0);
-//    window.draw(sprite);
-//    window.display();
+    Vector2f afterMovement=position+movement;
+    if(afterMovement.x>1000||afterMovement.x<0||afterMovement.y<0||afterMovement.y>800)
+        return false;
+    return true;
 }
 
-void Unit::moveY(float px, bool direction)
+void Unit::move(float x, float y, bool dirX, bool dirY, bool isAlien)
 {
-    char turn;
-    direction?turn=1:turn=-1;
-    sprite.move(0, px*turn);
+    char ax=dirX?1:-1;
+    char ay=dirY?1:-1;
+    Vector2f movement(ax*x,ay*y);
+    if(isAlien||visible(getCenter(), movement))
+    {
+        sprite.move(movement);
+    }
 }
 
-//void Unit::moveCircular(int rad, bool direction) {
-//
-//    sprite.move
-//}
-
-void Unit::rotate(int ang) {
+void Unit::rotate(int ang)
+{
     sprite.rotate(ang);
 }
 
 
 void Unit::loadTexture()
 {
-//    cout<<texture.getSize().x<<endl;
-//    cout<<texture.getSize().y<<endl;
     sprite.setTexture(texture);
 }
 
@@ -103,10 +90,9 @@ Vector2f Unit::getCenter() const
     return sprite.getPosition()+a;
 }
 
-Vector2f Unit::getBounds() const
+Vector2<unsigned int>Unit::getBounds() const
 {
-    Vector2f a(texture.getSize().x,texture.getSize().y);
-    return a;
+    return texture.getSize();
 }
 
 float modulo(float a)
@@ -116,7 +102,7 @@ float modulo(float a)
     return a;
 }
 
-bool Unit::collision(sf::Vector2f centerV, sf::Vector2f boundsV) const
+bool Unit::collision(sf::Vector2f centerV, sf::Vector2<unsigned int>boundsV) const
 {
     if(modulo(getCenter().x - centerV.x) < (texture.getSize().x + boundsV.x)/2.5 && modulo(getCenter().y - centerV.y) < (texture.getSize().y + boundsV.y)/2.5)
     {
