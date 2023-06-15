@@ -4,7 +4,8 @@ Space shooter is a well-known simple game, where tou on the role of a spaceship 
 
 ![image](https://github.com/klintmikolaj/Space_Shooter/assets/90563978/21195f5c-bbc4-4cf1-88e5-e5636722e5b1)
 
-The project was creating in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications.
+The project was creating in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications. You can read about this tool here:
+https://www.sfml-dev.org/
 
 # How to install
 You can start playing using your programming IDE supporting C++ language (such as Clion or VScode) with downloaded SFML module. Simply clone the program from github and try to open it as a new project. 
@@ -12,4 +13,5 @@ Link to SFML download: https://www.sfml-dev.org/download.php
 
 # Authors
 https://github.com/klintmikolaj
+https://github.com/gegangene
 
