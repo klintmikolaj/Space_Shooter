@@ -10,7 +10,7 @@ If you think that the challenge is too trivial for you, try changing the difficu
 ![image](https://github.com/klintmikolaj/Space_Shooter/assets/90563978/4751e7da-2c38-4015-9428-08201d3f717e)
 
 
-The project was creating in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications. You can read about this tool here:
+The project was created in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications. You can read about this tool here:
 https://www.sfml-dev.org/
 
 # How to install
