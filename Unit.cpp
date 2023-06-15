@@ -32,12 +32,6 @@ void Unit::move(float x, float y, bool dirX, bool dirY, bool isAlien)
     }
 }
 
-void Unit::rotate(int ang)
-{
-    sprite.rotate(ang);
-}
-
-
 void Unit::loadTexture()
 {
     sprite.setTexture(texture);

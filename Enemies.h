@@ -8,8 +8,14 @@ class Enemies: public Unit {
 public:
     Enemies(sf::RenderWindow& windowArg, sf::Texture& textureArg, float speedArg, int pointsForPlayerArg);
 
+    /*
+     * Updating the enemy
+     */
     void update();
 
+    /*
+     * Function returns number of points which will be subtracted from players HP
+     */
     int getPoints() const;
 
 protected:

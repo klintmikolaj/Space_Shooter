@@ -19,8 +19,6 @@ void ShootingAlien::update()
     float z = cos((T/(5*x)));
     int multiplier = z > 0 ? 0: sin(T/(2*x)) > 0?1:-1;
     float speed = pow(cos(T/10000), 2) * 0.1;
-//    cout << T << " " << z << " " << multiplier << " " << speed << endl;
     move(speed * multiplier, 0, true, true, true);
-    //    cout << 1 * multiplier << x << speed << endl;
     tick += 1;
 }

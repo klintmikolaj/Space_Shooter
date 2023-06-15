@@ -23,6 +23,5 @@ void Alien::update()
     int multiplier = z > 0 ? 0: sin(x/10) > 0?1:-1;
     int speed = cos(x/100) * 1.2;
     move(static_cast<float>(speed * multiplier),0,true, true, true);
-//    cout << 1 * multiplier << x << speed << endl;
     ++tick;
 }

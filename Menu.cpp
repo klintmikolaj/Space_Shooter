@@ -5,37 +5,36 @@ using namespace sf;
 
 Menu::Menu(RenderWindow &window1, Font & fontArg): window(window1), font(fontArg)
 {
-    //Title
     menu[0].setFont(font);
     menu[0].setFillColor(Color::Cyan);
     menu[0].setString("Space Shooter");
     menu[0].setCharacterSize(80);
     menu[0].setPosition(12, 50);
-    //Play
+
     menu[1].setFont(font);
     menu[1].setFillColor(Color::White);
     menu[1].setString("Play");
     menu[1].setCharacterSize(45);
     menu[1].setPosition(window.getSize().x/2 + 50, 240);
-    //Settings
+
     menu[2].setFont(font);
     menu[2].setFillColor(Color::Cyan);
     menu[2].setString("Difficulty");
     menu[2].setCharacterSize(45);
     menu[2].setPosition(window.getSize().x/2 + 50, 340);
-    //How to play
+
     menu[3].setFont(font);
     menu[3].setFillColor(Color::Cyan);
     menu[3].setString("How to play");
     menu[3].setCharacterSize(45);
     menu[3].setPosition(window.getSize().x/2 + 50, 440);
-    //Credits
+
     menu[4].setFont(font);
     menu[4].setFillColor(Color::Cyan);
     menu[4].setString("Credits");
     menu[4].setCharacterSize(45);
     menu[4].setPosition(window.getSize().x/2 + 50, 540);
-    //Exit
+
     menu[5].setFont(font);
     menu[5].setFillColor(Color::Cyan);
     menu[5].setString("Exit");
