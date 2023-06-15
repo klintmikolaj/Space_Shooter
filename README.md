@@ -7,6 +7,8 @@ Space shooter is a well-known simple game, where tou on the role of a spaceship 
 # Difficulty levels:
 
 If you think that the challenge is too trivial for you, try changing the difficulty level. Both asteroids and aliens will move faster, so be careful! You can choose from 4 leveles:
+![image](https://github.com/klintmikolaj/Space_Shooter/assets/90563978/4751e7da-2c38-4015-9428-08201d3f717e)
+
 
 The project was creating in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications. You can read about this tool here:
 https://www.sfml-dev.org/
