@@ -1,28 +1,29 @@
-# Space shooter (name subject to change)
+# Space shooter 
 
-Gracz wcieli się w pilota statku kosmicznego przemierzającego odległe zakątki wszechświata. Jego zadaniem będzie wykonywanie pobocznych misji, polegających na zbieraniu konkretnych elementów, niszczeniu statków kosmitów, unikaniu deszczów meteorytów, a co jakiś czas pokonywaniu potężnych wrogich bossów.
+Space shooter is a well-known simple game, where tou on the role of a spaceship commander. The objective is to destroy as many enemy ships and asteroids as you possibly can without being shot down, floating in the vastness of space. You can either avoid the enemies or try to besiege them by the bullet hail.
 
-Na ekranie widoczny będzie statek kosmiczny, którym gracz będzie się poruszać za pomocą strzałek. Wraz z upływem gry będzie on udoskonalany za pomocą części zbieranych w trakcie rozgrywki lub zamieniany na lepszy, kupiony za wirtualną kosmiczną walutę. Każdy ze statków będzie miał swoje charakterystyczne statystyki (takie jak punkty życia czy prędkość), a także własne ataki specjalne. W grze spotkamy wiele rodzajów wrogich statków, które także różnić się od siebie będą statystykami i różnymi metodami na zniszczenie statku gracza. Rozgrywka będzie więc urozmaicona, zgodna z prawem Bushnella: „Easy to learn, hard to master”.
+![image](https://github.com/klintmikolaj/Space_Shooter/assets/90563978/21195f5c-bbc4-4cf1-88e5-e5636722e5b1)
 
-//[baza (gracz kupuje tam i ulepsza statki)]
+# Difficulty levels:
 
-//[ataki na bazę]
-
-//[pytanie o sfml]
-
+If you think that the challenge is too trivial for you, try changing the difficulty level. Both asteroids and aliens will move faster, so be careful! You can choose from 4 leveles:
+![image](https://github.com/klintmikolaj/Space_Shooter/assets/90563978/4751e7da-2c38-4015-9428-08201d3f717e)
 
 
-## Podział na klasy:
-- Game - jest to klasa główna, odpowiedzialna za zarządzanie grą. Znajdzie się w niej pętla umożliwiająca działanie programu oraz podstawowe metody umożliwiające przerwanie, zatrzymanie i wznowienie gry. Klasa ta będzie miała dostęp do wszystkich innych klas. Zajdzie tu więc dziedziczenie.
-- Base - klasa bazowa, która będzie zawierać metody wspólne dla wszystkich obiektów, takie jak chociażby położenie na ekranie.
-- Stats - klasa magazynująca statystyki gracza, takie jak punkty życia, punkty doświadczenia, zebrane monety czy części statku. Zajdzie w niej pełna enkapsulacja danych
-- Player - klasa rysująca sprite gracza.
-- Enemy - klasa odpowiedzialna za charakterystyki przeciwników. M.in. tutaj zajdzie enkapsulacja, aby chronić zmienne przed dostępem z zewnątrz.
-- Sounds - W tej klasie zawierać się będą metody związane z odtwarzaniem plików dźwiękowych.
-- Ship - Klasa ta będzie przechowywać statystyki konkretnych statków oraz ich ataki specjalne
+The project was created in C++ using the newly learned type of programming known as object oriented programming. Game is displayed on specific windows which are created using the SFML module - a simple interface for developement of games and multimedia applications. You can read about this tool here:
+https://www.sfml-dev.org/
 
+# How to install
 
-## Sposób komunikacji z użytkownikiem:
-Komunikacja z użytkownikiem odbywać się będzie za pomocą graficznego interfejsu SMFL.
-Do sterowania gracz używać będzie klawiatury.
-Dodatkowo program zapisywać będzie aktualny stan gry w pliku tekstowym.
+You can start playing using your programming IDE supporting C++ language (such as Clion or VScode) with downloaded SFML module. Simply clone the program from github and try to open it as a new project. 
+Link to SFML download: https://www.sfml-dev.org/download.php
+
+# Authors
+
+https://github.com/klintmikolaj
+
+https://github.com/gegangene
+
+Textures used in the game comes from:
+https://www.pngmart.com/
+
