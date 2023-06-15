@@ -21,6 +21,7 @@ Link to SFML download: https://www.sfml-dev.org/download.php
 # Authors
 
 https://github.com/klintmikolaj
+
 https://github.com/gegangene
 
 Textures used in the game comes from:
