@@ -14,13 +14,15 @@ The project was created in C++ using the newly learned type of programming known
 https://www.sfml-dev.org/
 
 # How to install
+
 You can start playing using your programming IDE supporting C++ language (such as Clion or VScode) with downloaded SFML module. Simply clone the program from github and try to open it as a new project. 
 Link to SFML download: https://www.sfml-dev.org/download.php
 
 # Authors
+
 https://github.com/klintmikolaj
 https://github.com/gegangene
 
-#Textures used in the game comes from:
+Textures used in the game comes from:
 https://www.pngmart.com/
 
