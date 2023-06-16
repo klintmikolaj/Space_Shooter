@@ -77,25 +77,92 @@ public:
     * cooperates with specific keys from the keyboard
     */
     bool steer();
+    
+    /*
+    * displays the interface on the screen
+    */
     void drawInterface();
+    
+    /*
+    * displays players sprite
+    */
     void drawPlayerStuff();
+    
+    /*
+    * loads all textures from specific files
+    */
     void loadTextures();
+    
+    /*
+    * displays players name in the interface
+    */
     void loadPlayerStats();
+    
+    /*
+    * All four functions checks collision of player with specific object
+    * if the collision occurs functions play an audio file and decreases players HP 
+    */
     void playerCollision(std::vector<Asteroid*> & unitBank);
     void playerCollision(std::vector<Alien*> & unitBank);
     void playerCollision(std::vector<ShootingAlien*> & unitBank);
     void playerCollision(std::vector<Shoot*> & bulletBank);
+    
+    /*
+    * contains all types of collisions (asteroid, alien, shooting alien and boolet)
+    * returnes false value if the player lost all his HP  points
+    */
     bool playerManager();
+    
+    /*
+    * adds new object to players bullet vector
+    */
     void bulletMaker(Player& playerArg);
+    
+    /*
+    * adds new object to aliens bullet vector
+    */
     void alienBulletMaker(ShootingAlien*& enemyArg);
+    
+    /*
+    * erases the bullet from specific vector
+    */
     void bulletDestroyer(Shoot*& a, unsigned int& ii);
+    
+    /*
+    * updates bullet trajectory
+    */
     void masterOfBullets();
+    
+    /*
+    * spawns the asteroids and updates them
+    * destroys asteroids which fell off from the window
+    * increases players points if the bullet trajectory met asteroids one
+    */
     void asteroidAhead();
+    
+    /*
+    * both functions spawns specific types of aliens
+    * they update aliens and erases them if they fell of from the window
+    * they increase players points if the bullet trajectory met aliens one
+    */
     void alienAttack();
     void shootingAlienAttack();
+    
+    /*
+    * both functions set specific values for aliens and asteroids which will be used in 
+    */
     void asteroidsSetSpawners();
     void aliensSetSpawners();
+    
+    /*
+    * updates players stats
+    */
     void statsUpdate();
+    
+    /*
+    * displays "game over" background if players HP is equal to 0
+    * it holds it on the screen for 3 seconds
+    */
     void gameOver();
 };
 
