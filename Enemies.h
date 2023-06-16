@@ -10,6 +10,7 @@ public:
 
     /*
      * Updates the enemy
+     * Shows enemy sprite
      */
     void update();
 
