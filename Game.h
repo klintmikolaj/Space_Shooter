@@ -53,9 +53,29 @@ private:
 
 public:
     Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
+    
+    /*
+     * loads all textures
+     * clears the old window and creates a new one
+     * loads all default stats and sets players position in the center of the window
+     * updates the game if the window is open
+    */
     void run();
+    
+    /*
+    * clears the window and loads the background
+    * contains all enemies functions
+    *displays the window
+    */
     bool update();
-    void display();
+    
+    
+//     void display();
+    
+    /*
+    * allows the ship to move and accelerate
+    * cooperates with specific keys from the keyboard
+    */
     bool steer();
     void drawInterface();
     void drawPlayerStuff();
