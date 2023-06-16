@@ -14,8 +14,8 @@
 class Game
 {
     private:
-        sf::RenderWindow& window;
-        sf::Font& font;
+        sf::RenderWindow & window;
+        sf::Font & font;
         Player player;
         sf::Event event;
         sf::Text playerStats;
@@ -52,7 +52,7 @@ class Game
         bool isY;
 
     public:
-        Game(sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
+        Game(sf::RenderWindow & windowArg, sf::Font & fontArg, short & difficultyArg);
 
         /*
         * loads all textures from specific files
@@ -94,7 +94,7 @@ class Game
         /*
         * adds new object to players bullet vector
         */
-        void createPlayerBullet(Player& playerArg);
+        void createPlayerBullet(Player & playerArg);
         /*
         * adds new object to aliens bullet vector
         */
@@ -102,8 +102,7 @@ class Game
         /*
         * erases the bullet from specific vector
         */
-        void eraseBullet(Shoot& a, unsigned int& ii);
-
+        void eraseBullet(Shoot & a, unsigned int & ii);
 
 
         /*

@@ -127,18 +127,6 @@ bool Game::steer()
 
 
 
-
-void Game::updateInterface()
-{
-    statsBackground.setSize(sf::Vector2f(window.getSize().x, 60));
-    statsBackground.setPosition(0,0);
-    statsBackground.setFillColor(backColour);
-    window.draw(statsBackground);
-    updateOnScreenStats();
-    window.draw(playerStats);
-}
-
-
 template <typename SS>
 void Game::playerCollision(SS& unitBank)
 {
@@ -168,21 +156,6 @@ void Game::playerCollision(std::vector<Shoot>& bulletBank)
     }
 }
 
-bool Game::updatePlayer()
-{
-    playerCollision(aliens);
-    playerCollision(shootingAliens);
-    playerCollision(asteroids);
-    playerCollision(alienBulletsBank);
-
-    player.move(0.1*multiplier*isX,0.1*multiplier*isY,!isLeft,!isUp,false);
-
-    player.updateSprite();
-
-    if(player.isDead())
-        return false;
-    return true;
-}
 
 void Game::createPlayerBullet(Player& playerArg)
 {
@@ -202,6 +175,8 @@ void Game::eraseBullet(Shoot& a, unsigned int& ii)
     }
 }
 
+
+
 void Game::updateBullets()
 {
     unsigned int ii=0;
@@ -217,6 +192,23 @@ void Game::updateBullets()
         eraseBullet(a, ii);
         ++ii;
     }
+}
+
+
+bool Game::updatePlayer()
+{
+    playerCollision(aliens);
+    playerCollision(shootingAliens);
+    playerCollision(asteroids);
+    playerCollision(alienBulletsBank);
+
+    player.move(0.1*multiplier*isX,0.1*multiplier*isY,!isLeft,!isUp,false);
+
+    player.updateSprite();
+
+    if(player.isDead())
+        return false;
+    return true;
 }
 
 
@@ -276,7 +268,6 @@ void Game::updateAliens()
             ++bii;
         }
         ++ii;
-//        std::cout<<"Al"<<ii<<":"<<Alien->getXCenter()<<";"<<Alien->getY()<<"\n";
     }
 }
 
@@ -314,7 +305,6 @@ void Game::updateShootingAliens()
             ++bii;
         }
         ++ii;
-//        std::cout<<"Al"<<ii<<":"<<sAl->getXCenter()<<";"<<sAl->getY()<<"\n";
     }
 }
 
@@ -327,6 +317,17 @@ void Game::updateOnScreenStats()
     playerStatsStr+=to_string(player.getPoints());
     playerStats.setString(playerStatsStr);
     playerStats.setPosition(window.getSize().x/2-playerStats.getLocalBounds().width/2,0);
+}
+
+
+void Game::updateInterface()
+{
+    statsBackground.setSize(sf::Vector2f(window.getSize().x, 60));
+    statsBackground.setPosition(0,0);
+    statsBackground.setFillColor(backColour);
+    window.draw(statsBackground);
+    updateOnScreenStats();
+    window.draw(playerStats);
 }
 
 
