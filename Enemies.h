@@ -6,7 +6,7 @@
 
 class Enemies: public Unit {
 public:
-    Enemies(sf::RenderWindow& windowArg, sf::Texture& textureArg, float speedArg, int pointsForPlayerArg);
+    Enemies(sf::RenderWindow * windowArg, sf::Texture * textureArg, float speedArg, int pointsForPlayerArg);
 
     /*
      * Updating the enemy

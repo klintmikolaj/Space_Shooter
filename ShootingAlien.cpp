@@ -6,7 +6,7 @@
 #include <cmath>
 #include <iostream>
 using namespace std;
-ShootingAlien::ShootingAlien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg):Alien{windowArg, textureArg, x, y, size, pointsForPlayerArg, speedArg}
+ShootingAlien::ShootingAlien(sf::RenderWindow * windowArg, sf::Texture * textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg):Alien{windowArg, textureArg, x, y, size, pointsForPlayerArg, speedArg}
 {
     tick = 0;
 }

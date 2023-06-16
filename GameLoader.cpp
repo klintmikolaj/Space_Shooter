@@ -7,7 +7,7 @@
 #include "Settings.h"
 #include "Game.h"
 
-GameLoader::GameLoader(): name{"adam"}, difficulty{1}, exit{false}, windowWidth{1000}, windowHeight{800}
+GameLoader::GameLoader(): difficulty{1}, exit{false}, windowWidth{1000}, windowHeight{800}
 {
     window.create(sf::VideoMode(windowWidth, windowHeight), "Space Shooter (name subject to change)",sf::Style::Close);
     font.loadFromFile("../fonts/ethnocentricRg.otf");
@@ -50,7 +50,7 @@ void GameLoader::load()
 
         if (temp == 1)
         {
-            Game game(name, window, font, difficulty);
+            Game game(window, font, difficulty);
             game.run();
         }
     }

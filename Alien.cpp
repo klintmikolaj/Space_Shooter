@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Alien::Alien(sf::RenderWindow &windowArg, sf::Texture &textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg): Enemies{windowArg, textureArg,speedArg,pointsForPlayerArg}, window{windowArg}
+Alien::Alien(sf::RenderWindow * windowArg, sf::Texture * textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg): Enemies{windowArg, textureArg,speedArg,pointsForPlayerArg}
 {
     loadTexture();
     setEnemyPosistion(x, y);

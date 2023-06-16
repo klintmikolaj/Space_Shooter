@@ -24,7 +24,6 @@ class GameLoader
     private:
         const int windowWidth;
         const int windowHeight;
-        std::string name;
         sf::RenderWindow window;
         sf::Font font;
         short difficulty;

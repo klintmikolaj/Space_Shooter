@@ -2,7 +2,7 @@
 
 using namespace sf;
 
-Enemies::Enemies(RenderWindow & windowArg, Texture & textureArg, float speedArg, int pointsForPlayerArg): Unit{windowArg,textureArg}, speed(speedArg), pointsForPlayer(pointsForPlayerArg)
+Enemies::Enemies(RenderWindow * windowArg, Texture * textureArg, float speedArg, int pointsForPlayerArg): Unit{windowArg,textureArg}, speed(speedArg), pointsForPlayer(pointsForPlayerArg)
 {
 }
 

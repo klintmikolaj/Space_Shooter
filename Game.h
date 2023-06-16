@@ -21,9 +21,9 @@ private:
     Audio audio;
     std::vector<Shoot*> bulletsBank;
     std::vector<Shoot*> alienBulletsBank;
-    std::vector<Asteroid*> asteroids;
-    std::vector<Alien*> aliens;
-    std::vector<ShootingAlien*> shootingAliens;
+    std::vector<Asteroid> asteroids;
+    std::vector<Alien> aliens;
+    std::vector<ShootingAlien> shootingAliens;
     Unit* lastEnemy;
     Shoot* lastBullet;
     sf::Sprite background;
@@ -52,29 +52,26 @@ private:
     bool isY;
 
 public:
-    Game(std::string& nameArg, sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
+    Game(sf::RenderWindow& windowArg, sf::Font& fontArg, short& difficultyArg);
+    void loadTextures();
+    void loadPlayerStats();
+    void setSpawners();
     void run();
     bool update();
-    void display();
     bool steer();
     void drawInterface();
     void drawPlayerStuff();
-    void loadTextures();
-    void loadPlayerStats();
-    void playerCollision(std::vector<Asteroid*> & unitBank);
-    void playerCollision(std::vector<Alien*> & unitBank);
-    void playerCollision(std::vector<ShootingAlien*> & unitBank);
+    template <typename SS>
+    void playerCollision(SS & unitBank);
     void playerCollision(std::vector<Shoot*> & bulletBank);
     bool playerManager();
     void bulletMaker(Player& playerArg);
-    void alienBulletMaker(ShootingAlien*& enemyArg);
+    void alienBulletMaker(ShootingAlien & enemyArg);
     void bulletDestroyer(Shoot*& a, unsigned int& ii);
     void masterOfBullets();
     void asteroidAhead();
     void alienAttack();
     void shootingAlienAttack();
-    void asteroidsSetSpawners();
-    void aliensSetSpawners();
     void statsUpdate();
     void gameOver();
 };

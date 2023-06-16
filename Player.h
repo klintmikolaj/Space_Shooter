@@ -10,7 +10,7 @@
 class Player: public Unit
 {
     public:
-        Player(std::string & playerName, sf::RenderWindow & windowArg, sf::Texture & textureArg);
+        Player(sf::RenderWindow & windowArg, sf::Texture & textureArg);
 
         /*
         * @param amount
@@ -28,8 +28,6 @@ class Player: public Unit
         */
         int getHP() const;
 
-        std::string getName() const;
-
         /*
         * Function returns the number of player points
         */
@@ -41,7 +39,6 @@ class Player: public Unit
         bool isDead() const;
 
     private:
-        const std::string name;
         int hp;
         long points;
 };

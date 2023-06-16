@@ -8,7 +8,7 @@
 class Unit
 {
     public:
-        Unit(sf::RenderWindow &, sf::Texture &);
+        Unit(sf::RenderWindow *, sf::Texture *);
 
         bool visible(sf::Vector2f position, sf::Vector2f movement);
 
@@ -52,11 +52,6 @@ class Unit
         void showSprite();
 
         /*
-        * returns X position of an object
-        */
-        float getXLeft() const;
-
-        /*
         * returns X position of an object, exactly in the center depending on window width
         */
         float getXCenter() const;
@@ -88,8 +83,8 @@ class Unit
         bool killMe() const;
 
     private:
-        sf::RenderWindow & window;
-        sf::Texture & texture;
+        sf::RenderWindow * window;
+        sf::Texture * texture;
         sf::Sprite sprite;
 };
 

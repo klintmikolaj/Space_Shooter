@@ -6,10 +6,40 @@
 using namespace std;
 using namespace sf;
 
-Game::Game(string& nameArg, sf::RenderWindow & windowArg, sf::Font& fontArg, short& difficultyArg): player{nameArg,windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), difficulty(difficultyArg), isLeft(false), isX(false), isUp(false), isY(false)
+//#define greater(x, y) ((x) > (y) ? (x) : (y))
+
+Game::Game(sf::RenderWindow & windowArg, sf::Font& fontArg, short& difficultyArg): player{windowArg,playerTexture}, window(windowArg), font(fontArg), multiplier(1), difficulty(difficultyArg), isLeft(false), isX(false), isUp(false), isY(false)
 {
     lastEnemy=nullptr;
     lastBullet=nullptr;
+}
+
+void Game::loadTextures()
+{
+    playerTexture.loadFromFile("../textures/Starship_smol.png");
+    backgroundTexture.loadFromFile("../textures/background2.jpg");
+    bulletTexture.loadFromFile("../textures/New_Bullet.png");
+    alienBulletTexture.loadFromFile("../textures/New_Bullet_Red.png");
+    asteroidTexture2.loadFromFile("../textures/asteroid2.png");
+    alienTexture1.loadFromFile("../textures/Starship_3.png");
+    shootingAlienTexture.loadFromFile("../textures/Starship_4_smol.png");
+}
+
+void Game::loadPlayerStats()
+{
+    playerStats.setFont(font);
+    playerStats.setFillColor(sf::Color::Cyan);
+    playerStats.setCharacterSize(40);
+}
+
+void Game::setSpawners()
+{
+    asteroidSpawnCooldown = 200 ;
+    asteroidSpawnNow = asteroidSpawnCooldown;
+    alienSpawnCooldown = 500;
+    alienSpawnNow = alienSpawnCooldown;
+    shootingAlienSpawnNow = alienSpawnCooldown;
+    shootingNow = alienSpawnCooldown;
 }
 
 void Game::run()
@@ -21,8 +51,7 @@ void Game::run()
     background.setTexture(backgroundTexture);
     window.draw(background);
     loadPlayerStats();
-    asteroidsSetSpawners();
-    aliensSetSpawners();
+    setSpawners();
     player.loadTexture();
     player.setPlayerPosition();
     player.showSprite();
@@ -55,10 +84,6 @@ bool Game::update()
     window.display();
    // frameCount += 1;
    return true;
-}
-
-void Game::display()
-{
 }
 
 bool Game::steer()
@@ -128,7 +153,7 @@ bool Game::steer()
 
 void Game::statsUpdate()
 {
-    string playerStatsStr=player.getName();
+    string playerStatsStr="PLAYER";
     playerStatsStr+="    HP ";
     playerStatsStr+= to_string(player.getHP());
     playerStatsStr+="    SCR ";
@@ -156,65 +181,17 @@ void Game::drawPlayerStuff()
     player.showSprite();
 }
 
-void Game::loadTextures()
-{
-    playerTexture.loadFromFile("../textures/Starship_smol.png");
-    backgroundTexture.loadFromFile("../textures/background2.jpg");
-//    bulletTexture.loadFromFile("../textures/bullet_smol.png");
-    bulletTexture.loadFromFile("../textures/New_Bullet.png");
-    alienBulletTexture.loadFromFile("../textures/New_Bullet_Red.png");
-//    asteroidTexture1.loadFromFile("../textures/as21.png");
-    asteroidTexture2.loadFromFile("../textures/asteroid2.png");
-    alienTexture1.loadFromFile("../textures/Starship_3.png");
-    shootingAlienTexture.loadFromFile("../textures/Starship_4_smol.png");
-}
 
-void Game::loadPlayerStats()
-{
-    playerStats.setFont(font);
-    playerStats.setFillColor(sf::Color::Cyan);
-    playerStats.setCharacterSize(40);
-}
-
-
-
-void Game::playerCollision(std::vector<Asteroid*>& unitBank)
+template <typename SS>
+void Game::playerCollision(SS& unitBank)
 {
     for(auto as:unitBank)
     {
-        if(as != lastEnemy)
-            if(player.collision(as->getCenter(),as->getBounds()))
+        if(&as != lastEnemy)
+            if(player.collision(as.getCenter(),as.getBounds()))
             {
                 audio.ough();
-                lastEnemy=as;
-                player.decreaseHP();
-            }
-    }
-}
-
-void Game::playerCollision(std::vector<Alien*>& unitBank)
-{
-    for(auto al:unitBank)
-    {
-        if(al != lastEnemy)
-            if(player.collision(al->getCenter(), al->getBounds()))
-            {
-                lastEnemy=al;
-                audio.ough();
-                player.decreaseHP();
-            }
-    }
-}
-
-void Game::playerCollision(std::vector<ShootingAlien*>& unitBank)
-{
-    for(auto al:unitBank)
-    {
-        if(al != lastEnemy)
-            if(player.collision(al->getCenter(), al->getBounds()))
-            {
-                lastEnemy=al;
-                audio.ough();
+                lastEnemy=&as;
                 player.decreaseHP();
             }
     }
@@ -236,6 +213,7 @@ void Game::playerCollision(std::vector<Shoot*>& bulletBank)
 
 bool Game::playerManager()
 {
+//    Alien a{window,alienTexture1,10,0,1,1,2};
     playerCollision(aliens);
     playerCollision(shootingAliens);
     playerCollision(asteroids);
@@ -253,9 +231,9 @@ void Game::bulletMaker(Player& playerArg)
     bulletsBank.push_back(new Shoot{window,bulletTexture,playerArg.getXCenter(),playerArg.getY(),true});
 }
 
-void Game::alienBulletMaker(ShootingAlien*& enemyArg)
+void Game::alienBulletMaker(ShootingAlien & enemyArg)
 {
-    alienBulletsBank.push_back(new Shoot{window,alienBulletTexture,enemyArg->getXCenter(),enemyArg->getDown(),false});
+    alienBulletsBank.push_back(new Shoot{window,alienBulletTexture,enemyArg.getXCenter(),enemyArg.getDown(),false});
 }
 
 void Game::bulletDestroyer(Shoot*& a, unsigned int& ii)
@@ -286,27 +264,28 @@ void Game::masterOfBullets()
 }
 
 
-void Game::asteroidAhead() {
+void Game::asteroidAhead()
+{
     asteroidSpawnNow += 0.1;
     if (asteroidSpawnNow >= asteroidSpawnCooldown) {
-        asteroids.push_back(new Asteroid{window, asteroidTexture2, static_cast<float>(rand()% (window.getSize().x - asteroidTexture2.getSize().x)), static_cast<float>(-100),1,static_cast<float>(difficulty)});
+        asteroids.push_back(Asteroid{&window, &asteroidTexture2, static_cast<float>(rand()% (window.getSize().x - asteroidTexture2.getSize().x)), static_cast<float>(-100),1,static_cast<float>(difficulty)});
         asteroidSpawnNow = 0;
 
     }
     unsigned int ii=0;
     for (auto Asteroid: asteroids) {
-        Asteroid->update();
-        if(Asteroid->killMe())
+        Asteroid.update();
+        if(Asteroid.killMe())
             asteroids.erase(asteroids.begin()+ii);
 
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
-            if(Asteroid->collision(a->getCenter(), a->getDiameter()))
+            if(Asteroid.collision(a->getCenter(), a->getDiameter()))
             {
                 asteroids.erase(asteroids.begin()+ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(difficulty*Asteroid->getPoints());
+                player.increasePoints(difficulty*Asteroid.getPoints());
             }
             ++bii;
         }
@@ -315,28 +294,29 @@ void Game::asteroidAhead() {
     }
 }
 
-void Game::alienAttack() {
+void Game::alienAttack()
+{
     alienSpawnNow += 0.05;
     if (alienSpawnNow >= alienSpawnCooldown)
     {
-        aliens.push_back(new Alien{window, alienTexture1, static_cast<float>(rand() % (window.getSize().x - alienTexture1.getSize().x)), static_cast<float>(-120),1,5,2*static_cast<float>(difficulty)});
+        aliens.push_back(Alien{&window, &alienTexture1, static_cast<float>(rand() % (window.getSize().x - alienTexture1.getSize().x)), static_cast<float>(-120),1,5,2*static_cast<float>(difficulty)});
         alienSpawnNow = 0;
     }
     unsigned int ii=0;
     for (auto Alien: aliens)
     {
-        Alien->update();
-        if(Alien->killMe())
+        Alien.update();
+        if(Alien.killMe())
             aliens.erase(aliens.begin()+ii);
 
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
-            if(Alien->collision(a->getCenter(), a->getDiameter()))
+            if(Alien.collision(a->getCenter(), a->getDiameter()))
             {
                 aliens.erase(aliens.begin() + ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(difficulty*Alien->getPoints());
+                player.increasePoints(difficulty*Alien.getPoints());
             }
             ++bii;
         }
@@ -344,18 +324,19 @@ void Game::alienAttack() {
 //        std::cout<<"Al"<<ii<<":"<<Alien->getXCenter()<<";"<<Alien->getY()<<"\n";
     }
 }
+
  void Game::shootingAlienAttack()
 {
     shootingAlienSpawnNow += 0.03 ;
     if (shootingAlienSpawnNow >= alienSpawnCooldown)
     {
-        shootingAliens.push_back(new ShootingAlien{window, shootingAlienTexture, static_cast<float>(rand() % (window.getSize().x - shootingAlienTexture.getSize().x)), static_cast<float>(-120),1,10,static_cast<float>(difficulty*1.7)});
+        shootingAliens.push_back(ShootingAlien{&window, &shootingAlienTexture, static_cast<float>(rand() % (window.getSize().x - shootingAlienTexture.getSize().x)), static_cast<float>(-120),1,10,static_cast<float>(difficulty*1.7)});
         shootingAlienSpawnNow = 0;
     }
     unsigned int ii=0;
     for (auto sAl: shootingAliens)
     {
-        sAl->update();
+        sAl.update();
         shootingNow += 0.2;
         if (shootingNow >= alienSpawnCooldown)
         {
@@ -363,37 +344,23 @@ void Game::alienAttack() {
             audio.piu(false);
             shootingNow = 0;
         }
-        if(sAl->killMe())
+        if(sAl.killMe())
             shootingAliens.erase(shootingAliens.begin()+ii);
 
         unsigned int bii=0;
         for(auto a:bulletsBank)
         {
-            if(sAl->collision(a->getCenter(), a->getDiameter()))
+            if(sAl.collision(a->getCenter(), a->getDiameter()))
             {
                 shootingAliens.erase(shootingAliens.begin() + ii);
                 bulletsBank.erase(bulletsBank.begin()+bii);
-                player.increasePoints(difficulty* sAl->getPoints());
+                player.increasePoints(difficulty* sAl.getPoints());
             }
             ++bii;
         }
         ++ii;
 //        std::cout<<"Al"<<ii<<":"<<sAl->getXCenter()<<";"<<sAl->getY()<<"\n";
     }
-}
-
-void Game::asteroidsSetSpawners()
-{
-    asteroidSpawnCooldown = 200 ;
-    asteroidSpawnNow = asteroidSpawnCooldown;
-}
-
-void Game::aliensSetSpawners()
-{
-    alienSpawnCooldown = 500;
-    alienSpawnNow = alienSpawnCooldown;
-    shootingAlienSpawnNow = alienSpawnCooldown;
-    shootingNow = alienSpawnCooldown;
 }
 
 
@@ -420,5 +387,5 @@ void Game::gameOver()
     {
         elapsedTime = clock.getElapsedTime();
     }
-    while(elapsedTime!=sf::seconds(3));
+    while(elapsedTime!=sf::seconds(1));
 }

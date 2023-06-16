@@ -10,7 +10,7 @@
 class ShootingAlien: public Alien
 {
     public:
-        ShootingAlien(sf::RenderWindow & windowArg, sf::Texture & textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg);
+        ShootingAlien(sf::RenderWindow * windowArg, sf::Texture * textureArg, float x, float y, float size, int pointsForPlayerArg, float speedArg);
 
         /*
          * making alien do a transformed periodical movement

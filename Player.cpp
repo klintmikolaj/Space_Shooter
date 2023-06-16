@@ -3,13 +3,12 @@
 //
 
 #include <SFML/Graphics.hpp>
-#include <string>
 #include "Player.h"
 
 using namespace std;
 using namespace sf;
 
-Player::Player(string& playerName, RenderWindow & windowArg, Texture & textureArg): Unit{windowArg, textureArg}, name(playerName), points(0), hp(3)
+Player::Player(RenderWindow & windowArg, Texture & textureArg): Unit{&windowArg, &textureArg}, points(0), hp(3)
 {
     setPlayerPosition();
 }
@@ -28,11 +27,6 @@ void Player::decreaseHP()
 int Player::getHP() const
 {
     return hp;
-}
-
-string Player::getName() const
-{
-    return name;
 }
 
 int Player::getPoints() const

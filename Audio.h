@@ -13,8 +13,9 @@ public:
 
     /*
      *@param menu
-     * checking if player is in menu and playing specific audio
+     * checking if player is in menu or in the game and setting specific audio file
      * looping audio
+     * setting volume of playing audio
     */
     void bgMusicLoad(bool menu);
 
@@ -35,7 +36,7 @@ public:
     void piu(bool piu);
 
     /*
-    * playing specific sound
+    * playing sound of groan from received damage
     */
     void ough();
 private:

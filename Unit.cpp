@@ -9,7 +9,7 @@ using namespace std;
 using namespace sf;
 
 
-Unit::Unit(RenderWindow & windowArg, sf::Texture & textureArg):window(windowArg),texture(textureArg)
+Unit::Unit(RenderWindow * windowArg, sf::Texture * textureArg):window(windowArg),texture(textureArg)
 {
 }
 
@@ -34,12 +34,12 @@ void Unit::move(float x, float y, bool dirX, bool dirY, bool isAlien)
 
 void Unit::loadTexture()
 {
-    sprite.setTexture(texture);
+    sprite.setTexture((*texture));
 }
 
 void Unit::setPlayerPosition()
 {
-    sprite.setPosition(((float)window.getSize().x - (float)texture.getSize().x) / 2, (float)window.getSize().y - (float)texture.getSize().y);
+    sprite.setPosition(((float)window->getSize().x - (float)texture->getSize().x) / 2, (float)window->getSize().y - (float)texture->getSize().y);
 }
 
 void Unit::setEnemyPosistion(float x, float y)
@@ -53,18 +53,12 @@ void Unit::setSize(float size) {
 
 void Unit::showSprite()
 {
-    window.draw(sprite);
-}
-
-
-float Unit::getXLeft() const
-{
-    return sprite.getPosition().x;
+    window->draw(sprite);
 }
 
 float Unit::getXCenter() const
 {
-    return sprite.getPosition().x + texture.getSize().x / 2;
+    return sprite.getPosition().x + texture->getSize().x / 2;
 }
 
 float Unit::getY() const
@@ -74,19 +68,19 @@ float Unit::getY() const
 
 float Unit::getDown() const
 {
-    return sprite.getPosition().y+texture.getSize().y;
+    return sprite.getPosition().y+texture->getSize().y;
 }
 
 
 Vector2f Unit::getCenter() const
 {
-    Vector2f a(texture.getSize().x/2,texture.getSize().y/2);
+    Vector2f a(texture->getSize().x/2,texture->getSize().y/2);
     return sprite.getPosition()+a;
 }
 
 Vector2<unsigned int>Unit::getBounds() const
 {
-    return texture.getSize();
+    return texture->getSize();
 }
 
 float modulo(float a)
@@ -98,7 +92,7 @@ float modulo(float a)
 
 bool Unit::collision(sf::Vector2f centerV, sf::Vector2<unsigned int>boundsV) const
 {
-    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x + boundsV.x)/2.5 && modulo(getCenter().y - centerV.y) < (texture.getSize().y + boundsV.y)/2.5)
+    if(modulo(getCenter().x - centerV.x) < (texture->getSize().x + boundsV.x)/2.5 && modulo(getCenter().y - centerV.y) < (texture->getSize().y + boundsV.y)/2.5)
     {
         return true;
     }
@@ -107,7 +101,7 @@ bool Unit::collision(sf::Vector2f centerV, sf::Vector2<unsigned int>boundsV) con
 
 bool Unit::collision(sf::Vector2f centerV, float diameter) const
 {
-    if(modulo(getCenter().x - centerV.x) < (texture.getSize().x + diameter)/2 && modulo(getCenter().y - centerV.y) < (texture.getSize().y + diameter)/2)
+    if(modulo(getCenter().x - centerV.x) < (texture->getSize().x + diameter)/2 && modulo(getCenter().y - centerV.y) < (texture->getSize().y + diameter)/2)
     {
         return true;
     }
@@ -116,7 +110,7 @@ bool Unit::collision(sf::Vector2f centerV, float diameter) const
 
 bool Unit::killMe() const
 {
-    if(sprite.getPosition().y-window.getSize().y>0)
+    if(sprite.getPosition().y-window->getSize().y>0)
         return true;
     return false;
 }
