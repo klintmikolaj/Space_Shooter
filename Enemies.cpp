@@ -8,7 +8,7 @@ Enemies::Enemies(RenderWindow * windowArg, Texture * textureArg, float speedArg,
 
 void Enemies::update() {
     move(0,0.1*speed,true,true, true);
-    showSprite();
+    updateSprite();
 }
 
 int Enemies::getPoints() const

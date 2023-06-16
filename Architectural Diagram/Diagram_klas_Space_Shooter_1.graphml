@@ -130,10 +130,10 @@
 									<sys:String><![CDATA[void update();]]></sys:String>
 									<sys:String><![CDATA[void display();]]></sys:String>
 									<sys:String><![CDATA[void steer();]]></sys:String>
-									<sys:String><![CDATA[void drawInterface();]]></sys:String>
+									<sys:String><![CDATA[void updateInterface();]]></sys:String>
 									<sys:String><![CDATA[void drawPlayerStuff();]]></sys:String>
-									<sys:String><![CDATA[void bulletMaker(Player& playerArg, bool turnArg);]]></sys:String>
-									<sys:String><![CDATA[void masterOfBullets();]]></sys:String>
+									<sys:String><![CDATA[void createPlayerBullet(Player& playerArg, bool turnArg);]]></sys:String>
+									<sys:String><![CDATA[void updateBullets();]]></sys:String>
 								</x:Array>
 							</uml:UMLClassModel.operations>
 						</uml:UMLClassModel>
@@ -325,7 +325,7 @@
 									<sys:String><![CDATA[Unit(sf::RenderWindow &, sf::Texture &, int);]]></sys:String>
 									<sys:String><![CDATA[void moveX(bool direction, bool multiplier);]]></sys:String>
 									<sys:String><![CDATA[void loadTexture();]]></sys:String>
-									<sys:String><![CDATA[void showSprite();]]></sys:String>
+									<sys:String><![CDATA[void updateSprite();]]></sys:String>
 								</x:Array>
 							</uml:UMLClassModel.operations>
 						</uml:UMLClassModel>

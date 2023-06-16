@@ -51,7 +51,7 @@ void Unit::setSize(float size) {
     sprite.setScale(size, size);
 }
 
-void Unit::showSprite()
+void Unit::updateSprite()
 {
     window->draw(sprite);
 }

@@ -8,6 +8,7 @@
 class Unit
 {
     public:
+        Unit();
         Unit(sf::RenderWindow *, sf::Texture *);
 
         bool visible(sf::Vector2f position, sf::Vector2f movement);
@@ -49,7 +50,7 @@ class Unit
         /*
         * drawing the sprite in window
         */
-        void showSprite();
+        void updateSprite();
 
         /*
         * returns X position of an object, exactly in the center depending on window width

@@ -3,30 +3,28 @@
 //
 
 #include "Shoot.h"
-#include <iostream>
 
-Shoot::Shoot(sf::RenderWindow &windowArg, sf::Texture& textureArg, float unitCenter, float unitY, bool up): window(windowArg), texture(textureArg)
+Shoot::Shoot(sf::RenderWindow * windowArg, sf::Texture * textureArg, float unitCenter, float unitY, bool up): window(windowArg), texture(textureArg)
 {
     if(up)
         turn=-1;
     else
         turn=1;
-    bullet.setTexture(textureArg);
-    bullet.setPosition(unitCenter - textureArg.getSize().x / 2, unitY);
+    bullet.setTexture((*textureArg));
+    bullet.setPosition(unitCenter - textureArg->getSize().x / 2, unitY);
 }
 
 
 void Shoot::updateBullet()
 {
-    const float randomShit=0.7;
-    bullet.move(0,turn*randomShit);
-    window.draw(bullet);
-//    std::cout<<bullet.getPosition().x<<";"<<bullet.getPosition().y<<"\t";
+    const float bulletSpeedRate=0.7;
+    bullet.move(0, turn * bulletSpeedRate);
+    window->draw(bullet);
 }
 
 float Shoot::getDiameter() const
 {
-    return texture.getSize().x;
+    return texture->getSize().x;
 }
 
 sf::Vector2f Shoot::getCenter() const
@@ -37,7 +35,7 @@ sf::Vector2f Shoot::getCenter() const
 
 bool Shoot::destroyMe() const
 {
-    if(bullet.getPosition().y+texture.getSize().y<0)
+    if(bullet.getPosition().y+texture->getSize().y<0)
         return true;
     return false;
 }

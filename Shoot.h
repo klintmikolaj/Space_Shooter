@@ -8,12 +8,12 @@
 class Shoot
 {
 private:
-    sf::RenderWindow& window;
-    sf::Texture& texture;
+    sf::RenderWindow * window;
+    sf::Texture * texture;
     sf::Sprite bullet;
     char turn;
 public:
-    Shoot(sf::RenderWindow& windowArg, sf::Texture& textureArg, float unitCenter, float unitY, bool up);
+    Shoot(sf::RenderWindow * windowArg, sf::Texture * textureArg, float unitCenter, float unitY, bool up);
 
     /*
      * moving and drawing the bullet

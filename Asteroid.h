@@ -5,7 +5,6 @@
 
 class Asteroid: public Enemies
 {
-    float spawnCooldown=200;
 public:
     Asteroid(sf::RenderWindow * windowArg, sf::Texture * textureArg, float x, float y, float size, float speed);
 };
