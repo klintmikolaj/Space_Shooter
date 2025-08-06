@@ -1,4 +1,4 @@
-# Space shooter (name subject to change)
+# Space shooter
 
 Gracz wcieli się w pilota statku kosmicznego przemierzającego odległe zakątki wszechświata. Jego zadaniem będzie wykonywanie pobocznych misji, polegających na zbieraniu konkretnych elementów, niszczeniu statków kosmitów, unikaniu deszczów meteorytów, a co jakiś czas pokonywaniu potężnych wrogich bossów.
 
